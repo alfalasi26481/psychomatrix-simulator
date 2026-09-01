@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14335c">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>محاكي السايكوماتريكس الشامل — G-CAT Simulator</title>
+<meta name="description" content="محاكي تدريبي لأدوات تقييم الكفاءات القيادية الأربع: الشخصية PQ10، القدرات الذهنية GCAT، الحكم على المواقف القيادية، والسلوكيات المعطلة — بأعداد الاختبار الرسمي وتقرير مرشح كامل.">
+<meta name="author" content="ALFALASI26481">
+<meta name="application-name" content="محاكي السايكوماتريكس الشامل">
+<meta name="apple-mobile-web-app-title" content="السايكوماتريكس">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- بطاقة المشاركة: تظهر بشعار التطبيق واسمه عند إرسال الرابط في واتساب وتويتر وتيليجرام -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="محاكي السايكوماتريكس الشامل">
+<meta property="og:locale" content="ar_AE">
+<meta property="og:title" content="محاكي السايكوماتريكس الشامل · G-CAT">
+<meta property="og:description" content="تدرّب على أدوات تقييم الكفاءات القيادية الأربع بأعداد الاختبار الرسمي: 144 عبارة شخصية · 42 سؤال قدرات في 20 دقيقة · 16 سيناريو قيادي · 60 عبارة سلوكيات معطلة.">
+<meta property="og:image" content="icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="شعار محاكي السايكوماتريكس الشامل">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="محاكي السايكوماتريكس الشامل · G-CAT">
+<meta name="twitter:description" content="محاكي تدريبي لأدوات تقييم الكفاءات القيادية الأربع بأعداد الاختبار الرسمي.">
+<meta name="twitter:image" content="icons/og-image.png">
+<style>
+:root{
+  --navy:#14335c; --navy2:#1d4477; --gold:#c9a227; --gold2:#e6c35c;
+  --blue:#1f6fd6; --blue-soft:#e8f1fc; --bg:#eef2f7; --card:#ffffff;
+  --ink:#1c2431; --ink2:#4a5568; --muted:#8a94a6; --line:#dde4ee;
+  --green:#1d8a3c; --green-soft:#e5f5e9; --orange:#e07b1f; --red:#c8342e;
+  --red-soft:#fbf0ef; --lightblue:#3b82d6;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Segoe UI',Tahoma,system-ui,-apple-system,sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.85; min-height:100vh;
+}
+/* ======== الترويسة ======== */
+.topbar{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  color:#fff; padding:10px 20px; display:flex; align-items:center; gap:13px;
+  border-bottom:3px solid var(--gold); position:sticky; top:0; z-index:50;
+}
+.topbar .logo{width:44px;height:44px;flex:none}
+.topbar .brand-txt{min-width:0;overflow:hidden}
+.topbar .t1{font-size:16.5px;font-weight:800;letter-spacing:.2px}
+.topbar .t2{font-size:11px;color:#c8d4e6}
+.topbar .spacer{flex:1}
+.chip{
+  display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:4px 13px;
+  font-size:12.5px;font-weight:800;color:#fff;white-space:nowrap;
+}
+.topbar .home-btn{
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3);
+  color:#fff; border-radius:8px; padding:7px 14px; font-family:inherit;
+  font-size:13px; cursor:pointer; font-weight:700;
+}
+.topbar .home-btn:hover{background:rgba(255,255,255,.22)}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px 120px}
+/* ======== لوحة المتدرب ======== */
+.dash{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px;
+}
+.stat{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:14px 16px;text-align:center;box-shadow:0 1px 6px rgba(20,51,92,.05);
+}
+.stat .v{font-size:26px;font-weight:800;color:var(--navy);line-height:1.3}
+.stat .l{font-size:12px;color:var(--muted);font-weight:700}
+.stat .v small{font-size:13px;color:var(--muted)}
+/* ======== الشاشة الرئيسية ======== */
+.hero{
+  background:var(--card); border:1px solid var(--line); border-radius:16px;
+  padding:26px 24px; text-align:center; margin-bottom:18px;
+  box-shadow:0 2px 10px rgba(20,51,92,.06);
+}
+.hero .biglogo{width:96px;height:96px;margin:0 auto 10px}
+.hero h1{margin:0;font-size:24px;color:var(--navy)}
+.hero .en{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:2px;margin-top:2px}
+.hero p{color:var(--ink2);font-size:14px;max-width:62ch;margin:10px auto 0}
+.disclaimer{
+  margin-top:14px;background:#fdf6e3;border:1px solid #ecd9a0;border-radius:10px;
+  padding:9px 13px;font-size:12px;color:#7a5c10;
+}
+.tests{display:grid;gap:13px;margin-top:18px}
+.test-card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:16px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  box-shadow:0 1px 6px rgba(20,51,92,.05);
+}
+.test-card .icon{
+  width:50px;height:50px;border-radius:12px;background:var(--blue-soft);
+  display:grid;place-items:center;font-size:23px;flex:none;border:1px solid #cfe0f5;
+}
+.test-card .info{flex:1;min-width:210px}
+.test-card h3{margin:0;font-size:16px;color:var(--navy)}
+.test-card .meta{color:var(--muted);font-size:12px;margin-top:2px}
+.test-card .meta b{color:var(--ink2)}
+.hist{display:flex;gap:6px;margin-top:6px;align-items:center;flex-wrap:wrap}
+.hist .h{
+  font-size:11px;font-weight:800;border-radius:6px;padding:1px 8px;
+  background:#f2f5fa;border:1px solid var(--line);color:var(--ink2);
+}
+.hist .h.best{background:var(--green-soft);border-color:#bfe5c9;color:var(--green)}
+.btn{
+  font-family:inherit;font-weight:800;border-radius:9px;cursor:pointer;
+  font-size:14px;padding:10px 20px;border:1px solid transparent;transition:filter .15s,transform .1s;
+}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--blue);color:#fff}
+.btn.primary:hover{filter:brightness(1.1)}
+.btn.gold{background:var(--gold);color:#fff}
+.btn.gold:hover{filter:brightness(1.08)}
+.btn.green{background:var(--green);color:#fff}
+.btn.outline{background:#fff;color:var(--blue);border-color:var(--blue)}
+.btn.ghost{background:#fff;color:var(--ink2);border-color:var(--line)}
+.btn.danger{background:#fff;color:var(--red);border-color:#e5b3b0}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.badge{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 11px}
+.badge.done{background:var(--green-soft);color:var(--green);border:1px solid #bfe5c9}
+.badge.pending{background:#f2f4f8;color:var(--muted);border:1px solid var(--line)}
+.final-row{margin-top:16px;text-align:center}
+/* ======== التعليمات واختيار الوضع ======== */
+.panel{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:24px;box-shadow:0 2px 10px rgba(20,51,92,.06);animation:fadein .3s ease;
+}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.panel h2.title{
+  margin:0 0 4px;text-align:center;color:var(--navy);font-size:21px;
+  border-bottom:3px solid var(--gold);display:table;padding:0 8px 6px;margin-inline:auto;
+}
+.panel .subtitle{text-align:center;color:var(--muted);font-size:12.5px;margin-bottom:16px}
+.inst ol{padding-right:20px;color:var(--ink2);font-size:14px}
+.inst li{margin-bottom:7px}
+.inst .note{
+  background:var(--blue-soft);border:1px solid #cfe0f5;border-radius:10px;
+  padding:10px 14px;font-size:13px;color:var(--ink2);margin-top:12px;
+}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:16px}
+.mode-btn{
+  text-align:right;background:#fff;border:2px solid var(--line);border-radius:13px;
+  padding:15px 17px;cursor:pointer;font-family:inherit;transition:border-color .15s;
+}
+.mode-btn:hover{border-color:var(--blue)}
+.mode-btn h4{margin:0 0 4px;font-size:15.5px;color:var(--navy)}
+.mode-btn p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.7}
+.mode-btn.practice h4{color:var(--green)}
+/* ======== شريط التقدم والمؤقت ======== */
+.qhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px;flex-wrap:wrap}
+.qcount{color:var(--muted);font-size:13px;font-weight:700}
+.timer{
+  font-variant-numeric:tabular-nums;font-weight:800;font-size:15px;color:var(--navy);
+  background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:4px 16px;
+}
+.timer.low{color:var(--red);border-color:#e5b3b0;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.5}}
+.pill{
+  font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 12px;border:1.5px solid;
+}
+.pill.practice{color:var(--green);border-color:#bfe5c9;background:var(--green-soft)}
+.pill.exam{color:var(--navy);border-color:#c5d2e5;background:#eef3fa}
+.pbar{height:6px;background:#dfe6f0;border-radius:99px;overflow:hidden;margin-bottom:18px}
+.pbar .f{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s}
+/* ======== سؤال العبارات ======== */
+.qtext{font-size:18.5px;font-weight:700;text-align:center;margin:8px 0 24px;color:var(--ink)}
+.agree{display:grid;gap:9px;max-width:560px;margin:0 auto}
+.agree button{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  background:#fff;border:1.5px solid var(--line);border-radius:11px;
+  padding:11px 18px;cursor:pointer;font-family:inherit;font-size:14.5px;
+  font-weight:700;color:var(--ink2);transition:all .13s;
+}
+.agree button:hover{border-color:var(--blue);background:var(--blue-soft)}
+.agree button.sel{border-color:var(--blue);background:var(--blue-soft);color:var(--navy)}
+.dots{display:flex;gap:6px;direction:ltr}
+.dots i{width:16px;height:16px;border-radius:50%;border:2px solid var(--navy);display:block}
+.dots i.f{background:var(--navy)}
+.agree button.sel .dots i{border-color:var(--blue)}
+.agree button.sel .dots i.f{background:var(--blue)}
+/* ======== أسئلة GCAT ======== */
+.gcat-q{font-size:17px;font-weight:700;text-align:center;margin:4px 0 12px}
+.gcat-stim{
+  border:2px dashed var(--navy);border-radius:10px;padding:13px 20px;
+  text-align:center;font-size:21px;font-weight:800;max-width:440px;margin:0 auto 22px;
+  letter-spacing:2px;background:#fbfcfe;
+}
+.gcat-stim.seq{font-size:27px;direction:ltr}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;max-width:700px;margin:0 auto}
+.opts button{
+  background:#fff;border:1.5px solid var(--line);border-radius:11px;
+  padding:13px 10px 11px;cursor:pointer;font-family:inherit;font-size:15.5px;
+  font-weight:700;color:var(--ink);transition:all .13s;position:relative;
+}
+.opts button:hover:not(:disabled){border-color:var(--blue);background:var(--blue-soft)}
+.opts button.sel{border-color:var(--blue);background:var(--blue-soft)}
+.opts button.correct{border-color:var(--green);background:var(--green-soft)}
+.opts button.wrong{border-color:var(--red);background:var(--red-soft)}
+.opts button:disabled{cursor:default}
+.opts button .n{
+  display:block;margin:7px auto 0;width:21px;height:21px;border-radius:50%;
+  background:var(--navy);color:#fff;font-size:12px;line-height:21px;font-weight:800;
+}
+.opts button.sel .n{background:var(--blue)}
+.opts button.correct .n{background:var(--green)}
+.opts button.wrong .n{background:var(--red)}
+.opts.shapes button{font-size:23px;letter-spacing:2px;direction:ltr}
+/* الشرح الفوري في وضع التدريب */
+.feedback{
+  max-width:700px;margin:16px auto 0;border-radius:12px;padding:13px 16px;
+  font-size:14px;animation:fadein .25s ease;border:1.5px solid;
+}
+.feedback.ok{background:var(--green-soft);border-color:#bfe5c9;color:#14532d}
+.feedback.no{background:var(--red-soft);border-color:#e5b3b0;color:#7f1d1d}
+.feedback b{display:block;margin-bottom:2px}
+/* علم المراجعة وشبكة التنقل */
+.flagbar{display:flex;justify-content:center;margin-top:14px}
+.flag-btn{
+  background:#fff;border:1.5px dashed var(--line);border-radius:999px;color:var(--muted);
+  font-family:inherit;font-size:12.5px;font-weight:800;padding:6px 18px;cursor:pointer;
+}
+.flag-btn.on{color:var(--orange);border-color:var(--orange);border-style:solid;background:#fdf3e7}
+.qnav{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:14px}
+.qnav button{
+  width:34px;height:34px;border-radius:8px;border:1.5px solid var(--line);background:#fff;
+  font-family:inherit;font-size:12px;font-weight:800;color:var(--muted);cursor:pointer;position:relative;
+}
+.qnav button.answered{background:var(--blue-soft);border-color:#b9d4f3;color:var(--navy)}
+.qnav button.current{border-color:var(--navy);color:var(--navy);box-shadow:0 0 0 2px rgba(20,51,92,.15)}
+.qnav button.flagged::after{content:'⚑';position:absolute;top:-8px;left:-4px;font-size:11px;color:var(--orange)}
+/* ======== سيناريوهات الحكم ======== */
+.scen-card{
+  background:linear-gradient(180deg,#eaf2fd,#f6faff);border:1px solid #c9dcf5;
+  border-radius:12px;padding:15px 18px;margin-bottom:16px;
+  box-shadow:0 2px 8px rgba(31,111,214,.08);
+}
+.scen-card h4{margin:0 0 5px;color:var(--navy);font-size:15.5px}
+.scen-card p{margin:0;color:var(--ink2);font-size:14px}
+.scen-hint{text-align:center;font-weight:800;color:var(--navy);font-size:14.5px;margin:12px 0}
+.resp{border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin-bottom:11px;background:#fff}
+.resp .rtext{font-size:14px;color:var(--ink);margin-bottom:9px;font-weight:600}
+.rate{display:flex;gap:7px;flex-wrap:wrap}
+.rate button{
+  flex:1;min-width:105px;display:flex;flex-direction:column;align-items:center;gap:4px;
+  background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:7px 5px;
+  cursor:pointer;font-family:inherit;font-size:11px;font-weight:800;color:var(--muted);
+  transition:all .12s;
+}
+.rate .rd{display:flex;gap:4px;direction:ltr}
+.rate .rd i{width:12px;height:12px;border-radius:50%;border:2px solid currentColor;display:block}
+.rate .rd i.f{background:currentColor}
+.rate button[data-v="1"]{color:var(--red)} .rate button[data-v="2"]{color:var(--orange)}
+.rate button[data-v="3"]{color:var(--lightblue)} .rate button[data-v="4"]{color:var(--green)}
+.rate button:hover{border-color:currentColor}
+.rate button.sel{border-color:currentColor;background:currentColor}
+.rate button.sel span,.rate button.sel .rd i{color:#fff;border-color:#fff}
+.rate button.sel .rd i.f{background:#fff}
+.expert-tag{
+  display:inline-block;margin-top:8px;font-size:12px;font-weight:800;
+  border-radius:8px;padding:3px 12px;background:#eef3fa;border:1px solid #c5d2e5;color:var(--navy);
+}
+/* ======== شريط التنقل السفلي ======== */
+.navbar{
+  position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:var(--navy);display:flex;justify-content:space-between;align-items:center;
+  border-top:3px solid var(--gold);padding-bottom:env(safe-area-inset-bottom);
+}
+.navbar button{
+  background:none;border:0;color:#fff;font-family:inherit;font-size:15px;
+  font-weight:800;padding:14px 30px;cursor:pointer;display:flex;align-items:center;gap:8px;
+}
+.navbar button:hover:not(:disabled){background:rgba(255,255,255,.1)}
+.navbar button:disabled{opacity:.35;cursor:not-allowed}
+.navbar .mid{color:#c8d4e6;font-size:12.5px}
+/* ======== النتائج والتقرير ======== */
+.result-hero{text-align:center;padding:6px 0 2px}
+.result-hero .icon{font-size:40px}
+.result-hero h2{margin:6px 0 2px;color:var(--navy);font-size:21px}
+.result-hero p{color:var(--ink2);margin:0 0 8px;font-size:13.5px}
+.score-big{font-size:50px;font-weight:800;color:var(--navy);line-height:1.2}
+.score-big small{font-size:15px;color:var(--muted);font-weight:600}
+.delta{font-size:13px;font-weight:800}
+.delta.up{color:var(--green)} .delta.dn{color:var(--red)}
+.bar-row{display:grid;grid-template-columns:165px 1fr 56px;align-items:center;gap:12px;margin-bottom:10px}
+.bar-row .lbl{font-size:13px;color:var(--ink2)}
+.bar-row .trk{height:11px;background:#e3e9f2;border-radius:99px;overflow:hidden}
+.bar-row .fill{height:100%;background:var(--blue);border-radius:99px;transition:width .6s}
+.bar-row .fill.gold{background:var(--gold)}
+.bar-row .fill.red{background:var(--red)}
+.bar-row .val{font-size:12.5px;font-weight:800;color:var(--navy);text-align:left;font-variant-numeric:tabular-nums}
+.sec-h{color:var(--navy);font-size:16.5px;margin:22px 0 4px;border-right:4px solid var(--gold);padding-right:10px}
+.sec-sub{color:var(--muted);font-size:12px;margin:0 0 13px;padding-right:14px}
+.comp{border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:11px;background:#fff}
+.comp .head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+.comp .name{font-weight:800;font-size:14.5px;color:var(--navy)}
+.lvl{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 13px;border:1.5px solid}
+.lvl.s{color:var(--green);border-color:#bfe5c9;background:var(--green-soft)}
+.lvl.n{color:var(--gold);border-color:#ecd9a0;background:#fdf8ea}
+.lvl.d{color:var(--red);border-color:#e5b3b0;background:var(--red-soft)}
+.comp .rec{font-size:12.5px;color:var(--ink2);border-top:1px dashed var(--line);padding-top:7px;margin-top:5px}
+.comp .rec b{color:var(--navy)}
+table.rt{width:100%;border-collapse:collapse;font-size:13px}
+table.rt th,table.rt td{border:1px solid var(--line);padding:7px 11px;text-align:right}
+table.rt th{background:#f4f7fb;color:var(--navy);font-size:12px}
+table.rt td{color:var(--ink2)}
+.review-item{border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin-bottom:10px}
+.review-item.wrong{border-color:#e5b3b0;background:#fffafa}
+.review-item .rq{font-weight:700;font-size:14px;margin-bottom:4px}
+.review-item .ra{font-size:13px;color:var(--ink2)}
+.review-item .ra b.ok{color:var(--green)} .review-item .ra b.no{color:var(--red)}
+.review-item .rex{font-size:12.5px;color:var(--ink2);border-top:1px dashed var(--line);margin-top:7px;padding-top:6px}
+.actions{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+/* ======== الاحتفال ======== */
+.confetti{position:fixed;top:-12px;z-index:100;font-size:18px;animation:fall linear forwards;pointer-events:none}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.4}}
+/* ======== شاشة التثبيت ======== */
+.install-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}
+.install-card{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fff}
+.install-card h4{margin:0 0 6px;color:var(--navy);font-size:15px}
+.install-card ol{margin:0;padding-right:18px;font-size:13px;color:var(--ink2)}
+.install-card li{margin-bottom:4px}
+.iprights{
+  text-align:center;color:var(--muted);font-size:11.5px;margin-top:26px;
+  border-top:1px solid var(--line);padding-top:12px;letter-spacing:.3px;
+}
+.iprights b{color:var(--gold);letter-spacing:1px}
+@media print{
+  .topbar,.navbar,.actions,.no-print{display:none!important}
+  .iprights{color:#555;border-top-color:#ddd}
+  .iprights b{color:#8a6d00}
+  body{background:#fff}
+  .wrap{padding:0;max-width:100%}
+  .panel{border:0;box-shadow:none;padding:10px}
+  .comp,.result-hero,.sec-h{break-inside:avoid}
+}
+@media (max-width:620px){
+  .bar-row{grid-template-columns:115px 1fr 46px}
+  .navbar button{padding:13px 18px;font-size:14px}
+  .rate button{min-width:46%}
+  /* الترويسة كانت تتجاوز عرض الشاشة على الأجهزة الصغيرة فيظهر تمرير أفقي */
+  .topbar{padding:8px 12px;gap:9px}
+  .topbar .logo{width:34px;height:34px}
+  .topbar .t1{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .topbar .t2{display:none}
+  .topbar .home-btn{padding:6px 10px;font-size:12px}
+  .chip{padding:3px 10px;font-size:11.5px}
+  .wrap{padding:20px 12px 120px}
+}
+@media (max-width:380px){
+  .topbar .t1{font-size:12.5px}
+  .topbar .home-btn{padding:6px 8px}
+  .navbar button{padding:12px 14px;font-size:13.5px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="50" cy="50" r="47" fill="none" stroke="#c9a227" stroke-width="3.5"/>
+    <circle cx="50" cy="50" r="40" fill="#1d4477"/>
+    <g fill="none" stroke="#c9a227" stroke-width="3" stroke-linecap="round">
+      <rect x="30" y="30" width="17" height="17" rx="3" fill="#c9a227" stroke="none"/>
+      <rect x="53" y="30" width="17" height="17" rx="3"/>
+      <rect x="30" y="53" width="17" height="17" rx="3"/>
+      <rect x="53" y="53" width="17" height="17" rx="3"/>
+    </g>
+    <path d="M38 78 L50 66 L62 78" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="50" cy="20" r="4" fill="#c9a227"/>
+  </svg>
+  <div class="brand-txt">
+    <div class="t1">محاكي السايكوماتريكس الشامل</div>
+    <div class="t2">PsychoMatrix &amp; G-CAT Simulator · نسخة تدريبية</div>
+  </div>
+  <div class="spacer"></div>
+  <span class="chip" id="streakChip" title="أيام التدريب المتتالية">🔥 0</span>
+  <button class="home-btn" onclick="go('home')">⌂ الرئيسية</button>
+</header>
+
+<div class="wrap">
+  <div id="app"></div>
+  <footer class="iprights">© جميع الحقوق محفوظة · رمز الملكية الفكرية: <b>ALFALASI26481</b></footer>
+</div>
+<div id="nav"></div>
+
+<script>
+'use strict';
+/* =====================================================================
+   © جميع الحقوق محفوظة — رمز الملكية الفكرية: ALFALASI26481
+   محاكي السايكوماتريكس الشامل v2 — تطبيق مستقل بالكامل (PWA)
+   وضعا تدريب/اختبار · بنك أسئلة عشوائي · علم مراجعة وشبكة تنقل ·
+   سجل محاولات وسلسلة أيام · شرح لكل إجابة · تقرير المرشح بالكفاءات الثماني
+   ===================================================================== */
+
+/* ---------- 1) الشخصية PQ10 ---------- */
+const PQ_DIMS = {
+  curiosity:{name:'الفضول الفكري والإبداع',group:'الانفتاح على الخبرة'},
+  change:{name:'تقبّل التغيير',group:'الانفتاح على الخبرة'},
+  organize:{name:'التنظيم والتخطيط',group:'الالتزام والانضباط'},
+  persist:{name:'المثابرة وإنجاز المهام',group:'الالتزام والانضباط'},
+  social:{name:'الحيوية الاجتماعية',group:'التفاعل الاجتماعي'},
+  assertive:{name:'الحزم والتأثير',group:'التفاعل الاجتماعي'},
+  coop:{name:'التعاون والعمل المشترك',group:'التوافق والتعاون'},
+  considerate:{name:'مراعاة الآخرين',group:'التوافق والتعاون'},
+  calm:{name:'الهدوء تحت الضغط',group:'الاستقرار العاطفي'},
+  confidence:{name:'الثقة بالنفس',group:'الاستقرار العاطفي'},
+};
+/* 14 عبارة لكل بُعد من الأبعاد العشرة (منها معكوسة التصحيح) = 140 عبارة */
+const PQ_BANK = {
+ curiosity:[
+  {t:'أستمتع باستكشاف أفكار وأساليب لم أجرّبها من قبل.',cid:'k4'},
+  {t:'أطرح أسئلة كثيرة لفهم كيف تعمل الأشياء.'},
+  {t:'أفضّل المهام الروتينية المألوفة على المهام الجديدة.',r:1},
+  {t:'تلهمني الأفكار غير التقليدية في حل المشكلات.'},
+  {t:'أبحث عن معلومات جديدة حتى خارج نطاق عملي.'},
+  {t:'أستمتع بحل الألغاز والمسائل المعقدة.'},
+  {t:'تستهويني النقاشات حول الأفكار المستقبلية.'},
+  {t:'أجرّب أدوات وتقنيات جديدة قبل أن يطلبها مني أحد.'},
+  {t:'أعيد التفكير في الطريقة المعتادة لعمل الأشياء بحثًا عن أفضل منها.'},
+  {t:'تحمّسني الكتب والدورات في المجالات الجديدة.'},
+  {t:'أشعر بالملل من المهام التي لا جديد فيها.'},
+  {t:'أكتفي بما أعرفه لأداء عملي ولا أرى داعيًا للمزيد.',r:1},
+  {t:'نادرًا ما تشدّني الأفكار النظرية المجردة.',r:1},
+  {t:'أفضّل أن يحدد لي الآخرون طريقة العمل بدل ابتكار طريقتي.',r:1},
+ ],
+ change:[
+  {t:'أتكيف بسرعة عندما تتغير خطة العمل فجأة.'},
+  {t:'أرحب بتجربة أنظمة وإجراءات جديدة في العمل.'},
+  {t:'يزعجني تغيير طريقة عمل اعتدت عليها.',r:1},
+  {t:'أرى في التغيير فرصة أكثر مما أراه تهديدًا.'},
+  {t:'أتعامل مع المهام المفاجئة بروح إيجابية.'},
+  {t:'أجد نفسي بسرعة في البيئات الجديدة.'},
+  {t:'أعدّل خططي بسهولة عندما تظهر معطيات جديدة.'},
+  {t:'انتقالي إلى فريق جديد يحفزني أكثر مما يقلقني.'},
+  {t:'أقترح تغييرات على الإجراءات القائمة عندما أرى فرصة أفضل.'},
+  {t:'أتقبل تعديل أهدافي منتصف الطريق إذا تغيرت الأولويات.'},
+  {t:'أحتاج وقتًا طويلًا للتأقلم مع أي جديد.',r:1},
+  {t:'أفضّل بيئة عمل ثابتة لا تتغير كثيرًا.',r:1},
+  {t:'القرارات المفاجئة من الإدارة تربكني أكثر من غيري.',r:1},
+  {t:'أرى أن أغلب التغييرات في العمل تحسّن قليلًا وتزعج كثيرًا.',r:1},
+ ],
+ organize:[
+  {t:'أخطط ليومي قبل أن يبدأ.',cid:'k3'},
+  {t:'أحتفظ بملفاتي وأدواتي مرتبة يسهل الوصول إليها.'},
+  {t:'أبدأ مهامي دون خطة واضحة في الغالب.',r:1},
+  {t:'أضع جداول زمنية لمهامي وألتزم بها.'},
+  {t:'أضع قائمة مهام وأشطب منها ما أُنجز.'},
+  {t:'أحدد أولوياتي قبل الانشغال بالتفاصيل.'},
+  {t:'أصل إلى مواعيدي واجتماعاتي قبل بدايتها.'},
+  {t:'أحتفظ بنسخ منظمة من المستندات المهمة.'},
+  {t:'أقسّم المشاريع الكبيرة إلى خطوات واضحة.'},
+  {t:'أراجع خطتي دوريًا لأتأكد أني على المسار الصحيح.'},
+  {t:'تتراكم عليّ الأمور لأني لا أرتبها أولًا بأول.',r:1},
+  {t:'أنسى أحيانًا مواعيد التزمت بها.',r:1},
+  {t:'مكتبي أو ملفاتي في فوضى غالبًا.',r:1},
+  {t:'أعمل بشكل أفضل دون جداول تقيّدني.',r:1},
+ ],
+ persist:[
+  {t:'أكمل ما أبدؤه مهما طال أو صعب.'},
+  {t:'أواصل المحاولة بعد الفشل الأول والثاني.'},
+  {t:'أفقد حماسي بسرعة إذا لم تظهر نتائج مبكرة.',r:1},
+  {t:'يصفني زملائي بأني لا أترك مهمة ناقصة.'},
+  {t:'أحافظ على مستوى جهدي حتى في المهام الطويلة المملة.'},
+  {t:'عندما أتعثر أبحث عن طريقة أخرى بدل التوقف.'},
+  {t:'أنهي المهام الصعبة قبل أن أنتقل إلى الأسهل.'},
+  {t:'أضع لنفسي أهدافًا وأتابع تقدمي نحوها.'},
+  {t:'يثق زملائي بأن ما أعدهم به سيكتمل.'},
+  {t:'أتحمل الجهد الإضافي لإتمام العمل بالمستوى المطلوب.'},
+  {t:'أترك المهمة إذا طالت أكثر مما توقعت.',r:1},
+  {t:'تنقصني الطاقة لإكمال ما أبدؤه بحماس.',r:1},
+  {t:'أنشغل بمهام جديدة قبل إغلاق القديمة.',r:1},
+  {t:'الملل عدوّي الأول في المشاريع الطويلة.',r:1},
+ ],
+ social:[
+  {t:'أشعر بالطاقة عندما أعمل وسط مجموعة نشطة.',cid:'k1'},
+  {t:'أبادر بالتعارف في اللقاءات والفعاليات.'},
+  {t:'أفضّل قضاء الاستراحة وحدي بعيدًا عن الجميع.',r:1},
+  {t:'يسهل عليّ بدء حديث مع شخص لا أعرفه.'},
+  {t:'أستمتع بالفعاليات التي تجمع أعدادًا كبيرة من الناس.'},
+  {t:'أكوّن صداقات جديدة بسهولة.'},
+  {t:'يعتبرني الآخرون شخصًا مرحًا وحاضر البديهة.'},
+  {t:'أشارك في النقاشات الجانبية في العمل بحماس.'},
+  {t:'أفضّل الاتصال المباشر على الرسائل المكتوبة.'},
+  {t:'وجودي وسط فريق نشيط يرفع طاقتي.'},
+  {t:'أستنزف طاقتي بعد يوم مليء بالتفاعل الاجتماعي.',r:1},
+  {t:'أوثر الجلوس في الأطراف في اللقاءات الكبيرة.',r:1},
+  {t:'أتجنب أن أكون محور الحديث في المجموعات.',r:1},
+  {t:'أحتاج جهدًا حقيقيًا لأبدو اجتماعيًا.',r:1},
+ ],
+ assertive:[
+  {t:'أعبّر عن رأيي بوضوح حتى لو خالف الأغلبية.'},
+  {t:'أتولى قيادة النقاش عندما يتشتت الفريق.'},
+  {t:'أتجنب الدفاع عن وجهة نظري أمام شخصية قوية.',r:1},
+  {t:'أستطيع إقناع الآخرين بتغيير مواقفهم.'},
+  {t:'أطرح وجهة نظري في الاجتماعات دون تردد.'},
+  {t:'أستطيع قول «لا» عندما يتطلب الموقف ذلك.'},
+  {t:'أتفاوض بثقة للحصول على ما يحتاجه فريقي.'},
+  {t:'أواجه القرارات الخاطئة بالنقاش لا بالصمت.'},
+  {t:'يعرف الجميع موقفي بوضوح في القضايا المهمة.'},
+  {t:'أقود المبادرات بدل انتظار من يقودها.'},
+  {t:'أجاري رأي الأغلبية حتى لو خالف قناعتي.',r:1},
+  {t:'أتراجع عن موقفي عند أول اعتراض قوي.',r:1},
+  {t:'يصعب عليّ مقاطعة من يستحوذ على النقاش.',r:1},
+  {t:'أوصل ملاحظاتي عبر الآخرين بدل قولها مباشرة.',r:1},
+ ],
+ coop:[
+  {t:'أفضّل إنجاز الأهداف الكبيرة ضمن فريق لا بمفردي.'},
+  {t:'أشارك زملائي المعلومات التي تفيد عملهم دون أن يطلبوا.'},
+  {t:'أرى أن العمل الجماعي يبطئني أكثر مما يفيدني.',r:1},
+  {t:'أقدّم المساعدة لزميل متعثر ولو لم تكن مهمتي.'},
+  {t:'أستمتع بالإنجازات الجماعية أكثر من الفردية.'},
+  {t:'أضع هدف الفريق فوق بروزي الشخصي.'},
+  {t:'أحتفي بنجاح زملائي كما أحتفي بنجاحي.'},
+  {t:'أعرض المساعدة قبل أن تُطلب مني.'},
+  {t:'أومن أن تبادل الخبرات يقوّي الجميع.'},
+  {t:'أُشرك زملائي في المعلومات الجديدة فور وصولها.'},
+  {t:'أفضّل أن يُقيَّم عملي منفصلًا عن عمل الفريق.',r:1},
+  {t:'مشاركة الآخرين في مهامي تبطئني.',r:1},
+  {t:'أحتفظ بخبرتي لنفسي فهي ميزتي التنافسية.',r:1},
+  {t:'العمل الجماعي في الغالب مضيعة للوقت.',r:1},
+ ],
+ considerate:[
+  {t:'أنتبه لمشاعر من أتحدث معه وأكيّف أسلوبي.'},
+  {t:'أراعي ظروف زملائي عند توزيع الأعباء.'},
+  {t:'إنجاز المهمة أهم عندي من مشاعر المشاركين فيها.',r:1},
+  {t:'يلجأ إليّ الزملاء عندما يحتاجون من يسمعهم.'},
+  {t:'ألاحظ تغيّر الحالة المزاجية لزملائي بسرعة.'},
+  {t:'أختار كلماتي بعناية في المواقف الحساسة.'},
+  {t:'أتأكد أن الجميع أخذ فرصته في الحديث.'},
+  {t:'أتفهم ظروف الآخرين قبل الحكم على تقصيرهم.'},
+  {t:'أعتذر بسهولة عندما أخطئ بحق أحد.'},
+  {t:'يشعر الناس بالراحة عند الحديث معي عن مشاكلهم.'},
+  {t:'أقول رأيي كما هو ولو جرح مشاعر أحدهم.',r:1},
+  {t:'لا وقت لديّ لمراعاة حساسيات الآخرين.',r:1},
+  {t:'أرى أن العواطف لا مكان لها في قرارات العمل.',r:1},
+  {t:'يتهمني البعض بأني قاسٍ في ملاحظاتي.',r:1},
+ ],
+ calm:[
+  {t:'أحافظ على تركيزي عندما تتأزم الأمور فجأة.',cid:'k2'},
+  {t:'نادرًا ما يظهر توتري على تصرفاتي أمام الآخرين.'},
+  {t:'تتوتر أعصابي بسرعة عند تراكم الضغوط.',r:1},
+  {t:'أستعيد اتزاني سريعًا بعد المواقف الصعبة.'},
+  {t:'أفكر بوضوح حتى في اللحظات الحرجة.'},
+  {t:'أنام جيدًا حتى في فترات ضغط العمل.'},
+  {t:'أتعامل مع المفاجآت السيئة خطوة بخطوة دون هلع.'},
+  {t:'يلجأ إليّ الزملاء وقت الأزمات لأني أبقى هادئًا.'},
+  {t:'أفصل بين ضغوط العمل وحياتي الشخصية.'},
+  {t:'أتقبل الأخطاء كجزء طبيعي من العمل.'},
+  {t:'تسيطر عليّ الأفكار السلبية عندما تتعقد الأمور.',r:1},
+  {t:'ينعكس توتري على نبرة صوتي وتعاملي.',r:1},
+  {t:'أفقد تركيزي عندما أعمل تحت مراقبة دقيقة.',r:1},
+  {t:'المواقف المفاجئة تربكني أكثر مما ينبغي.',r:1},
+ ],
+ confidence:[
+  {t:'أثق بقدرتي على النجاح في المهام الجديدة.'},
+  {t:'أتعامل مع النقد كمعلومة لا كتهديد.'},
+  {t:'أشكك في قدراتي عندما أقارن نفسي بالآخرين.',r:1},
+  {t:'أتحمل مسؤولية قراراتي ونتائجها كاملة.'},
+  {t:'أدافع عن قراراتي عندما أقتنع بصوابها.'},
+  {t:'أتقدم للمهام الصعبة قبل غيري.'},
+  {t:'أتقبل الفشل كدرس وأحاول من جديد.'},
+  {t:'أشعر أني أستحق ما وصلت إليه من مكانة.'},
+  {t:'أعرض أفكاري أمام الإدارة العليا بارتياح.'},
+  {t:'أثق بحدسي المهني بعد دراسة المعطيات.'},
+  {t:'أحتاج تأكيدًا مستمرًا من الآخرين أن عملي جيد.',r:1},
+  {t:'أتردد كثيرًا قبل اتخاذ القرارات المصيرية.',r:1},
+  {t:'النقد العلني يهز ثقتي لفترة طويلة.',r:1},
+  {t:'أشعر أحيانًا أني أقل كفاءة مما يظن الناس.',r:1},
+ ],
+};
+/* 4 عبارات فحص اتساق (صياغات مكافئة لعبارات سابقة، لا تدخل في درجات الأبعاد) = 144 عبارة إجمالًا */
+const PQ_CHECKS = [
+ {d:'chk',chk:'k1',t:'العمل وسط جماعة نشيطة يشحن طاقتي.'},
+ {d:'chk',chk:'k2',t:'أبقى مركّزًا حين تنقلب الأمور دون سابق إنذار.'},
+ {d:'chk',chk:'k3',t:'أرسم خطة يومي قبل انطلاقه.'},
+ {d:'chk',chk:'k4',t:'يسعدني تجريب أساليب جديدة كليًا في العمل.'},
+];
+/* بناء القائمة النهائية بترتيب متداخل بين الأبعاد (كما في الاختبارات الحقيقية) */
+const PQ_ITEMS=(()=>{
+  const dims=Object.keys(PQ_DIMS);
+  const out=[];
+  for(let i=0;i<14;i++)for(const d of dims){const it=PQ_BANK[d][i];if(it)out.push(Object.assign({d},it))}
+  PQ_CHECKS.forEach((c,k)=>out.splice(35+k*30,0,c));
+  return out;
+})();
+
+/* ---------- 2) بنك GCAT: 45 سؤالًا، تُسحب 30 عشوائيًا كل محاولة ---------- */
+const GCAT_SECONDS = 20*60;   // مطابق للاختبار الرسمي: 20 دقيقة
+const GCAT_PER_DOM = 14;      // 14 × 3 قدرات = 42 سؤالًا مطابقة للرسمي
+const GCAT_BANK = [
+ // ===== الاستدلال اللفظي (15) =====
+ {dom:'v',q:'ما الاختيار الأكثر تقاربًا مع المفردتين التاليتين من حيث العلاقة والارتباط؟',stim:'أعلى : أسفل',o:['ساطع : مشرق','عبير : أريج','يسار : يمين','سريع : فوري'],a:2,ex:'«أعلى وأسفل» متضادان، والزوج الوحيد المتضاد بين الخيارات هو «يسار : يمين» — بقية الأزواج مترادفات.'},
+ {dom:'v',q:'ما الاختيار الأكثر تقاربًا مع المفردتين التاليتين من حيث العلاقة والارتباط؟',stim:'طبيب : مستشفى',o:['معلم : مدرسة','كتاب : قلم','طريق : سيارة','ملعب : حكم'],a:0,ex:'العلاقة «مهني : مكان عمله»، وهي نفسها في «معلم : مدرسة».'},
+ {dom:'v',q:'ما الاختيار الأكثر تقاربًا مع المفردتين التاليتين من حيث العلاقة والارتباط؟',stim:'ريشة : طائر',o:['عرين : أسد','حرشف : سمكة','سرب : طيور','جناح : طيران'],a:1,ex:'الريشة تغطي جسم الطائر كما يغطي الحرشف جسم السمكة (علاقة غطاء : كائن).'},
+ {dom:'v',q:'ما الاختيار الأكثر تقاربًا مع المفردتين التاليتين من حيث العلاقة والارتباط؟',stim:'مفتاح : قفل',o:['باب : نافذة','كلمة سر : حساب','حديد : صدأ','قصر : سور'],a:1,ex:'المفتاح وسيلة فتح القفل كما أن كلمة السر وسيلة فتح الحساب.'},
+ {dom:'v',q:'ما الاختيار الأكثر تقاربًا مع المفردتين التاليتين من حيث العلاقة والارتباط؟',stim:'جوع : طعام',o:['نوم : سهر','عطش : ماء','شبع : أكل','برد : ثلج'],a:1,ex:'الطعام يزيل الجوع كما يزيل الماء العطش (حاجة : ما يشبعها).'},
+ {dom:'v',q:'ما الاختيار الأكثر تقاربًا مع المفردتين التاليتين من حيث العلاقة والارتباط؟',stim:'قلم : كتابة',o:['مقص : قص','ورقة : حبر','سيف : غمد','باب : بيت'],a:0,ex:'العلاقة «أداة : وظيفتها»: القلم للكتابة والمقص للقص.'},
+ {dom:'v',q:'ما الاختيار الأكثر تقاربًا مع المفردتين التاليتين من حيث العلاقة والارتباط؟',stim:'عجلة : سيارة',o:['بحر : سفينة','جناح : طائرة','سائق : شاحنة','وقود : محرك'],a:1,ex:'العجلة جزء أساسي من السيارة كما أن الجناح جزء أساسي من الطائرة (جزء : كل).'},
+ {dom:'v',q:'ما الكلمة التي لا تنتمي إلى المجموعة؟',stim:'نهر · بحيرة · جبل · محيط',o:['نهر','بحيرة','جبل','محيط'],a:2,ex:'كلها مسطحات مائية إلا «الجبل» فهو تضاريس يابسة.'},
+ {dom:'v',q:'ما الكلمة التي لا تنتمي إلى المجموعة؟',stim:'مطرقة · منشار · مسمار · مفك',o:['مطرقة','منشار','مسمار','مفك'],a:2,ex:'المطرقة والمنشار والمفك أدوات عمل، أما «المسمار» فهو مادة تُستخدم عليها الأدوات.'},
+ {dom:'v',q:'ما الكلمة التي لا تنتمي إلى المجموعة؟',stim:'أحمر · أخضر · طويل · أزرق',o:['أحمر','أخضر','طويل','أزرق'],a:2,ex:'ثلاث كلمات ألوان، و«طويل» صفة قياس لا لون.'},
+ {dom:'v',q:'ما أقرب الكلمات معنى لكلمة «جليّ»؟',stim:'جليّ',o:['غامض','واضح','بعيد','قوي'],a:1,ex:'«جليّ» تعني ظاهرًا واضحًا لا لبس فيه.'},
+ {dom:'v',q:'ما أقرب الكلمات معنى لكلمة «يثابر»؟',stim:'يثابر',o:['يتوقف','يواصل بإصرار','يتردد','يؤجل'],a:1,ex:'المثابرة هي مواصلة الجهد بإصرار رغم الصعوبات.'},
+ {dom:'v',q:'ما الكلمة المضادة لكلمة «الإسهاب»؟',stim:'الإسهاب',o:['الإطناب','التفصيل','الإيجاز','الشرح'],a:2,ex:'الإسهاب هو الإطالة في الكلام، وضده الإيجاز أي الاختصار.'},
+ {dom:'v',q:'كل ضباط الدورة حاصلون على مؤهل جامعي، وخالد أحد ضباط الدورة. إذن:',stim:'استنتاج منطقي',o:['خالد حاصل على مؤهل جامعي','خالد غير حاصل على مؤهل جامعي','لا يمكن معرفة مؤهل خالد','خالد أفضل ضباط الدورة'],a:0,ex:'ما دام كل أفراد المجموعة يحملون الصفة، وخالد منهم، فهو يحملها بالضرورة.'},
+ {dom:'v',q:'بعض المهندسين طيارون، وكل الطيارين اجتازوا الفحص الطبي. إذن:',stim:'استنتاج منطقي',o:['بعض المهندسين اجتازوا الفحص الطبي','كل المهندسين اجتازوا الفحص الطبي','لا مهندس اجتاز الفحص الطبي','كل من اجتاز الفحص طيار'],a:0,ex:'المهندسون الطيارون (وهم موجودون) اجتازوا الفحص حتمًا، فبعض المهندسين اجتازه — ولا يصح التعميم على كلهم.'},
+ {dom:'v',q:'ما الاختيار الأكثر تقاربًا مع المفردتين التاليتين من حيث العلاقة والارتباط؟',stim:'خريطة : أرض',o:['صورة : شخص','بحر : ملح','قلم : ورقة','باب : مفتاح'],a:0,ex:'الخريطة تمثيل مصغّر للأرض كما أن الصورة تمثيل مصغّر للشخص (تمثيل : أصل).'},
+ {dom:'v',q:'ما الاختيار الأكثر تقاربًا مع المفردتين التاليتين من حيث العلاقة والارتباط؟',stim:'شرارة : حريق',o:['ماء : نهر','بذرة : شجرة','دخان : نار','رماد : خشب'],a:1,ex:'الشرارة بداية صغيرة تنمو حريقًا، كما أن البذرة بداية صغيرة تنمو شجرة (بداية : نتيجة نامية).'},
+ {dom:'v',q:'ما الكلمة التي لا تنتمي إلى المجموعة؟',stim:'رائد · نقيب · عقيد · كتيبة',o:['رائد','نقيب','عقيد','كتيبة'],a:3,ex:'ثلاثة رتب عسكرية، أما «الكتيبة» فهي وحدة تنظيمية لا رتبة.'},
+ {dom:'v',q:'ما أقرب الكلمات معنى لكلمة «حصيف»؟',stim:'حصيف',o:['متسرّع','راجح العقل','متردد','عنيد'],a:1,ex:'الحصافة هي جودة الرأي ورجاحة العقل في التصرف.'},
+ {dom:'v',q:'ما الكلمة المضادة لكلمة «التأني»؟',stim:'التأني',o:['التمهل','التسرّع','الحكمة','الصبر'],a:1,ex:'التأني هو التمهل وعدم العجلة، وضده التسرّع.'},
+ {dom:'v',q:'لا أحد من المتأخرين حضر التدريب، وأحمد حضر التدريب. إذن:',stim:'استنتاج منطقي',o:['أحمد ليس من المتأخرين','أحمد من المتأخرين','أحمد قد يكون متأخرًا','لا يمكن الحكم إطلاقًا'],a:0,ex:'ما دام كل المتأخرين غائبين عن التدريب، فحضور أحمد يعني بالضرورة أنه ليس منهم.'},
+ // ===== الاستدلال الرقمي (21) =====
+ {dom:'n',q:'ما الرقم الذي لا ينتمي إلى مجموعة الأرقام التالية؟',stim:'60 · 55 · 50 · 40 · 30 · 20',o:['60','55','50','30'],a:1,ex:'جميعها من مضاعفات العشرة إلا 55.'},
+ {dom:'n',q:'ما العدد التالي في المتسلسلة؟',stim:'3 · 6 · 12 · 24 · ؟',o:['30','36','48','54'],a:2,ex:'كل عدد ضعف سابقه: 24 × 2 = 48.'},
+ {dom:'n',q:'ما العدد التالي في المتسلسلة؟',stim:'81 · 27 · 9 · 3 · ؟',o:['0','1','2','6'],a:1,ex:'كل عدد ثلث سابقه: 3 ÷ 3 = 1.'},
+ {dom:'n',q:'ما العدد التالي في المتسلسلة؟',stim:'5 · 8 · 13 · 20 · 29 · ؟',o:['38','40','41','42'],a:1,ex:'الفروق تتزايد بانتظام: +3 +5 +7 +9 ثم +11 → 29 + 11 = 40.'},
+ {dom:'n',q:'ما الرقم الذي لا ينتمي إلى مجموعة الأرقام التالية؟',stim:'4 · 9 · 16 · 20 · 25 · 36',o:['9','16','20','36'],a:2,ex:'كلها مربعات كاملة (2² 3² 4² 5² 6²) إلا 20.'},
+ {dom:'n',q:'إذا كان ثمن 3 أقلام متماثلة 12 درهمًا، فما ثمن 7 أقلام؟',stim:'3 أقلام = 12 درهمًا',o:['24 درهمًا','26 درهمًا','28 درهمًا','30 درهمًا'],a:2,ex:'ثمن القلم = 12 ÷ 3 = 4 دراهم، و7 × 4 = 28 درهمًا.'},
+ {dom:'n',q:'ما العدد التالي في المتسلسلة؟',stim:'2 · 3 · 5 · 8 · 12 · ؟',o:['15','16','17','18'],a:2,ex:'الفروق +1 +2 +3 +4 ثم +5 → 12 + 5 = 17.'},
+ {dom:'n',q:'كم يساوي 20% من 250؟',stim:'20% × 250',o:['25','40','50','75'],a:2,ex:'20% = الخُمس، وخُمس 250 هو 50.'},
+ {dom:'n',q:'ما العدد التالي في المتسلسلة؟',stim:'100 · 92 · 84 · 76 · ؟',o:['70','68','66','64'],a:1,ex:'تنازل ثابت بمقدار 8: 76 − 8 = 68.'},
+ {dom:'n',q:'ما الرقم الذي لا ينتمي إلى مجموعة الأرقام التالية؟',stim:'7 · 14 · 21 · 27 · 28 · 35',o:['14','21','27','35'],a:2,ex:'كلها من مضاعفات السبعة إلا 27.'},
+ {dom:'n',q:'ما العدد التالي في المتسلسلة؟',stim:'1 · 4 · 9 · 16 · 25 · ؟',o:['30','32','36','49'],a:2,ex:'متسلسلة المربعات: 1² 2² 3² 4² 5² ثم 6² = 36.'},
+ {dom:'n',q:'ما الرقم الذي لا ينتمي إلى مجموعة الأرقام التالية؟',stim:'3 · 5 · 7 · 9 · 12 · 11',o:['5','9','12','11'],a:2,ex:'جميعها أعداد فردية إلا 12.'},
+ {dom:'n',q:'كم يساوي 15% من 200؟',stim:'15% × 200',o:['20','25','30','35'],a:2,ex:'10% من 200 = 20، و5% = 10، فالمجموع 30.'},
+ {dom:'n',q:'ما العدد التالي في المتسلسلة؟',stim:'2 · 6 · 18 · 54 · ؟',o:['108','162','148','216'],a:1,ex:'كل عدد ثلاثة أضعاف سابقه: 54 × 3 = 162.'},
+ {dom:'n',q:'ينجز عامل مهمة وحده في 6 أيام، وينجزها زميله وحده في 3 أيام. كم يومًا يحتاجان معًا؟',stim:'6 أيام · 3 أيام',o:['يومان','يومان ونصف','3 أيام','4 أيام'],a:0,ex:'إنتاجهما اليومي معًا = 1/6 + 1/3 = 1/2 من المهمة، فيُنهيانها في يومين.'},
+ {dom:'n',q:'ما العدد التالي في المتسلسلة؟',stim:'1 · 1 · 2 · 3 · 5 · 8 · ؟',o:['11','12','13','15'],a:2,ex:'كل عدد مجموع العددين السابقين (فيبوناتشي): 5 + 8 = 13.'},
+ {dom:'n',q:'ارتفع عدد المتدربين من 80 إلى 100. ما نسبة الزيادة؟',stim:'80 ← 100',o:['20%','25%','30%','80%'],a:1,ex:'الزيادة 20 على الأصل 80 = 20 ÷ 80 = 25%.'},
+ {dom:'n',q:'ما الرقم الذي لا ينتمي إلى مجموعة الأرقام التالية؟',stim:'2 · 3 · 5 · 7 · 9 · 11',o:['3','7','9','11'],a:2,ex:'جميعها أعداد أولية إلا 9 (لأنه = 3 × 3).'},
+ {dom:'n',q:'قطع فريق 240 كيلومترًا في 3 ساعات بسرعة ثابتة. كم يقطع في 5 ساعات؟',stim:'240 كم / 3 ساعات',o:['320 كم','360 كم','400 كم','420 كم'],a:2,ex:'السرعة = 240 ÷ 3 = 80 كم/ساعة، و80 × 5 = 400 كم.'},
+ {dom:'n',q:'ما العدد التالي في المتسلسلة؟',stim:'64 · 32 · 16 · 8 · ؟',o:['2','4','6','0'],a:1,ex:'كل عدد نصف سابقه: 8 ÷ 2 = 4.'},
+ {dom:'n',q:'إذا كانت نسبة الضباط إلى الأفراد 2 : 7، وعدد الأفراد 350، فكم عدد الضباط؟',stim:'2 : 7 · الأفراد = 350',o:['70','100','120','140'],a:1,ex:'قيمة الحصة = 350 ÷ 7 = 50، وعدد الضباط = 2 × 50 = 100.'},
+ // ===== الاستدلال التجريدي (21) =====
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'→ ↘ ↓ ↙ ؟',o:['←','↑','→','↖'],a:0,sh:1,ex:'السهم يدور 45 درجة مع عقارب الساعة كل خطوة، وبعد ↙ يأتي ←.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'↓ ↑ ↓ ↑ ↓ ؟',o:['↓','↑','←','→'],a:1,sh:1,ex:'تناوب ثابت بين ↓ و↑، فبعد ↓ يأتي ↑.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'▲ · ▲▲ · ▲▲▲ · ؟',o:['▲▲','▲▲▲','▲▲▲▲','▲'],a:2,sh:1,ex:'عدد المثلثات يزداد واحدًا كل خطوة: التالي أربعة.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'○ ◔ ◑ ◕ ؟',o:['○','◐','●','◔'],a:2,sh:1,ex:'الدائرة تمتلئ ربعًا إضافيًا كل خطوة حتى تكتمل: ●.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'◻◻◼ · ◻◼◻ · ◼◻◻ · ؟',o:['◻◻◼','◼◼◻','◻◼◼','◼◻◼'],a:0,sh:1,ex:'المربع المظلل يتحرك موقعًا واحدًا كل خطوة ثم يعود لبداية الدورة.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'↑ → ↓ ← ↑ → ؟',o:['↑','↓','←','→'],a:1,sh:1,ex:'دورة رباعية ثابتة ↑→↓← تتكرر، والموقع السابع هو ↓.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'▲ ► ▼ ◄ ؟',o:['▼','◄','▲','►'],a:2,sh:1,ex:'المثلث يدور 90 درجة كل خطوة، وبعد ◄ يعود إلى ▲.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'◼ · ◻◻ · ◼◼◼ · ◻◻◻◻ · ؟',o:['◼◼◼◼','◼◼◼◼◼','◻◻◻◻◻','◼◼'],a:1,sh:1,ex:'العدد يزداد واحدًا واللون يتناوب: بعد أربعة فاتحة تأتي خمسة داكنة.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'◇ ◆ ◇◇ ◆◆ ◇◇◇ ؟',o:['◇◇◇◇','◆◆◆','◆◆','◇◆◇'],a:1,sh:1,ex:'كل عدد يظهر مرتين: فاتح ثم داكن — بعد ثلاثة فاتحة تأتي ثلاثة داكنة.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'2 · 4 · 8 · 16 · ؟',o:['24','28','32','36'],a:2,ex:'تضاعف مستمر: 16 × 2 = 32.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'● ○ ○ ● ○ ○ ● ؟',o:['●','○','◔','◑'],a:1,sh:1,ex:'النمط المتكرر «● ○ ○»، وبعد ● يأتي ○.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'◼◻ · ◻◼ · ◼◻ · ◻◼ · ؟',o:['◼◻','◻◼','◼◼','◻◻'],a:0,sh:1,ex:'تناوب ثابت بين الترتيبين، والخطوة الخامسة تعيد ◼◻.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'↑↑ · ↑→ · ↑↓ · ↑← · ؟',o:['↑↑','→↑','↓↓','←←'],a:0,sh:1,ex:'السهم الأول ثابت والثاني يدور 90 درجة كل خطوة، وبعد ← يعود إلى ↑.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'1 · 2 · 4 · 7 · 11 · ؟',o:['14','15','16','18'],a:2,ex:'الفروق تتزايد: +1 +2 +3 +4 ثم +5 → 11 + 5 = 16.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'▲▽▲ · ▽▲▽ · ▲▽▲ · ؟',o:['▲▲▲','▽▲▽','▽▽▽','▲▽▽'],a:1,sh:1,ex:'تناوب بين النمطين ▲▽▲ و▽▲▽، والرابع يعيد ▽▲▽.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'◧ ◨ ◧ ◨ ◧ ؟',o:['◧','◨','◫','◪'],a:1,sh:1,ex:'تناوب ثابت بين الشكلين، فبعد ◧ يأتي ◨.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'↗ ↘ ↙ ↖ ↗ ؟',o:['↙','↘','↖','↗'],a:1,sh:1,ex:'دوران 90 درجة مع عقارب الساعة في دورة رباعية، وبعد ↗ يأتي ↘.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'● ◐ ○ ◐ ● ؟',o:['●','○','◐','◔'],a:2,sh:1,ex:'النمط يتذبذب ممتلئ ← نصف ← فارغ ← نصف ← ممتلئ، فالتالي نصف ◐.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'◼◻◻◻ · ◻◼◻◻ · ◻◻◼◻ · ؟',o:['◻◻◻◼','◼◻◻◻','◻◼◻◻','◼◼◻◻'],a:0,sh:1,ex:'المربع الداكن ينتقل خانة واحدة يمينًا كل خطوة، فيصل الخانة الأخيرة.'},
+ {dom:'a',q:'ما العدد التالي في المتسلسلة؟',stim:'3 · 9 · 27 · 81 · ؟',o:['162','216','243','324'],a:2,ex:'كل عدد ثلاثة أضعاف سابقه: 81 × 3 = 243.'},
+ {dom:'a',q:'من بين الاختيارات المتاحة، ما الخيار التالي في السلسلة؟',stim:'△ △△ △ △△ △ ؟',o:['△','△△','△△△','▽'],a:1,sh:1,ex:'تناوب بين مثلث واحد ومثلثين، وبعد الواحد يأتي اثنان.'},
+];
+const GCAT_DOMS = {v:'الاستدلال اللفظي',n:'الاستدلال الرقمي',a:'الاستدلال التجريدي'};
+
+/* ---------- 3) الحكم على المواقف ---------- */
+const RATE_LABELS = {1:'غير فعال على الإطلاق',2:'غير فعال',3:'فعال',4:'فعال جدًا'};
+const SCENARIOS = [
+ {title:'علاقة متوترة',
+  text:'أنت المدير التنفيذي المباشر في منشأة حيوية. لاحظتَ أن العلاقة بين اثنين من مديري الأقسام في فريقك أصبحت أكثر حدة، وقد تصل إلى تصادم علني في بعض الأحيان، وبدأ ذلك ينعكس على تنسيق العمل بين قسميهما. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'تحديد موعد منفصل مع كل منهما لفهم مخاوفه، ومن ثم ترتيب اجتماع مشترك بينهما.',k:4},
+   {t:'إرسال بريد إلكتروني إليهما لتذكيرهما بالمعايير المهنية للسلوك المتوقع في العمل.',k:3},
+   {t:'تحديد موعد لكليهما للقدوم إلى مكتبك سويًا لمناقشة مشاكلهما بينما تقيّم الموقف أثناء الجلسة دون تحضير.',k:2},
+   {t:'دراسة إمكانية إعادة توزيع أحدهما إلى قسم لا يضطران فيه إلى تواصل مباشر، دون معالجة الخلاف نفسه.',k:1},
+  ]},
+ {title:'مهمة عاجلة ومعلومات ناقصة',
+  text:'كُلّفت قبل نهاية الدوام بمهمة عاجلة تُسلَّم صباح الغد، والمعلومات المتوفرة عنها ناقصة، والمسؤول القادر على استكمالها غير متاح حاليًا. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'حصر النواقص بدقة، وإنجاز كل ما يمكن إنجازه بالمعطيات المتاحة، وتوثيق الافتراضات لمراجعتها فور توفر المسؤول.',k:4},
+   {t:'التواصل مع زملاء سبق أن نفذوا مهام مشابهة للاستفادة من خبرتهم في سد جزء من النقص.',k:3},
+   {t:'تأجيل البدء حتى يتوفر المسؤول صباحًا ثم العمل بأقصى سرعة ممكنة.',k:2},
+   {t:'تنفيذ المهمة بالتخمين في الأجزاء الناقصة دون توثيق ذلك أو الإشارة إليه عند التسليم.',k:1},
+  ]},
+ {title:'خطأ قبيل العرض',
+  text:'قبل ساعة من عرض مهم أمام القيادة العليا، اكتشفت خطأً جوهريًا في أحد الأرقام الأساسية في العرض الذي أعدّه زميلك وسيقدمه بنفسه. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'إبلاغه فورًا على انفراد ومساعدته في تصحيح الرقم وما يتصل به قبل بدء العرض.',k:4},
+   {t:'إبلاغ رئيسك المباشر بالخطأ ليقرر طريقة التعامل معه.',k:2},
+   {t:'انتظار نهاية العرض ثم تنبيه زميلك للخطأ ليصححه في نسخة لاحقة.',k:2},
+   {t:'عدم التدخل إطلاقًا؛ فالعرض مسؤولية صاحبه وحده.',k:1},
+  ]},
+ {title:'موظف متميز محبط',
+  text:'أحد أفضل أعضاء فريقك تراجع أداؤه وحماسه بشكل ملحوظ خلال الشهر الأخير، وبدأ يصل متأخرًا، وهو من كان يُضرب به المثل في الالتزام. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'جلسة فردية هادئة لفهم الأسباب، ثم الاتفاق معه على خطة دعم واضحة بمتابعة دورية.',k:4},
+   {t:'تكليفه بمهمة جديدة محفزة تلائم قدراته مع مراقبة أثرها على حماسه.',k:3},
+   {t:'توجيه إنذار رسمي له فورًا حتى لا يتأثر باقي الفريق بسلوكه.',k:1},
+   {t:'الانتظار شهرًا إضافيًا فقد تكون حالة مؤقتة تزول وحدها.',k:2},
+  ]},
+ {title:'قرار تحت ضغط الوقت',
+  text:'أثناء عملية تشغيلية مهمة تعطّل نظام أساسي، وأمامك خياران عاجلان يرجّح كل مهندس أحدهما، والتأخير في الحسم يضاعف الخسارة كل ساعة. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'مقارنة سريعة منظمة للخيارين (الأثر والمخاطر وسرعة التراجع)، ثم الحسم فورًا مع خطة رجوع واضحة.',k:4},
+   {t:'تجربة الخيار الأسهل تراجعًا أولًا مع تجهيز الخيار الثاني للتنفيذ الفوري إذا فشل الأول.',k:3},
+   {t:'انتظار اجتماع اللجنة الفنية غدًا لأخذ قرار معتمد رسميًا.',k:1},
+   {t:'اختيار أحد الحلين عشوائيًا لكسب الوقت فكلاهما مرجح بالتساوي.',k:2},
+  ]},
+ {title:'فكرة جديدة تواجه رفضًا',
+  text:'اقترحتَ تحسينًا جوهريًا لإجراء عمل قديم، فقوبل اقتراحك برفض سريع من بعض الزملاء الأقدم بحجة أن «الطريقة الحالية أثبتت نجاحها». ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'إعداد عرض موجز بالبيانات يقارن التكلفة والنتائج بين الطريقتين، واقتراح تجربة محدودة قابلة للقياس.',k:4},
+   {t:'كسب تأييد أحد الزملاء الأقدم المؤثرين أولًا بشرح الفكرة له على انفراد.',k:3},
+   {t:'التخلي عن الفكرة احترامًا لخبرة الزملاء الأقدم.',k:2},
+   {t:'تنفيذ التحسين في نطاق عملك الخاص دون إخبار أحد لإثبات نجاحه لاحقًا.',k:1},
+  ]},
+ {title:'توزيع مهمة مرغوبة',
+  text:'لديك مهمة تطويرية مميزة يتنافس عليها اثنان من فريقك: أحدهما جاهز تمامًا لها، والآخر أقل جاهزية لكنها فرصة نموه الأهم. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'إسنادها للأقل جاهزية مع إشراك الجاهز موجهًا له، فيتحقق الإنجاز والتطوير معًا.',k:4},
+   {t:'إسنادها للجاهز لضمان أفضل نتيجة، مع وعد الآخر بالفرصة القادمة الموثقة.',k:3},
+   {t:'تقسيم المهمة بينهما مناصفة دون النظر لطبيعة أجزائها.',k:2},
+   {t:'إسنادها لمن طلبها أولًا حسمًا للموقف وتجنبًا للحساسية.',k:1},
+  ]},
+ {title:'ضغط متعارض من جهتين',
+  text:'طلبت منك جهتان أعلى منك تنفيذ مهمتين متعارضتين زمنيًا ولا يمكن إنجازهما معًا بالجودة المطلوبة، وكل جهة ترى أولوية مهمتها. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'عرض التعارض بشفافية على الجهتين مع تقدير دقيق للوقت، وطلب تحديد الأولوية أو تعديل أحد المواعيد.',k:4},
+   {t:'إنجاز الأهم أثرًا حسب تقديرك المهني، مع إشعار الجهة الأخرى مبكرًا بموعد واقعي بديل.',k:3},
+   {t:'محاولة إنجاز المهمتين معًا بجودة أقل دون إخبار أي جهة بذلك.',k:1},
+   {t:'تنفيذ مهمة الجهة الأقوى نفوذًا وتجاهل الأخرى.',k:1},
+  ]},
+ {title:'خطأ وقع تحت مسؤوليتك',
+  text:'اكتشفت الإدارة العليا خللًا في تقرير صادر من قسمك، وسببه خطأ ارتكبه أحد أفراد فريقك بعد أن اعتمدتَه أنت. طُلب منك تفسير ما حدث في اجتماع غدًا. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'تحمّل المسؤولية بصفتك المعتمد، وعرض سبب الخلل وإجراءات المراجعة التي ستمنع تكراره، ومعالجة الأمر مع الموظف داخليًا.',k:4},
+   {t:'شرح ملابسات الخطأ بموضوعية دون تسمية الموظف، مع خطة تصحيح فورية.',k:3},
+   {t:'ذكر اسم الموظف صراحة أمام الإدارة لتوضيح أن الخطأ ليس منك.',k:1},
+   {t:'التقليل من أهمية الخلل والإشارة إلى أن أثره محدود.',k:1},
+  ]},
+ {title:'معلومة حساسة وصلتك بالخطأ',
+  text:'وصلك بالخطأ بريد إلكتروني يحوي معلومات حساسة عن إعادة هيكلة قادمة تخص أقسامًا من بينها قسمك، ولم تكن ضمن المخوّلين بالاطلاع عليها. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'إبلاغ المرسل فورًا بوصول البريد إليك بالخطأ، وحذفه، وعدم إفشاء محتواه لأحد.',k:4},
+   {t:'إبلاغ رئيسك المباشر بحدوث الخطأ في التوجيه دون الخوض في التفاصيل.',k:3},
+   {t:'تجاهل البريد وعدم إخبار أحد بوصوله إليك.',k:2},
+   {t:'إطلاع زملائك في القسم على الخبر لأنه يخص مستقبلهم.',k:1},
+  ]},
+ {title:'مرؤوس يتجاوزك إلى الإدارة',
+  text:'علمت أن أحد أفراد فريقك يعرض مقترحاته مباشرة على الإدارة العليا متجاوزًا إياك، وقد تبنّت الإدارة أحد مقترحاته دون علمك. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'الجلوس معه لفهم دوافعه، والاتفاق على آلية واضحة تُبقيك على علم مع إبقاء مساحة لمبادراته.',k:4},
+   {t:'تشجيعه على الابتكار مع الاتفاق أن يمرّ أي مقترح بك أولًا للتنسيق لا للتعطيل.',k:4},
+   {t:'إبلاغ الإدارة العليا باعتراضك على تجاوز التسلسل الإداري قبل التحدث معه.',k:2},
+   {t:'تقييد صلاحياته وحرمانه من عرض أي فكرة مستقبلًا.',k:1},
+  ]},
+ {title:'مورد يتأخر والمشروع يتعثر',
+  text:'مورد خارجي تأخر في تسليم مكوّن أساسي للمشروع، وتبريراته متكررة وغير مقنعة، والموعد النهائي للمشروع بعد أسبوعين ولا بديل جاهز حاليًا. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'عقد اجتماع تصعيد مع إدارة المورد بخطة زمنية ملزمة، وبالتوازي البدء بتأهيل بديل احتياطي.',k:4},
+   {t:'إعادة ترتيب خطة المشروع للعمل على المسارات غير المعتمدة على المورد ريثما يُحسم الموقف.',k:3},
+   {t:'الاستمرار في المتابعة اليومية معه وانتظار وفائه بوعده الأخير.',k:2},
+   {t:'إنهاء التعاقد فورًا دون بديل جاهز.',k:1},
+  ]},
+ {title:'اقتراح من أصغر أعضاء الفريق',
+  text:'في اجتماع عصف ذهني، طرح أحدث أعضاء فريقك فكرة تبدو غير عملية للوهلة الأولى، فبدأ بعض الزملاء بالسخرية منها بلطف. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'شكره على المبادرة، وطلب توضيح فكرته أكثر، ثم مناقشة جدواها بمعايير موضوعية أمام الجميع.',k:4},
+   {t:'إيقاف السخرية بوضوح والتذكير بأن كل الأفكار تُناقَش باحترام في هذه الجلسة.',k:4},
+   {t:'تجاوز الفكرة بسرعة وإكمال الاجتماع تجنبًا للإحراج.',k:2},
+   {t:'الاتفاق مع الزملاء على أن الفكرة غير عملية وإنهاء النقاش فيها.',k:1},
+  ]},
+ {title:'تكليف خارج نطاق قدراتك',
+  text:'كُلّفت بقيادة ملف تقني متخصص خارج نطاق خبرتك تمامًا، والمدة ثلاثة أشهر، والإدارة تثق بقدرتك على التعلم السريع. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'قبول التكليف مع خطة معلنة: خبير مرجعي تستشيره، وبرنامج تعلم مكثف، ومحطات مراجعة مع الإدارة.',k:4},
+   {t:'قبول التكليف وتفويض الجوانب التقنية الدقيقة لأكفأ عضو في الفريق مع بقائك مسؤولًا عن الملف.',k:3},
+   {t:'الاعتذار عن التكليف حفاظًا على مصلحة العمل لعدم امتلاكك الخبرة.',k:2},
+   {t:'قبول التكليف دون إظهار أي فجوة معرفية والتعلم سرًّا أثناء العمل.',k:2},
+  ]},
+ {title:'زميل ينسب عملك لنفسه',
+  text:'في اجتماع أمام الإدارة، عرض زميلك نتائج مشروع مشترك ونسب لنفسه الجزء الأكبر من العمل الذي أنجزتَه أنت، ولم يشر إلى دورك. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'التحدث معه على انفراد بعد الاجتماع لتوضيح أثر ما حدث، والاتفاق على آلية عرض مشتركة للمشاريع القادمة.',k:4},
+   {t:'إرسال ملخص مكتوب للإدارة يوثق توزيع المهام في المشروع بأسلوب مهني محايد.',k:3},
+   {t:'مقاطعته أثناء الاجتماع لتصحيح المعلومة أمام الجميع.',k:2},
+   {t:'الامتناع عن التعاون معه مستقبلًا دون إخباره بالسبب.',k:1},
+  ]},
+ {title:'انخفاض معنويات بعد قرار غير شعبي',
+  text:'أصدرت الإدارة العليا قرارًا بإلغاء مزايا اعتاد عليها الفريق، وأنت مطالب بتطبيقه رغم تحفظك الشخصي، وقد انخفضت المعنويات بشكل واضح. ما مدى فعالية كل من الردود التالية؟',
+  r:[
+   {t:'شرح القرار وأسبابه بصدق دون تبرير زائف، والاستماع لمخاوف الفريق ونقلها للإدارة، مع تحسين ما تملكه أنت من ظروف عملهم.',k:4},
+   {t:'الاعتراف بصعوبة القرار والتركيز مع الفريق على ما يمكن التحكم به من أهداف قريبة.',k:3},
+   {t:'إبلاغهم بالقرار مقتضبًا ومطالبتهم بالالتزام دون نقاش.',k:2},
+   {t:'إظهار تحفظك أمامهم وتحميل الإدارة العليا مسؤولية إحباطهم.',k:1},
+  ]},
+];
+const JUDG_DIMS = ['جمع المعلومات','توليد الأفكار','المبادرة','التحسين المستمر','الوعي العاطفي','روح الفريق','الثقة','الإلهام'];
+
+/* ---------- 4) السلوكيات المعطلة ---------- */
+const DB_TRAITS = {
+  reserve:{name:'التحفظ',desc:'الميل إلى الانسحاب والعزلة عن الآخرين وتجنب بناء العلاقات.'},
+  emotional:{name:'الانفعالية',desc:'الميل إلى التركيز على العيوب وإظهار المشاعر السلبية والتقلب المزاجي.'},
+  hostility:{name:'العدائية',desc:'الميل إلى الحدة في التعامل واعتماد أسلوب مباشر وصدامي في التواصل.'},
+  impulsivity:{name:'الاندفاعية',desc:'الميل إلى الاندفاع والمخاطرة دون تفكير كافٍ وإهمال الالتزامات.'},
+  strictness:{name:'الصرامة',desc:'الميل إلى الجمود وعدم المرونة وعدم التسامح مع من يقصّر في التزاماته.'},
+  unconventional:{name:'اللامألوفية',desc:'الميل إلى سلوكيات غير مألوفة وتجاهل الأعراف الاجتماعية في بيئة العمل.'},
+};
+/* 10 عبارات لكل سمة من السمات الست = 60 عبارة مطابقة للاختبار الرسمي */
+const DB_BANK = {
+ reserve:[
+  'أفضّل إنجاز عملي بعيدًا عن الآخرين قدر الإمكان.',
+  'أتجنب المناسبات الاجتماعية في محيط العمل.',
+  'يصفني البعض بأني بارد أو غير مهتم بالآخرين.',
+  'أُبقي مسافة واضحة بيني وبين زملائي الجدد لفترة طويلة.',
+  'أنسحب من التواصل عندما يشتد الضغط عليّ.',
+  'أكتفي بالحد الأدنى من الحديث في الاجتماعات.',
+  'أتردد في طلب المساعدة حتى عند حاجتي إليها.',
+  'أغلق باب مكتبي لتجنب المقاطعات لفترات طويلة.',
+  'لا أشارك زملائي أخباري أو ما أعمل عليه.',
+  'أشعر أن العلاقات في العمل عبء أكثر منها فائدة.',
+ ],
+ emotional:[
+  'تحت الضغط أركز على الأخطاء والعيوب أكثر من الحلول.',
+  'يتقلب مزاجي في العمل بشكل يلاحظه من حولي.',
+  'أظهر انزعاجي سريعًا عندما لا تسير الأمور كما أريد.',
+  'يغلب عليّ القلق والتشاؤم بشأن نتائج العمل.',
+  'أبالغ في ردة فعلي على المشكلات الصغيرة.',
+  'يبقى أثر الملاحظة السلبية عليّ أيامًا.',
+  'يعرف فريقي مزاجي من ملامحي قبل أن أتكلم.',
+  'أفقد حماسي بسرعة عند أول عقبة.',
+  'أتوقع الأسوأ عند تأخر أي نتيجة.',
+  'أحتاج وقتًا طويلًا لأستعيد اتزاني بعد موقف محبط.',
+ ],
+ hostility:[
+  'أستخدم أسلوبًا حادًّا عندما أواجه من يخالفني.',
+  'أسعى لتحقيق أهدافي حتى لو كان ذلك على حساب الآخرين.',
+  'لا أهتم كثيرًا بمشاعر الآخرين أثناء النقاشات الحامية.',
+  'أرد على الانتقاد بهجوم مضاد في الغالب.',
+  'أرفع صوتي عندما لا يقتنع الطرف الآخر برأيي.',
+  'أميل إلى المواجهة المباشرة حتى في الأمور البسيطة.',
+  'أُشعر من يخطئ بخطئه أمام الآخرين.',
+  'أرى المنافسة داخل الفريق أمرًا صحيًا حتى لو ولّدت خصومة.',
+  'أسخر أحيانًا من أفكار لا أراها جيدة.',
+  'أصعّب الأمور على من يعرقل خططي.',
+ ],
+ impulsivity:[
+  'أتخذ قرارات سريعة ثم أكتشف أني لم أدرس عواقبها.',
+  'أجد صعوبة في الحفاظ على تركيزي لفترات طويلة.',
+  'أهمل بعض التزاماتي عندما يظهر شيء أكثر إثارة.',
+  'أتصرف أولًا وأفكر لاحقًا في المواقف الضاغطة.',
+  'أتجاوز الإجراءات إذا رأيتها بطيئة.',
+  'أبدأ مشاريع كثيرة ولا أكمل أغلبها.',
+  'أعد بأشياء ثم أكتشف أن وقتي لا يتسع لها.',
+  'أغيّر خططي فجأة دون إبلاغ من يعنيهم الأمر.',
+  'أنفق الموارد قبل التأكد من توفر البديل.',
+  'أميل إلى المخاطرة أكثر مما يتطلبه الموقف.',
+ ],
+ strictness:[
+  'أضع لنفسي وللآخرين معايير يصعب تحقيقها.',
+  'أعتبر أي تقصير في الالتزامات فشلًا لا يُغتفر.',
+  'أجد صعوبة في التساهل مع من يخطئ حتى لو اعتذر.',
+  'أتمسك بطريقتي حتى عندما تثبت البدائل جدواها.',
+  'أعيد عمل فريقي بنفسي لأنه لا يصل لمستواي.',
+  'أفضّل تأخير التسليم على تسليم عمل غير مثالي.',
+  'أدقق في تفاصيل لا يلاحظها أحد غيري.',
+  'أجد صعوبة في تفويض المهام المهمة.',
+  'أنزعج من أي خروج عن الخطة المتفق عليها.',
+  'أرى أن التساهل مع الأخطاء يفسد الانضباط.',
+ ],
+ unconventional:[
+  'أتصرف بطرق يراها الآخرون غريبة أو غير متوقعة.',
+  'أتجاهل بعض الأعراف المتفق عليها في بيئة العمل.',
+  'أتبنى قناعات يصعب عليّ تفسيرها لمن حولي.',
+  'يفاجأ زملائي بردود أفعالي غير المألوفة.',
+  'أطرح أفكارًا يعدّها الآخرون بعيدة عن الواقع.',
+  'لا أرى أهمية كبيرة للبروتوكولات الشكلية.',
+  'أشعر أن طريقة تفكيري مختلفة عن الجميع.',
+  'أجد صعوبة في شرح مبررات قراراتي للآخرين.',
+  'أتصرف بعفوية حتى في المواقف الرسمية.',
+  'أخالف المتعارف عليه إذا رأيته بلا فائدة.',
+ ],
+};
+/* بترتيب متداخل بين السمات كما في الاستبيانات الرسمية */
+const DB_ITEMS=(()=>{
+  const traits=Object.keys(DB_TRAITS);
+  const out=[];
+  for(let i=0;i<10;i++)for(const d of traits){const t=DB_BANK[d][i];if(t)out.push({d,t})}
+  return out;
+})();
+
+/* ---------- الكفاءات القيادية الثماني ---------- */
+const COMPETENCIES = [
+ {name:'التواصل والتأثير الفعال',en:'Effective Communication & Influence',
+  def:'القدرة على نقل الأوامر والتعليمات بوضوح وبناء الثقة والتأثير الإيجابي في المرؤوسين.',
+  calc:s=>avg([s.pq.social,s.pq.assertive,100-s.db.hostility,s.judg]),
+  rec:'مارس عرض فكرة واحدة يوميًا أمام زميل واطلب تلخيصها منه؛ فوضوحك يقاس بما وصل لا بما قلت.'},
+ {name:'المبادرة',en:'Initiative',
+  def:'سرعة التحرك لاتخاذ الإجراءات دون انتظار التعليمات خاصة في المواقف الطارئة.',
+  calc:s=>avg([s.pq.change,s.pq.assertive,100-s.db.reserve,s.judg]),
+  rec:'التقط أسبوعيًا مشكلة صغيرة لم يُكلَّف بها أحد وقدّم حلها مكتملًا قبل أن تُطلب.'},
+ {name:'اتخاذ القرار وتحمل المسؤولية',en:'Decision Making & Taking Accountability',
+  def:'القدرة على تقييم الموقف واختيار القرار المناسب وتحمل نتائجه.',
+  calc:s=>avg([s.pq.calm,s.pq.confidence,s.gcat.n,s.judg,100-s.db.impulsivity]),
+  rec:'قبل كل قرار مهم اكتب في ثلاث دقائق: الخيارات، وأسوأ نتيجة لكل خيار، وخطة الرجوع — ثم احسم.'},
+ {name:'القيادة الملهمة',en:'Inspirational Leadership',
+  def:'تحفيز المرؤوسين ورفع الروح المعنوية من خلال القدوة والشجاعة.',
+  calc:s=>avg([s.pq.social,s.pq.confidence,s.judg,100-s.db.emotional]),
+  rec:'اربط كل تكليف تصدره بـ«لماذا يهم» في جملة واحدة، وأشد علنًا بسلوك محدد لأحد فريقك أسبوعيًا.'},
+ {name:'التفكير الاستراتيجي',en:'Strategic Thinking',
+  def:'النظر إلى الصورة الكاملة ووضع خطط طويلة المدى تخدم الأهداف العليا.',
+  calc:s=>avg([s.gcat.a,s.gcat.v,s.pq.curiosity]),
+  rec:'خصص ساعة أسبوعيًا لسؤال واحد: «ما الذي سيغير طبيعة عملنا خلال ثلاث سنوات؟» ودوّن استنتاجاتك.'},
+ {name:'تطوير المهارات',en:'Capability Development',
+  def:'الاستثمار في تدريب وتأهيل المرؤوسين لتعزيز جاهزيتهم.',
+  calc:s=>avg([s.pq.coop,s.pq.considerate,s.judg]),
+  rec:'فوّض شهريًا مهمة أعلى من مستوى أحد مرؤوسيك بخطوة واحدة، مع متابعة داعمة لا متسلطة.'},
+ {name:'القدرة على التكيف',en:'Adaptability',
+  def:'مواجهة الظروف المتغيرة بسرعة ومرونة مع الحفاظ على الانضباط.',
+  calc:s=>avg([s.pq.change,s.pq.calm,100-s.db.strictness]),
+  rec:'عند كل تغيير مفاجئ درّب نفسك على سؤالين قبل أي اعتراض: «ما الفرصة هنا؟ وما أول خطوة ممكنة الآن؟»'},
+ {name:'التحليل والتخطيط المنهجي',en:'Systematic Analysis & Planning',
+  def:'تحليل المعطيات بدقة ووضع خطط منهجية مرنة تحقق الأهداف بكفاءة.',
+  calc:s=>avg([s.pq.organize,s.gcat.n,s.gcat.a]),
+  rec:'ابدأ كل مهمة كبيرة بمخطط من خمسة أسطر: الهدف، المعطيات، الخطوات، المخاطر، مؤشر النجاح.'},
+];
+function avg(list){return Math.round(list.reduce((x,y)=>x+y,0)/list.length)}
+
+/* =====================================================================
+   الحالة والتخزين
+   ===================================================================== */
+const KEY='psymx-sim:v2';
+let S=load();
+function fresh(){
+  return {v:2,pq:{},gcat:{},judg:{},db:{},done:{},flags:{},
+    // ترتيب عرض خاص بكل محاولة: يُبنى عشوائيًا عند بدء الأداة ويُمسح عند الإعادة،
+    // فتأتي الأسئلة بترتيب مختلف كل مرة ولا يحفظها المتدرب.
+    pqOrder:null,dbOrder:null,judgOrder:null,judgOpts:null,gcatOpts:null,
+    gcatOrder:null,gcatMode:'exam',judgMode:'exam',
+    gcatTimeLeft:GCAT_SECONDS,gcatTimedOut:false,
+    attempts:{pq:[],gcat:[],judg:[],db:[]},days:[],xp:0};
+}
+function load(){
+  try{const r=localStorage.getItem(KEY);if(r){const p=JSON.parse(r);if(p&&p.v===2)return Object.assign(fresh(),p)}}catch(e){}
+  return fresh();
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function today(){return new Date().toISOString().slice(0,10)}
+function touchDay(){
+  if(!S.days.includes(today())){S.days.push(today());if(S.days.length>400)S.days=S.days.slice(-400)}
+}
+function streak(){
+  let n=0;const d=new Date();
+  for(;;){
+    const key=d.toISOString().slice(0,10);
+    if(S.days.includes(key)){n++;d.setDate(d.getDate()-1)}
+    else if(n===0&&key===today()){d.setDate(d.getDate()-1);if(!S.days.includes(d.toISOString().slice(0,10)))break}
+    else break;
+  }
+  return n;
+}
+function addXP(n){S.xp+=n;touchDay();save();updateChips()}
+function updateChips(){
+  const el=document.getElementById('streakChip');
+  if(el)el.textContent='🔥 '+streak();
+}
+function shuffle(arr){
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+  return a;
+}
+/* أسئلة محاولة GCAT الحالية: 14 من كل قدرة بترتيب لفظي ثم رقمي ثم تجريدي */
+function drawGcat(){
+  const pick=dom=>shuffle(GCAT_BANK.map((it,i)=>({it,i})).filter(x=>x.it.dom===dom)).slice(0,GCAT_PER_DOM).map(x=>x.i);
+  return [...pick('v'),...pick('n'),...pick('a')];
+}
+function gcatItems(){return (S.gcatOrder||[]).map(i=>GCAT_BANK[i])}
+
+/* ---------- تبديل ترتيب الأسئلة في كل محاولة ----------
+   الخلط العشوائي الكامل يجعل عبارات البُعد الواحد تتجاور أحيانًا وهذا يُفسد قياس
+   الاستبيانات المهنية. لذا نخلط داخل كل بُعد ثم نوزّع الأبعاد بالتناوب بترتيب
+   عشوائي في كل جولة: ترتيب مختلف كليًا كل محاولة وبلا تجاور. */
+function buildSpreadOrder(items,keyOf){
+  const pools={},keys=[];
+  items.forEach((it,i)=>{const k=keyOf(it);if(!pools[k]){pools[k]=[];keys.push(k)}pools[k].push(i)});
+  keys.forEach(k=>{pools[k]=shuffle(pools[k])});
+  const depth=Math.max(...keys.map(k=>pools[k].length));
+  const out=[];
+  for(let round=0;round<depth;round++){
+    for(const k of shuffle(keys)){const v=pools[k][round];if(v!==undefined)out.push(v)}
+  }
+  return out;
+}
+/* الشخصية: عبارات الأبعاد موزّعة، ثم تُدسّ عبارات فحص الاتساق الأربع بعيدًا عن
+   توأمها (25 موضعًا على الأقل) حتى يبقى الفحص صالحًا بعد الخلط. */
+function buildPqOrder(){
+  const dimIdx=[],checkIdx=[];
+  PQ_ITEMS.forEach((it,i)=>{(it.d==='chk'?checkIdx:dimIdx).push(i)});
+  const order=buildSpreadOrder(dimIdx.map(i=>PQ_ITEMS[i]),it=>it.d).map(k=>dimIdx[k]);
+  for(const ci of shuffle(checkIdx)){
+    const twin=PQ_ITEMS.findIndex(x=>x.cid===PQ_ITEMS[ci].chk);
+    const twinPos=order.indexOf(twin);
+    let pos=null;
+    for(let tries=0;tries<60;tries++){
+      const cand=25+Math.floor(Math.random()*(order.length-25));
+      if(twinPos<0||Math.abs(cand-twinPos)>=25){pos=cand;break}
+    }
+    order.splice(pos===null?order.length-1:pos,0,ci);
+  }
+  return order;
+}
+function buildDbOrder(){return buildSpreadOrder(DB_ITEMS,it=>it.d)}
+/* المواقف القيادية: ترتيب السيناريوهات وترتيب الردود داخل كل سيناريو */
+function buildJudgOrder(){return shuffle(SCENARIOS.map((_,i)=>i))}
+function buildJudgOpts(){return SCENARIOS.map(sc=>shuffle(sc.r.map((_,i)=>i)))}
+/* GCAT: خلط مواضع الخيارات داخل كل سؤال حتى لا يُحفظ «الجواب هو الخيار الثالث» */
+function buildGcatOpts(order){return (order||[]).map(gi=>shuffle(GCAT_BANK[gi].o.map((_,i)=>i)))}
+
+/* ترتيب العرض الحالي لأدوات العبارات (يُبنى عند أول استخدام ويثبت داخل المحاولة) */
+function orderFor(test){
+  if(test==='pq'){if(!S.pqOrder||S.pqOrder.length!==PQ_ITEMS.length){S.pqOrder=buildPqOrder();save()}return S.pqOrder}
+  if(test==='db'){if(!S.dbOrder||S.dbOrder.length!==DB_ITEMS.length){S.dbOrder=buildDbOrder();save()}return S.dbOrder}
+  return null;
+}
+function judgOrder(){if(!S.judgOrder||S.judgOrder.length!==SCENARIOS.length){S.judgOrder=buildJudgOrder();save()}return S.judgOrder}
+function judgOpts(){if(!S.judgOpts||S.judgOpts.length!==SCENARIOS.length){S.judgOpts=buildJudgOpts();save()}return S.judgOpts}
+function gcatOpts(){if(!S.gcatOpts||S.gcatOpts.length!==(S.gcatOrder||[]).length){S.gcatOpts=buildGcatOpts(S.gcatOrder);save()}return S.gcatOpts}
+
+const app=document.getElementById('app');
+const navEl=document.getElementById('nav');
+let view={screen:'home'};
+let timerHandle=null;
+
+function go(screen,opts,fromHistory){
+  stopTimer();
+  view=Object.assign({screen},opts||{});
+  // تسجيل الشاشة في سجل المتصفح ليعيد زر «رجوع» المتدرب إلى الشاشة السابقة
+  // بدل الخروج من التطبيق (كان يفقد مكانه في اختبار من 144 عبارة).
+  if(!fromHistory){try{history.pushState({psymx:view},'')}catch(e){}}
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('popstate',ev=>{
+  const v=ev.state&&ev.state.psymx;
+  stopTimer();
+  view=v?Object.assign({},v):{screen:'home'};
+  render();
+  window.scrollTo({top:0,behavior:'auto'});
+});
+function celebrate(){
+  const glyphs=['🎉','✨','⭐','🏅','🎊'];
+  for(let i=0;i<26;i++){
+    const s=document.createElement('span');
+    s.className='confetti';
+    s.textContent=glyphs[i%glyphs.length];
+    s.style.left=Math.random()*100+'vw';
+    s.style.animationDuration=(2.2+Math.random()*1.8)+'s';
+    s.style.animationDelay=(Math.random()*.5)+'s';
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),4600);
+  }
+}
+
+/* =====================================================================
+   العرض
+   ===================================================================== */
+function render(){
+  navEl.innerHTML='';
+  updateChips();
+  switch(view.screen){
+    case 'home': return renderHome();
+    case 'inst': return renderInstructions(view.test);
+    case 'pq': return renderAgreeTest('pq',PQ_ITEMS,'تقييم الشخصية PQ10');
+    case 'db': return renderAgreeTest('db',DB_ITEMS,'السلوكيات المعطلة');
+    case 'gcat': return renderGcat();
+    case 'gcatReview': return renderGcatPreSubmit();
+    case 'judg': return renderJudg();
+    case 'testResult': return renderTestResult(view.test);
+    case 'report': return renderReport();
+    case 'install': return renderInstall();
+    default: view={screen:'home'}; return renderHome();
+  }
+}
+
+const TESTS=[
+ {id:'pq',icon:'🧠',name:'تقييم الشخصية PQ10',meta:`<b>${PQ_ITEMS.length} عبارة</b> · بدون تحديد وقت · <span style="color:var(--green);font-weight:700">مطابق للاختبار الرسمي</span>`},
+ {id:'gcat',icon:'⏱',name:'القدرات الذهنية العامة GCAT',meta:`<b>${GCAT_PER_DOM*3} سؤالًا</b> تُسحب عشوائيًا من بنك ${GCAT_BANK.length} · <b>20 دقيقة</b> · <span style="color:var(--green);font-weight:700">مطابق للاختبار الرسمي</span>`},
+ {id:'judg',icon:'⚖️',name:'الحكم على المواقف القيادية',meta:`<b>${SCENARIOS.length} سيناريو</b> · بدون تحديد وقت · <span style="color:var(--green);font-weight:700">مطابق للاختبار الرسمي</span>`},
+ {id:'db',icon:'🧩',name:'السلوكيات المعطلة',meta:`<b>${DB_ITEMS.length} عبارة</b> · بدون تحديد وقت · <span style="color:var(--green);font-weight:700">مطابق للاختبار الرسمي</span>`},
+];
+
+function histChips(id){
+  const at=S.attempts[id]||[];
+  if(!at.length)return '';
+  const best=Math.max(...at.map(x=>x.score));
+  const last=at[at.length-1].score;
+  return `<div class="hist">
+    <span class="h">المحاولات: ${at.length}</span>
+    <span class="h best">الأفضل: ${best}%</span>
+    <span class="h">الأخيرة: ${last}%</span>
+  </div>`;
+}
+
+function renderHome(){
+  const doneCount=TESTS.filter(t=>S.done[t.id]).length;
+  const gAt=S.attempts.gcat||[];
+  const bestG=gAt.length?Math.max(...gAt.map(x=>x.score)):null;
+  app.innerHTML=`
+  <div class="dash">
+    <div class="stat"><div class="v">🔥 ${streak()}</div><div class="l">أيام تدريب متتالية</div></div>
+    <div class="stat"><div class="v">${S.xp}</div><div class="l">نقاط التدريب</div></div>
+    <div class="stat"><div class="v">${bestG!==null?bestG+'<small>%</small>':'—'}</div><div class="l">أفضل درجة GCAT</div></div>
+    <div class="stat"><div class="v">${doneCount}<small>/4</small></div><div class="l">أدوات مكتملة</div></div>
+  </div>
+  <section class="hero">
+    <svg class="biglogo" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="47" fill="none" stroke="#c9a227" stroke-width="3.5"/>
+      <circle cx="50" cy="50" r="40" fill="#1d4477"/>
+      <g fill="none" stroke="#c9a227" stroke-width="3">
+        <rect x="30" y="30" width="17" height="17" rx="3" fill="#c9a227" stroke="none"/>
+        <rect x="53" y="30" width="17" height="17" rx="3"/>
+        <rect x="30" y="53" width="17" height="17" rx="3"/>
+        <rect x="53" y="53" width="17" height="17" rx="3"/>
+      </g>
+      <path d="M38 78 L50 66 L62 78" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="50" cy="20" r="4" fill="#c9a227"/>
+    </svg>
+    <h1>محاكي السايكوماتريكس الشامل</h1>
+    <div class="en">PSYCHOMATRIX · G-CAT SIMULATOR</div>
+    <p>تدرّب على أدوات تقييم الكفاءات القيادية الأربع بنفس أسلوب المنصة الرسمية،
+    بوضعين: <b style="color:var(--green)">تدريب</b> بشرح فوري لكل إجابة،
+    و<b>اختبار</b> بظروف حقيقية — وأسئلة GCAT تتبدل عشوائيًا كل محاولة.</p>
+    <div style="margin-top:14px;background:#eef6ff;border:1px solid #cfe0f5;border-radius:10px;padding:9px 13px;font-size:12.5px;color:#1d4477">
+      🔀 <b>ترتيب الأسئلة يتبدّل في كل محاولة</b> — العبارات والسيناريوهات ومواضع الخيارات
+      تُعاد ترتيبها عشوائيًا مع كل إعادة، فلا تُحفظ الإجابات بالموضع بل تُقاس بالفهم.
+    </div>
+    <div class="disclaimer">⚠️ نسخة تدريبية غير رسمية لأغراض التهيئة فقط — غير تابعة لأي جهة حكومية،
+    وأسئلتها تحاكي الشكل والأسلوب لا الأسئلة الفعلية، ونتائجها محفوظة على جهازك فقط.
+    <br>© جميع الحقوق محفوظة · رمز الملكية الفكرية: <b>ALFALASI26481</b></div>
+  </section>
+  <div class="tests">
+    ${TESTS.map((t,i)=>`
+      <div class="test-card">
+        <div class="icon">${t.icon}</div>
+        <div class="info">
+          <h3>${i+1}. ${t.name} ${S.done[t.id]?'<span class="badge done">✓ مكتمل</span>':'<span class="badge pending">لم يبدأ</span>'}</h3>
+          <div class="meta">${t.meta}</div>
+          ${histChips(t.id)}
+          ${(()=>{const tot=t.id==='pq'?PQ_ITEMS.length:t.id==='db'?DB_ITEMS.length:0;
+            const n=tot?answeredCount(t.id):0;
+            return (!S.done[t.id]&&n>0&&n<tot)
+              ?`<div class="hist"><span class="h" style="background:#fdf8ea;border-color:#ecd9a0;color:#8a6d00">⏸ محفوظ: أجبت عن ${n} من ${tot} — يمكنك الاستئناف</span></div>`:''})()}
+        </div>
+        ${S.done[t.id]
+          ?`<button class="btn outline" onclick="go('testResult',{test:'${t.id}'})">النتيجة</button>
+            <button class="btn ghost" onclick="retake('${t.id}')">↻ إعادة</button>`
+          :`<button class="btn primary" onclick="go('inst',{test:'${t.id}'})">${((t.id==='pq'||t.id==='db')&&answeredCount(t.id)>0)?'استئناف':'ابدأ'}</button>`}
+      </div>`).join('')}
+  </div>
+  <div class="final-row">
+    <button class="btn gold" style="font-size:15.5px;padding:12px 30px" ${doneCount===4?'':'disabled'} onclick="go('report')">
+      📋 ${doneCount===4?'عرض تقرير المرشح النهائي':`تقرير المرشح يُفتح بعد إكمال الأدوات الأربع (${doneCount}/4)`}
+    </button>
+    <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn ghost" onclick="go('install')">📲 تثبيت التطبيق على جهازك</button>
+      ${doneCount>0?`<button class="btn danger" onclick="resetAll()">مسح جميع النتائج</button>`:''}
+    </div>
+  </div>`;
+}
+
+function retake(id){
+  if(!confirm('إعادة هذا الاختبار تمسح إجاباته الحالية وتعطيك ترتيب أسئلة جديدًا كليًا (يبقى سجل محاولاتك). نتابع؟'))return;
+  S[id]={};delete S.done[id];
+  // مسح ترتيب المحاولة السابقة ⇒ ترتيب مختلف في المحاولة الجديدة
+  if(id==='pq')S.pqOrder=null;
+  if(id==='db')S.dbOrder=null;
+  if(id==='judg'){S.judgOrder=null;S.judgOpts=null}
+  if(id==='gcat'){S.gcatOrder=null;S.gcatOpts=null;S.flags={};S.gcatTimeLeft=GCAT_SECONDS;S.gcatTimedOut=false}
+  save();go('inst',{test:id});
+}
+function resetAll(){
+  if(!confirm('سيتم مسح جميع النتائج والسجل نهائيًا. هل تريد المتابعة؟'))return;
+  localStorage.removeItem(KEY);S=fresh();save();go('home');
+}
+
+/* ---------- التعليمات واختيار الوضع ---------- */
+const INSTRUCTIONS={
+ pq:{title:'التعليمات — الشخصية',body:`
+  <p>من خلال هذا الاستبيان، سنطرح عليك بعضًا من الأسئلة حول تفضيلاتك واهتماماتك الشخصية. يرجى مراعاة ما يلي:</p>
+  <ol>
+   <li>ليست هناك إجابة صحيحة أو أخرى خاطئة على أي من الأسئلة المطروحة.</li>
+   <li>يرجى إجابة أسئلة الاستبيان بأقصى قدر من العفوية والمصداقية بما يوافق طبيعتك الشخصية وليس كما ترغب أن تكون.</li>
+   <li>الرجاء اعتماد الإجابة الأولى التي تبادر إلى ذهنك من دون تفكير طويل أو محاولة لتحليل أبعاد السؤال.</li>
+  </ol>
+  <div class="note">🔀 ترتيب العبارات يتبدّل في كل محاولة. لا يوجد حد زمني للإجابة، والوقت المتوقع لإكماله يقترب من خمس عشرة (15) دقيقة — ${PQ_ITEMS.length} عبارة بعدد الاستبيان الرسمي، بينها عبارات متشابهة عمدًا لقياس <b>اتساق</b> إجاباتك.
+  اختر درجة موافقتك: <b>أوافق بشدة · أوافق · محايد · لا أوافق · لا أوافق بشدة</b>.</div>`},
+ gcat:{title:'التعليمات — القدرات الذهنية العامة GCAT',body:`
+  <p>يقيس هذا الاختبار ثلاث قدرات تشكّل معًا «العقل الاستراتيجي»:</p>
+  <ol>
+   <li><b>الاستدلال اللفظي:</b> استخدام الكلمات والمفردات بطريقة منطقية (علاقات وارتباطات).</li>
+   <li><b>الاستدلال الرقمي:</b> استخدام الأرقام بطريقة تحليلية ومنطقية (تسلسلات وعلاقات).</li>
+   <li><b>الاستدلال التجريدي:</b> فهم الأنماط الجديدة واستخلاص النتائج خارج نطاق الخبرة السابقة.</li>
+  </ol>
+  <div class="note">تُسحب <b>${GCAT_PER_DOM*3} سؤالًا عشوائيًا من بنك ${GCAT_BANK.length}</b> (بعدد الاختبار الرسمي) — كل محاولة أسئلة مختلفة، و🔀 <b>مواضع الخيارات تتبدّل أيضًا</b> فلا ينفع حفظ «الجواب هو الخيار الثالث».
+  في <b>وضع الاختبار</b>: مؤقت <b>20 دقيقة</b> لا يتوقف، مع علم 🚩 للمراجعة وشبكة تنقل وشاشة مراجعة قبل التسليم.
+  في <b>وضع التدريب</b>: بلا مؤقت، ومع شرح فوري لكل إجابة.</div>`},
+ judg:{title:'التعليمات — الحكم على المواقف القيادية',body:`
+  <p>يعرض هذا التقييم مجموعة من السيناريوهات الواقعية المرتبطة بالمواقف القيادية، ويطلب منك
+  <b>تقييم مدى فعالية مختلف الاستجابات</b> بحسب ملاءمتها للموقف.</p>
+  <ol>
+   <li>اقرأ السيناريو بتمعّن كأنك صاحب الموقف فعلًا.</li>
+   <li>قيّم <b>كل ردّ</b> على المقياس: غير فعال على الإطلاق · غير فعال · فعال · فعال جدًا.</li>
+   <li>قد يكون أكثر من رد فعالًا وقد تكون كل الردود ضعيفة — قيّم كل رد باستقلال عن غيره.</li>
+  </ol>
+  <div class="note">🔀 ترتيب السيناريوهات وترتيب الردود داخل كل سيناريو يتبدّلان في كل محاولة.
+  تُقارن تقييماتك بتقدير لجنة الخبراء وتُحتسب درجة التطابق.
+  في <b>وضع التدريب</b> يظهر تقدير الخبراء بعد كل سيناريو مباشرة.</div>`},
+ db:{title:'التعليمات — السلوكيات المعطلة',body:`
+  <p>السلوكيات المعطلة هي مجموعة من الصفات السلوكية التي قد لا تظهر في الأداء اليومي المعتاد،
+  لكنها تميل إلى الظهور عند التعرض للضغوط، وقد تعيق فعالية الفرد القيادية.</p>
+  <ol>
+   <li>أجب بصدق كامل — فالوعي بهذه الميول هو الخطوة الأولى لضبطها.</li>
+   <li>تذكّر سلوكك الفعلي في مواقف الضغط الحقيقية، لا سلوكك في الأيام الهادئة.</li>
+   <li>لا توجد إجابة «جيدة» و«سيئة»؛ كل الناس لديهم بعض هذه الميول بدرجات متفاوتة.</li>
+  </ol>
+  <div class="note">🔀 ترتيب العبارات يتبدّل في كل محاولة. السمات الست: <b>التحفظ · الانفعالية · العدائية · الاندفاعية · الصرامة · اللامألوفية</b> — بدون حد زمني.</div>`},
+};
+function renderInstructions(test){
+  const inst=INSTRUCTIONS[test];
+  const hasModes=test==='gcat'||test==='judg';
+  app.innerHTML=`
+  <section class="panel">
+    <h2 class="title">${inst.title}</h2>
+    <div class="subtitle">اقرأ التعليمات كاملة قبل البدء</div>
+    <div class="inst">${inst.body}</div>
+    ${(()=>{const tot=test==='pq'?PQ_ITEMS.length:test==='db'?DB_ITEMS.length:0;
+      const n=tot?answeredCount(test):0;
+      return (n>0&&n<tot)?`<div class="feedback ok" style="max-width:none;margin-top:14px">
+        <b>⏸ لديك تقدم محفوظ</b>أجبت عن ${n} عبارة من ${tot}. بالضغط على «استئناف» ستتابع من العبارة رقم ${firstUnanswered(test,tot)+1} مباشرة — إجاباتك السابقة محفوظة.
+      </div>`:''})()}
+    ${hasModes?`
+    <div class="modes">
+      <button class="mode-btn practice" onclick="startTest('${test}','practice')">
+        <h4>🎓 وضع التدريب</h4>
+        <p>${test==='gcat'?'بلا مؤقت — شرح فوري بعد كل إجابة لتتعلم طريقة الحل':'يظهر تقدير الخبراء بعد كل سيناريو لتفهم منطق التقييم'}</p>
+      </button>
+      <button class="mode-btn" onclick="startTest('${test}','exam')">
+        <h4>⏱ وضع الاختبار الحقيقي</h4>
+        <p>${test==='gcat'?'مؤقت 20 دقيقة لا يتوقف — بلا شرح حتى النهاية، كظروف الاختبار الفعلي':'بلا أي تلميح حتى النتيجة النهائية — كظروف الاختبار الفعلي'}</p>
+      </button>
+    </div>`:''}
+  </section>`;
+  navEl.innerHTML=`<div class="navbar">
+    <button onclick="go('home')">❮ الرئيسية</button>
+    <span class="mid">${TESTS.find(t=>t.id===test).name}</span>
+    ${hasModes?'<span style="width:90px"></span>':`<button onclick="startTest('${test}','exam')">${((test==='pq'||test==='db')&&answeredCount(test)>0)?'استئناف ❯':'التالي ❯'}</button>`}
+  </div>`;
+}
+/* أول سؤال لم يُجب عنه — لاستئناف الاستبيانات الطويلة من حيث توقف المتدرب */
+function firstUnanswered(test,total){
+  const ord=orderFor(test)||[];
+  for(let i=0;i<total;i++)if(S[test][ord[i]]===undefined)return i;
+  return 0;
+}
+function answeredCount(test){return Object.keys(S[test]||{}).length}
+function startTest(test,mode){
+  if(test==='pq'){orderFor('pq');return go('pq',{idx:firstUnanswered('pq',PQ_ITEMS.length)})}
+  if(test==='db'){orderFor('db');return go('db',{idx:firstUnanswered('db',DB_ITEMS.length)})}
+  if(test==='gcat'){
+    // كل محاولة: أسئلة مسحوبة من البنك بترتيب جديد + مواضع خيارات جديدة
+    S.gcatMode=mode;S.gcat={};S.flags={};S.gcatOrder=drawGcat();S.gcatOpts=buildGcatOpts(S.gcatOrder);
+    S.gcatTimeLeft=GCAT_SECONDS;S.gcatTimedOut=false;save();
+  }
+  if(test==='judg'){S.judgMode=mode;S.judg={};S.judgOrder=buildJudgOrder();S.judgOpts=buildJudgOpts();save()}
+  go(test,{idx:0});
+}
+
+/* ---------- اختبارات العبارات ---------- */
+const AGREE_LABELS=['أوافق بشدة','أوافق','محايد','لا أوافق','لا أوافق بشدة'];
+function renderAgreeTest(test,items,name){
+  const i=view.idx||0;
+  const ord=orderFor(test);
+  const qid=ord[i];              // فهرس العبارة الأصلي — الإجابات تُحفظ به لا بموضع العرض
+  const item=items[qid];
+  const val=S[test][qid];
+  app.innerHTML=`
+  <div class="qhead"><span class="qcount">${name}</span><span class="qcount">السؤال ${i+1} من ${items.length}</span></div>
+  <div class="pbar"><div class="f" style="width:${Math.round((i)/items.length*100)}%"></div></div>
+  <section class="panel">
+    <div style="text-align:center;color:var(--muted);font-size:13px;margin-bottom:4px">إلى أي مدى توافق على العبارة الآتية:</div>
+    <p class="qtext">${item.t}</p>
+    <div class="agree">
+      ${AGREE_LABELS.map((lbl,k)=>{
+        const level=5-k;
+        return `<button class="${val===level?'sel':''}" onclick="answerAgree('${test}',${i},${level},${items.length})">
+          <span>${lbl}</span>
+          <span class="dots">${[1,2,3,4,5].map(d=>`<i class="${d<=level?'f':''}"></i>`).join('')}</span>
+        </button>`;
+      }).join('')}
+    </div>
+  </section>`;
+  navEl.innerHTML=`<div class="navbar">
+    <button ${i===0?'disabled':''} onclick="go('${test}',{idx:${i-1}})">❮ السابق</button>
+    <span class="mid">${i+1} / ${items.length}</span>
+    <button ${val===undefined?'disabled':''} onclick="nextAgree('${test}',${i},${items.length})">${i===items.length-1?'إنهاء ✔':'التالي ❯'}</button>
+  </div>`;
+}
+function answerAgree(test,i,level,total){
+  S[test][orderFor(test)[i]]=level;save();
+  setTimeout(()=>nextAgree(test,i,total),160);
+}
+function nextAgree(test,i,total){
+  if(S[test][orderFor(test)[i]]===undefined)return;
+  if(i+1<total){go(test,{idx:i+1})}
+  else{
+    S.done[test]=true;
+    const score=test==='pq'?avg(Object.values(scorePQ())):100-avg(Object.values(scoreDB()));
+    S.attempts[test].push({date:today(),score});
+    addXP(total);save();celebrate();go('testResult',{test});
+  }
+}
+
+/* ---------- اختبار GCAT ---------- */
+function fmtTime(s){const m=Math.floor(s/60),x=s%60;return m+':'+String(x).padStart(2,'0')}
+function stopTimer(){if(timerHandle){clearInterval(timerHandle);timerHandle=null}}
+function renderGcat(){
+  if(S.done.gcat){go('testResult',{test:'gcat'});return}
+  if(!S.gcatOrder){S.gcatOrder=drawGcat();S.gcatOpts=buildGcatOpts(S.gcatOrder);save()}
+  const items=gcatItems();
+  const i=view.idx||0;
+  const item=items[i];
+  const val=S.gcat[i];
+  const practice=S.gcatMode==='practice';
+  const revealed=practice&&val!==undefined;
+  app.innerHTML=`
+  <div class="qhead">
+    <span style="display:flex;gap:8px;align-items:center">
+      <span class="qcount">${GCAT_DOMS[item.dom]}</span>
+      <span class="pill ${practice?'practice':'exam'}">${practice?'🎓 تدريب':'⏱ اختبار'}</span>
+    </span>
+    ${practice?'':`<span class="timer ${S.gcatTimeLeft<=60?'low':''}" id="gtimer">⏱ ${fmtTime(S.gcatTimeLeft)}</span>`}
+  </div>
+  <div class="pbar"><div class="f" style="width:${Math.round(i/items.length*100)}%"></div></div>
+  <section class="panel">
+    <p class="gcat-q">${item.q}</p>
+    <div class="gcat-stim ${item.sh?'seq':''}">${item.stim}</div>
+    <div class="opts ${item.sh?'shapes':''}">
+      ${(gcatOpts()[i]||item.o.map((_,k)=>k)).map((orig,pos)=>{
+        // orig = الخيار الأصلي · pos = موضعه المعروض في هذه المحاولة
+        let cls=val===orig?'sel':'';
+        if(revealed){if(orig===item.a)cls='correct';else if(val===orig)cls='wrong'}
+        return `<button class="${cls}" ${revealed?'disabled':''} onclick="answerGcat(${i},${orig})">${item.o[orig]}<span class="n">${pos+1}</span></button>`;
+      }).join('')}
+    </div>
+    ${revealed?`<div class="feedback ${val===item.a?'ok':'no'}">
+      <b>${val===item.a?'✅ إجابة صحيحة':'❌ إجابة غير صحيحة — الصحيح: '+item.o[item.a]}</b>${item.ex}
+    </div>`:''}
+    ${practice?'':`<div class="flagbar">
+      <button class="flag-btn ${S.flags[i]?'on':''}" onclick="toggleFlag(${i})">🚩 ${S.flags[i]?'مُعلَّم للمراجعة':'علِّم هذا السؤال للمراجعة'}</button>
+    </div>`}
+  </section>`;
+  navEl.innerHTML=`<div class="navbar">
+    <button ${i===0?'disabled':''} onclick="go('gcat',{idx:${i-1}})">❮ السابق</button>
+    <span class="mid">السؤال ${i+1} / ${items.length}</span>
+    <button onclick="nextGcat(${i})">${i===items.length-1?(practice?'إنهاء ✔':'المراجعة والتسليم ❯'):'التالي ❯'}</button>
+  </div>`;
+  if(!practice){
+    stopTimer();
+    timerHandle=setInterval(()=>{
+      S.gcatTimeLeft=Math.max(0,S.gcatTimeLeft-1);
+      const el=document.getElementById('gtimer');
+      if(el){el.textContent='⏱ '+fmtTime(S.gcatTimeLeft);if(S.gcatTimeLeft<=60)el.classList.add('low')}
+      if(S.gcatTimeLeft%5===0)save();
+      if(S.gcatTimeLeft<=0){S.gcatTimedOut=true;finishGcat()}
+    },1000);
+  }
+}
+function toggleFlag(i){S.flags[i]=!S.flags[i];save();render()}
+function answerGcat(i,k){
+  const practice=S.gcatMode==='practice';
+  if(practice&&S.gcat[i]!==undefined)return;
+  S.gcat[i]=k;save();
+  if(practice){render()}
+  else setTimeout(()=>{
+    const items=gcatItems();
+    if(i+1<items.length)go('gcat',{idx:i+1});else go('gcatReview');
+  },150);
+}
+function nextGcat(i){
+  const items=gcatItems();
+  const practice=S.gcatMode==='practice';
+  if(i+1<items.length)go('gcat',{idx:i+1});
+  else if(practice)finishGcat();
+  else go('gcatReview');
+}
+/* شاشة المراجعة قبل التسليم (وضع الاختبار) */
+function renderGcatPreSubmit(){
+  const items=gcatItems();
+  const answered=items.filter((_,i)=>S.gcat[i]!==undefined).length;
+  const flagged=Object.keys(S.flags).filter(k=>S.flags[k]).map(Number);
+  app.innerHTML=`
+  <div class="qhead">
+    <span class="qcount">مراجعة قبل التسليم</span>
+    <span class="timer ${S.gcatTimeLeft<=60?'low':''}" id="gtimer">⏱ ${fmtTime(S.gcatTimeLeft)}</span>
+  </div>
+  <section class="panel">
+    <div class="result-hero">
+      <div class="icon">🗂</div>
+      <h2>راجع قبل أن تُسلِّم</h2>
+      <p>أجبت عن <b>${answered}</b> من ${items.length} ${flagged.length?`· عليك <b style="color:var(--orange)">${flagged.length}</b> سؤالًا معلمًا 🚩`:''}</p>
+    </div>
+    <div class="qnav">
+      ${items.map((_,i)=>`<button class="${S.gcat[i]!==undefined?'answered':''} ${S.flags[i]?'flagged':''}" onclick="go('gcat',{idx:${i}})">${i+1}</button>`).join('')}
+    </div>
+    <div class="actions">
+      <button class="btn green" onclick="finishGcat()">تسليم الاختبار نهائيًا ✔</button>
+      <button class="btn ghost" onclick="go('gcat',{idx:0})">عودة للأسئلة</button>
+    </div>
+  </section>`;
+  stopTimer();
+  timerHandle=setInterval(()=>{
+    S.gcatTimeLeft=Math.max(0,S.gcatTimeLeft-1);
+    const el=document.getElementById('gtimer');
+    if(el)el.textContent='⏱ '+fmtTime(S.gcatTimeLeft);
+    if(S.gcatTimeLeft<=0){S.gcatTimedOut=true;finishGcat()}
+  },1000);
+}
+function finishGcat(){
+  stopTimer();S.done.gcat=true;
+  const g=scoreGcatAll();
+  S.attempts.gcat.push({date:today(),score:g.total,mode:S.gcatMode});
+  addXP(30);save();celebrate();go('testResult',{test:'gcat'});
+}
+
+/* ---------- الحكم على المواقف ---------- */
+function renderJudg(){
+  const i=view.idx||0;                 // موضع العرض
+  const sid=judgOrder()[i];            // فهرس السيناريو الأصلي
+  const sc=SCENARIOS[sid];
+  const rOrder=judgOpts()[sid]||sc.r.map((_,k)=>k);
+  const answers=S.judg[sid]||{};
+  const complete=sc.r.every((_,ri)=>answers[ri]!==undefined);
+  const practice=S.judgMode==='practice';
+  const revealed=practice&&view.revealed;
+  app.innerHTML=`
+  <div class="qhead">
+    <span style="display:flex;gap:8px;align-items:center">
+      <span class="qcount">الحكم على المواقف القيادية</span>
+      <span class="pill ${practice?'practice':'exam'}">${practice?'🎓 تدريب':'⚖️ اختبار'}</span>
+    </span>
+    <span class="qcount">السيناريو ${i+1} من ${SCENARIOS.length}</span>
+  </div>
+  <div class="pbar"><div class="f" style="width:${Math.round(i/SCENARIOS.length*100)}%"></div></div>
+  <section class="panel">
+    <div class="scen-card"><h4>📋 ${sc.title}</h4><p>${sc.text}</p></div>
+    <div class="scen-hint">بناءً على السيناريو أعلاه، يرجى تقييم فعالية الردود التالية:</div>
+    ${rOrder.map((ri,pos)=>{const resp=sc.r[ri];return `
+      <div class="resp">
+        <div class="rtext">${pos+1}. ${resp.t}</div>
+        <div class="rate">
+          ${[1,2,3,4].map(v=>`
+            <button data-v="${v}" class="${answers[ri]===v?'sel':''}" ${revealed?'disabled':''} onclick="rateResp(${sid},${ri},${v})">
+              <span class="rd">${[1,2,3,4].map(d=>`<i class="${d<=v?'f':''}"></i>`).join('')}</span>
+              <span>${RATE_LABELS[v]}</span>
+            </button>`).join('')}
+        </div>
+        ${revealed?`<span class="expert-tag">تقدير الخبراء: ${RATE_LABELS[resp.k]} ${answers[ri]===resp.k?'✅ طابقته':'· تقييمك: '+RATE_LABELS[answers[ri]]}</span>`:''}
+      </div>`}).join('')}
+  </section>`;
+  navEl.innerHTML=`<div class="navbar">
+    <button ${i===0?'disabled':''} onclick="go('judg',{idx:${i-1}})">❮ السابق</button>
+    <span class="mid">${i+1} / ${SCENARIOS.length}</span>
+    ${practice&&complete&&!revealed
+      ?`<button onclick="go('judg',{idx:${i},revealed:true})">اعرض تقدير الخبراء 👁</button>`
+      :`<button ${complete?'':'disabled'} onclick="nextJudg(${i})">${i===SCENARIOS.length-1?'إنهاء ✔':'التالي ❯'}</button>`}
+  </div>`;
+}
+function rateResp(sid,ri,v){
+  if(!S.judg[sid])S.judg[sid]={};
+  S.judg[sid][ri]=v;save();
+  view.revealed=false;render();
+}
+function nextJudg(i){
+  if(i+1<SCENARIOS.length)go('judg',{idx:i+1,revealed:false});
+  else{
+    S.done.judg=true;
+    S.attempts.judg.push({date:today(),score:scoreJudg(),mode:S.judgMode});
+    addXP(16);save();celebrate();go('testResult',{test:'judg'});
+  }
+}
+
+/* =====================================================================
+   التصحيح
+   ===================================================================== */
+function scorePQ(){
+  const out={};
+  Object.keys(PQ_DIMS).forEach(d=>{
+    const idxs=PQ_ITEMS.map((it,i)=>({it,i})).filter(x=>x.it.d===d);
+    let sum=0;
+    idxs.forEach(x=>{const v=S.pq[x.i]??3;sum+=x.it.r?6-v:v});
+    out[d]=Math.round((sum-idxs.length)/(idxs.length*4)*100);
+  });
+  return out;
+}
+/* مؤشر اتساق الإجابات: يقارن كل عبارة فحص بالعبارة المكافئة لها.
+   فرق 0 = تطابق تام، وكل درجة فرق تخصم من الاتساق. */
+function consistencyScore(){
+  const pairs=[];
+  PQ_ITEMS.forEach((it,i)=>{
+    if(!it.chk)return;
+    const j=PQ_ITEMS.findIndex(x=>x.cid===it.chk);
+    if(j<0)return;
+    const a=S.pq[i],b=S.pq[j];
+    if(a===undefined||b===undefined)return;
+    pairs.push({gap:Math.abs(a-b),a,b,t:it.t});
+  });
+  if(!pairs.length)return null;
+  const avgGap=pairs.reduce((x,p)=>x+p.gap,0)/pairs.length;
+  const pct=Math.max(0,Math.round((1-avgGap/4)*100));
+  return {pct,pairs,
+    label:pct>=85?'اتساق عالٍ':pct>=65?'اتساق مقبول':'اتساق منخفض',
+    cls:pct>=85?'s':pct>=65?'n':'d',
+    note:pct>=85?'إجاباتك متسقة عبر الصياغات المختلفة — وهذا ما تقيسه الأنظمة الرسمية وتعتمد عليه في الثقة بالنتيجة.'
+        :pct>=65?'اتساق مقبول، لكن راجع سرعة إجابتك: العبارات المتشابهة يجب أن تتلقى تقييمًا متقاربًا.'
+        :'إجاباتك متباينة على عبارات متكافئة المعنى — في الاختبار الرسمي قد يُقرأ ذلك كإجابة غير متأنية أو محاولة تجميل. أجب بعفوية وبإجابتك الأولى.'};
+}
+function scoreDB(){
+  const out={};
+  Object.keys(DB_TRAITS).forEach(d=>{
+    const idxs=DB_ITEMS.map((it,i)=>({it,i})).filter(x=>x.it.d===d);
+    let sum=0;
+    idxs.forEach(x=>{sum+=S.db[x.i]??1});
+    out[d]=Math.round((sum-idxs.length)/(idxs.length*4)*100);
+  });
+  return out;
+}
+function scoreGcatAll(){
+  const items=gcatItems();
+  const per={v:{c:0,t:0},n:{c:0,t:0},a:{c:0,t:0}};
+  items.forEach((it,i)=>{per[it.dom].t++;if(S.gcat[i]===it.a)per[it.dom].c++});
+  const pct=k=>per[k].t?Math.round(per[k].c/per[k].t*100):0;
+  const totalC=per.v.c+per.n.c+per.a.c;
+  return {v:pct('v'),n:pct('n'),a:pct('a'),detail:per,
+    total:items.length?Math.round(totalC/items.length*100):0};
+}
+function scoreJudg(){
+  let pts=0,max=0;
+  SCENARIOS.forEach((sc,i)=>{
+    sc.r.forEach((resp,ri)=>{
+      max+=3;
+      const v=(S.judg[i]||{})[ri];
+      if(v!==undefined)pts+=3-Math.abs(v-resp.k);
+    });
+  });
+  return Math.round(pts/max*100);
+}
+function allScores(){
+  return {pq:scorePQ(),db:scoreDB(),gcat:scoreGcatAll(),judg:scoreJudg()};
+}
+function deltaChip(id,score){
+  const at=S.attempts[id]||[];
+  if(at.length<2)return '';
+  const prev=at[at.length-2].score;
+  const d=score-prev;
+  if(d===0)return `<span class="delta">＝ مثل محاولتك السابقة</span>`;
+  return d>0?`<span class="delta up">▲ +${d} عن محاولتك السابقة</span>`
+            :`<span class="delta dn">▼ ${d} عن محاولتك السابقة</span>`;
+}
+
+/* ---------- نتيجة كل اختبار ---------- */
+function barRow(lbl,pct,cls,valText){
+  return `<div class="bar-row"><div class="lbl">${lbl}</div>
+    <div class="trk"><div class="fill ${cls||''}" style="width:${Math.max(2,pct)}%"></div></div>
+    <div class="val">${valText??pct+'%'}</div></div>`;
+}
+function renderTestResult(test){
+  let inner='';
+  if(test==='pq'){
+    const pq=scorePQ();
+    const groups={};
+    Object.entries(PQ_DIMS).forEach(([k,d])=>{(groups[d.group]??=[]).push({k,name:d.name})});
+    inner=`<div class="result-hero"><div class="icon">🧠</div><h2>نتيجة تقييم الشخصية PQ10</h2>
+      <p>عشرة أبعاد مجمعة تحت سمات الشخصية الخمس الكبرى — لا توجد درجة «ناجحة» هنا؛ هذا بروفايل تفضيلاتك.</p></div>
+      ${Object.entries(groups).map(([g,dims])=>`
+        <h3 class="sec-h">${g}</h3>
+        ${dims.map(d=>barRow(d.name,pq[d.k])).join('')}`).join('')}
+      ${(()=>{const c=consistencyScore();if(!c)return '';
+        return `<h3 class="sec-h">مؤشر اتساق الإجابات</h3>
+        <p class="sec-sub">قِيس عبر ${c.pairs.length} عبارات متكافئة المعنى وُزّعت متباعدة داخل الاستبيان دون أن تلاحظها</p>
+        <div class="comp">
+          <div class="head"><span class="name">درجة الاتساق</span>
+            <span class="lvl ${c.cls}">${c.label} · ${c.pct}%</span></div>
+          <div style="font-size:13px;color:var(--ink2)">${c.note}</div>
+        </div>`;})()}`;
+  }
+  if(test==='gcat'){
+    const g=scoreGcatAll();
+    const items=gcatItems();
+    const wrong=items.map((it,i)=>({it,i})).filter(x=>S.gcat[x.i]!==x.it.a);
+    inner=`<div class="result-hero"><div class="icon">⏱</div><h2>نتيجة القدرات الذهنية العامة GCAT</h2>
+      <div class="score-big">${g.total}<small> / 100</small></div>
+      ${deltaChip('gcat',g.total)}
+      ${S.gcatTimedOut?'<p style="color:var(--red);font-weight:700">⏰ انتهى الوقت قبل إكمال جميع الأسئلة — احتُسب ما أجبته</p>':''}
+      <p>${S.gcatMode==='practice'?'وضع التدريب (بلا مؤقت)':'وضع الاختبار · الوقت المتبقي عند التسليم: '+fmtTime(S.gcatTimeLeft)}</p></div>
+      <h3 class="sec-h">النتيجة حسب القدرة</h3>
+      ${barRow('الاستدلال اللفظي',g.v,null,`${g.detail.v.c}/${g.detail.v.t}`)}
+      ${barRow('الاستدلال الرقمي',g.n,null,`${g.detail.n.c}/${g.detail.n.t}`)}
+      ${barRow('الاستدلال التجريدي',g.a,null,`${g.detail.a.c}/${g.detail.a.t}`)}
+      ${wrong.length?`
+      <h3 class="sec-h">مراجعة الأخطاء (${wrong.length})</h3>
+      <p class="sec-sub">أهم شاشة في التدريب كله: افهم لماذا أخطأت، وفي المحاولة القادمة ستأتيك أسئلة مختلفة من البنك نفسه</p>
+      ${wrong.map(x=>`
+        <div class="review-item wrong">
+          <div class="rq">${x.it.stim} <span style="color:var(--muted);font-weight:400;font-size:12px">(${GCAT_DOMS[x.it.dom]})</span></div>
+          <div class="ra">إجابتك: <b class="no">${S.gcat[x.i]!==undefined?x.it.o[S.gcat[x.i]]:'لم تُجب'}</b> ·
+          الصحيحة: <b class="ok">${x.it.o[x.it.a]}</b></div>
+          <div class="rex">💡 ${x.it.ex}</div>
+        </div>`).join('')}`
+      :'<div class="feedback ok" style="margin-top:14px"><b>🏆 علامة كاملة!</b> جرّب محاولة جديدة — ستأتيك أسئلة مختلفة من البنك.</div>'}`;
+  }
+  if(test==='judg'){
+    const j=scoreJudg();
+    inner=`<div class="result-hero"><div class="icon">⚖️</div><h2>نتيجة الحكم على المواقف القيادية</h2>
+      <div class="score-big">${j}<small> / 100</small></div>
+      ${deltaChip('judg',j)}
+      <p>درجة تطابق تقييماتك مع تقدير لجنة الخبراء لفعالية كل رد</p></div>
+      <h3 class="sec-h">الأبعاد التي يقيسها هذا التقييم</h3>
+      <p class="sec-sub">${JUDG_DIMS.join(' · ')}</p>
+      <h3 class="sec-h">مراجعة تقييماتك مقابل تقدير الخبراء</h3>
+      <div style="overflow-x:auto"><table class="rt">
+        <tr><th>السيناريو</th><th>الرد</th><th>تقييمك</th><th>تقدير الخبراء</th></tr>
+        ${SCENARIOS.map((sc,i)=>sc.r.map((resp,ri)=>{
+          const v=(S.judg[i]||{})[ri];
+          const match=v===resp.k?'style="color:var(--green);font-weight:800"':(v!==undefined&&Math.abs(v-resp.k)>=2?'style="color:var(--red)"':'');
+          return `<tr><td>${ri===0?sc.title:''}</td><td>${resp.t}</td>
+            <td ${match}>${v?RATE_LABELS[v]:'—'}</td><td>${RATE_LABELS[resp.k]}</td></tr>`;
+        }).join('')).join('')}
+      </table></div>`;
+  }
+  if(test==='db'){
+    const db=scoreDB();
+    inner=`<div class="result-hero"><div class="icon">🧩</div><h2>نتيجة السلوكيات المعطلة</h2>
+      <p>الدرجة المرتفعة = ميل أقوى لظهور السمة تحت الضغط — والوعي بها أول خطوات ضبطها.</p></div>
+      <h3 class="sec-h">السمات الست</h3>
+      ${Object.entries(DB_TRAITS).map(([k,d])=>{
+        const v=db[k];
+        return barRow(`${d.name}`,v,v>=60?'red':v>=40?'gold':'', v+'%');
+      }).join('')}
+      ${Object.entries(DB_TRAITS).filter(([k])=>db[k]>=60).map(([k,d])=>`
+        <div class="comp"><div class="head"><span class="name">⚠ ${d.name} (${db[k]}%)</span>
+        <span class="lvl d">يستحق الانتباه</span></div>
+        <div style="font-size:13px;color:var(--ink2)">${d.desc}</div></div>`).join('')}`;
+  }
+  const nextTest=TESTS.find(t=>!S.done[t.id]);
+  app.innerHTML=`<section class="panel">${inner}
+    <div class="actions">
+      ${nextTest?`<button class="btn primary" onclick="go('inst',{test:'${nextTest.id}'})">الأداة التالية: ${nextTest.name} ❯</button>`:
+        `<button class="btn gold" onclick="go('report')">📋 عرض تقرير المرشح النهائي</button>`}
+      <button class="btn ghost" onclick="retake('${test}')">↻ محاولة جديدة</button>
+      <button class="btn ghost" onclick="go('home')">الرئيسية</button>
+    </div>
+  </section>`;
+}
+
+/* ---------- تقرير المرشح النهائي ---------- */
+function renderReport(){
+  if(TESTS.some(t=>!S.done[t.id])){go('home');return}
+  const s=allScores();
+  const comps=COMPETENCIES.map(c=>({...c,score:c.calc({pq:s.pq,db:s.db,gcat:s.gcat,judg:s.judg})}));
+  const overall=Math.round(comps.reduce((x,c)=>x+c.score,0)/comps.length);
+  const lvl=v=>v>=70?{c:'s',t:'🟢 عامل قوة'}:v>=45?{c:'n',t:'🟡 عامل حياد'}:{c:'d',t:'🔴 عامل تطوير'};
+  const strengths=comps.filter(c=>c.score>=70).length;
+  const todayStr=new Date().toLocaleDateString('ar-AE',{year:'numeric',month:'long',day:'numeric'});
+  app.innerHTML=`<section class="panel">
+    <h2 class="title">تقرير المرشح</h2>
+    <div class="subtitle">نماذج تقرير الكفاءات السلوكية · ${todayStr} · نسخة تدريبية · © ALFALASI26481</div>
+    <p style="color:var(--ink2);font-size:13.5px;text-align:center;max-width:64ch;margin:0 auto 8px">
+      يساهم تقرير المرشح بتلخيص نتائج الفرد والمساعدة على فهم الواقع الحالي لمستوى الكفاءات المستهدفة،
+      ويستند إلى أدلة من تقييم الشخصية واختبارات القدرات والحكم على المواقف والسلوكيات المعطلة،
+      كما يقدم توصيات لتحسين المستوى.</p>
+    <div class="result-hero">
+      <div class="score-big">${overall}<small> / 100</small></div>
+      <p><b>${strengths}</b> من 8 كفاءات في نطاق «عامل قوة»</p>
+    </div>
+
+    <h3 class="sec-h">الكفاءات القيادية الثماني المعتمدة</h3>
+    <p class="sec-sub">عامل قوة ≥ 70 · عامل حياد 45–69 · عامل تطوير &lt; 45</p>
+    ${comps.map(c=>{
+      const l=lvl(c.score);
+      return `<div class="comp">
+        <div class="head"><span class="name">${c.name} <span style="color:var(--muted);font-weight:400;font-size:11px">${c.en}</span></span>
+          <span class="lvl ${l.c}">${l.t} · ${c.score}</span></div>
+        <div style="font-size:12.5px;color:var(--ink2)">${c.def}</div>
+        ${c.score<70?`<div class="rec"><b>توصية التطوير:</b> ${c.rec}</div>`:''}
+      </div>`;
+    }).join('')}
+
+    <h3 class="sec-h">تفاصيل الأدوات الأربع</h3>
+    <div style="overflow-x:auto"><table class="rt">
+      <tr><th>الأداة</th><th>أبرز النتائج</th></tr>
+      <tr><td><b>الشخصية PQ10</b></td><td>${Object.entries(PQ_DIMS).map(([k,d])=>`${d.name}: ${s.pq[k]}%`).join(' · ')}${(()=>{const c=consistencyScore();return c?`<br><b>مؤشر اتساق الإجابات: ${c.pct}% (${c.label})</b>`:''})()}</td></tr>
+      <tr><td><b>القدرات GCAT</b></td><td>لفظي ${s.gcat.v}% · رقمي ${s.gcat.n}% · تجريدي ${s.gcat.a}% — الإجمالي <b>${s.gcat.total}%</b>${S.gcatTimedOut?' (انتهى الوقت)':''}</td></tr>
+      <tr><td><b>الحكم على المواقف</b></td><td>تطابق مع تقدير الخبراء: <b>${s.judg}%</b></td></tr>
+      <tr><td><b>السلوكيات المعطلة</b></td><td>${Object.entries(DB_TRAITS).map(([k,d])=>`${d.name}: ${s.db[k]}%`).join(' · ')}</td></tr>
+    </table></div>
+
+    <h3 class="sec-h">سجل محاولاتك</h3>
+    <div style="overflow-x:auto"><table class="rt">
+      <tr><th>الأداة</th><th>عدد المحاولات</th><th>أفضل درجة</th><th>آخر درجة</th></tr>
+      ${TESTS.map(t=>{
+        const at=S.attempts[t.id]||[];
+        return `<tr><td>${t.name}</td><td>${at.length}</td>
+          <td>${at.length?Math.max(...at.map(x=>x.score))+'%':'—'}</td>
+          <td>${at.length?at[at.length-1].score+'%':'—'}</td></tr>`;
+      }).join('')}
+    </table></div>
+
+    <h3 class="sec-h">خطة الاستعداد للاختبار الرسمي</h3>
+    <div class="inst"><ol>
+      <li><b>ابدأ بوضع التدريب</b> لفهم منطق كل نوع أسئلة، ثم انتقل لوضع الاختبار وكرره حتى تنهي GCAT وفي رصيدك دقيقتان على الأقل.</li>
+      <li>في الشخصية والسلوكيات المعطلة: <b>الاتساق أهم من التجميل</b> — الأنظمة الرسمية تقيس اتساق الإجابات المتشابهة.</li>
+      <li>في المواقف القيادية: قيّم كل رد <b>باستقلال</b>؛ الخطأ الشائع هو إعطاء «فعال جدًا» لردّ واحد فقط وإهمال تقييم البقية بدقة.</li>
+      <li>راجع شاشة «مراجعة الأخطاء» بعد كل محاولة GCAT — التعلم من الخطأ أسرع طرق رفع الدرجة.</li>
+    </ol></div>
+
+    <div class="disclaimer no-print">⚠️ تقرير تدريبي لأغراض التهيئة فقط — لا يمثل نتيجة رسمية ولا يتنبأ بها،
+      والأسئلة تحاكي شكل الاختبار الرسمي لا محتواه الفعلي.</div>
+
+    <div class="actions">
+      <button class="btn gold" onclick="window.print()">🖨 طباعة التقرير / حفظه PDF</button>
+      <button class="btn ghost" onclick="go('home')">الرئيسية</button>
+    </div>
+  </section>`;
+}
+
+/* ---------- شاشة التثبيت ---------- */
+function renderInstall(){
+  app.innerHTML=`<section class="panel">
+    <h2 class="title">📲 ثبّت التطبيق على جهازك</h2>
+    <div class="subtitle">يعمل بعد التثبيت بدون إنترنت، بأيقونة خاصة مثل أي تطبيق</div>
+    <div class="install-grid">
+      <div class="install-card"><h4>🤖 أندرويد (Chrome)</h4>
+        <ol><li>افتح رابط التطبيق في متصفح كروم.</li>
+        <li>اضغط قائمة النقاط ⋮ أعلى اليسار.</li>
+        <li>اختر <b>«إضافة إلى الشاشة الرئيسية»</b> أو <b>«تثبيت التطبيق»</b>.</li>
+        <li>ستجد أيقونة التطبيق بين تطبيقاتك.</li></ol></div>
+      <div class="install-card"><h4>🍎 آيفون / آيباد (Safari)</h4>
+        <ol><li>افتح رابط التطبيق في متصفح سفاري.</li>
+        <li>اضغط زر المشاركة <b>⬆︎</b> أسفل الشاشة.</li>
+        <li>اختر <b>«إضافة إلى الصفحة الرئيسية»</b> (Add to Home Screen).</li>
+        <li>ستجد أيقونة التطبيق بين تطبيقاتك.</li></ol></div>
+      <div class="install-card"><h4>💻 سطح المكتب (Chrome / Edge)</h4>
+        <ol><li>افتح رابط التطبيق في كروم أو إيدج.</li>
+        <li>اضغط أيقونة التثبيت <b>⊕</b> في شريط العنوان (أو قائمة ⋮ ← «تثبيت»).</li>
+        <li>يفتح التطبيق في نافذة مستقلة وتظهر أيقونته في قائمة ابدأ / الدوك.</li></ol></div>
+      <div class="install-card"><h4>📁 بدون إنترنت نهائيًا</h4>
+        <ol><li>انسخ ملف <b>index.html</b> إلى أي جهاز أو فلاش ميموري.</li>
+        <li>افتحه بنقرة مزدوجة في أي متصفح.</li>
+        <li>كل شيء يعمل محليًا ونتائجك تبقى على الجهاز نفسه.</li></ol></div>
+    </div>
+    <div class="actions"><button class="btn primary" onclick="go('home')">عودة للرئيسية</button></div>
+  </section>`;
+}
+
+try{history.replaceState({psymx:view},'')}catch(e){}
+render();
+
+/* تسجيل عامل الخدمة للعمل دون اتصال (يعمل فقط عند الاستضافة عبر HTTPS) */
+if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
+  window.addEventListener('load',()=>{
+    // هل كان جهاز المستخدم يعمل بنسخة سابقة من التطبيق؟
+    const hadController=!!navigator.serviceWorker.controller;
+    let reloaded=false;
+    navigator.serviceWorker.addEventListener('controllerchange',()=>{
+      // عند وصول نسخة أحدث لمستخدم قديم: إعادة تحميل واحدة تعرض التحديث فورًا
+      // (أول تثبيت لا يحتاج إعادة تحميل لأن الصفحة أحدث نسخة أصلًا)
+      if(!hadController||reloaded)return;
+      reloaded=true;location.reload();
+    });
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>
