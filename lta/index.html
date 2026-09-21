@@ -204,8 +204,6 @@ button{font-family:inherit;color:inherit}
 .ticks i{height:2px;flex:1;background:var(--line);opacity:.7;border-radius:2px;transition:.35s}
 .ticks i.p{background:var(--gold-line);opacity:1} .ticks i.c{background:var(--gold);opacity:1;height:3px}
 .timer{font-variant-numeric:tabular-nums;font-weight:600;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:3px 13px;color:var(--ink-2);letter-spacing:.5px}
-.timer.hot{color:var(--e1);border-color:var(--e1);animation:pulse 1.1s infinite}
-@keyframes pulse{50%{opacity:.45}}
 
 .dossier{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--lift)}
 .dossier .hd{padding:18px 22px 15px;background:linear-gradient(180deg,var(--raised),var(--surface));border-bottom:1px solid var(--hair);position:relative}
@@ -2363,19 +2361,21 @@ save();
 
 /* ══════════════ الأوضاع ══════════════ */
 const MODE_CFG={
-  study:{n:'التدريب الموجَّه', g:'◈', reveal:true,  back:true,  budget:0,  total:0},
-  sim  :{n:'محاكاة الاختبار',  g:'◷', reveal:false, back:false, budget:90, total:0},
-  drill:{n:'الجولة السريعة',   g:'⚡', reveal:false, back:false, budget:60, total:0},
-  exam :{n:'الاختبار الشامل',  g:'❖', reveal:false, back:false, budget:0,  total:24*60},
-  weak :{n:'جولة نقاط الضعف',  g:'◉', reveal:true,  back:true,  budget:0,  total:0},
-  due  :{n:'المراجعة المستحقة',g:'◴', reveal:true,  back:true,  budget:0,  total:0},
-  fix  :{n:'جولة علاجية',      g:'✚', reveal:true,  back:true,  budget:0,  total:0},
+  /* التوقيت مفتوح في كل الأوضاع: الزمن يُقاس ولا يُلزم، ولا انتقال إجباري.
+     الرجوع مفتوح كذلك — كان مقيّدًا فقط لمنع إعادة ضبط المؤقّت، ولم يعد له سبب. */
+  study:{n:'التدريب الموجَّه', g:'◈', reveal:true,  back:true},
+  sim  :{n:'محاكاة الاختبار',  g:'◷', reveal:false, back:true},
+  drill:{n:'الجولة السريعة',   g:'⚡', reveal:false, back:true},
+  exam :{n:'الاختبار الشامل',  g:'❖', reveal:false, back:true},
+  weak :{n:'جولة نقاط الضعف',  g:'◉', reveal:true,  back:true},
+  due  :{n:'المراجعة المستحقة',g:'◴', reveal:true,  back:true},
+  fix  :{n:'جولة علاجية',      g:'✚', reveal:true,  back:true},
 };
 const MODEN=k=>(MODE_CFG[k]||{n:k}).n;
 const MODES=['study','sim','drill'].map(id=>({id:id,n:MODE_CFG[id].n,g:MODE_CFG[id].g,d:{
   study:'يُكشف تقدير لجنة الخبراء بعد كل موقف مباشرة، مع مسوّغ كل ردّ ودرس الموقف. بلا مؤقّت — هذا وضع البناء.',
-  sim  :'مواقف المستوى كاملة، ٩٠ ثانية لكل موقف كميزانية لا تُعاد، بلا رجوع وبلا كشف حتى النهاية.',
-  drill:'ثمانية مواقف تُختار عشوائيًا من المستوى، ٦٠ ثانية لكل موقف. للمراجعة المكثّفة في وقت قصير.',
+  sim  :'مواقف المستوى كاملة بوقت مفتوح، بلا كشف حتى النهاية. خُذ ما تحتاجه من وقت ثم اقرأ التقرير كاملًا.',
+  drill:'ثمانية مواقف تُختار عشوائيًا من المستوى، بوقت مفتوح. للمراجعة المكثّفة في جلسة قصيرة.',
 }[id]}));
 const EXAM_N=16, DRILL_N=8;
 
@@ -2430,9 +2430,8 @@ function startRun(mode,opts){
   R={ mode:mode, lvl:opts.lvl||0, label:opts.label||'', list:pool, i:0,
       ord:pool.map(c=>shuf(c.r.map((_,k)=>k))),
       ans:pool.map(()=>({})), conf:pool.map(()=>0), shown:pool.map(()=>false),
-      spent:pool.map(()=>0), left:pool.map(()=>cfg.budget||0),
+      spent:pool.map(()=>0),
       act:0, t0:Date.now(), mark:0,
-      deadline: cfg.total? Date.now()+cfg.total*1000 : 0,
       planDay: opts.planDay||0 };
   go('run');
 }
@@ -2440,25 +2439,16 @@ function stopTick(){
   if(TICK){clearInterval(TICK);TICK=null}
   if(R&&R.mark){ R.spent[R.i]+=(Date.now()-R.mark)/1000; R.mark=0; }
 }
+/* عدّاد تصاعدي فقط: يقيس زمنك لتحليل الإيقاع ولا يفرض عليك حدًّا */
 function startClock(){
-  const cfg=MODE_CFG[R.mode];
   R.mark=Date.now();
   TICK=setInterval(function(){
-    const now=Date.now(), dt=(now-R.mark)/1000; R.mark=now;
-    R.spent[R.i]+=dt;
-    if(cfg.budget){ R.left[R.i]=Math.max(0,R.left[R.i]-dt); }
+    const now=Date.now(); R.spent[R.i]+=(now-R.mark)/1000; R.mark=now;
     paintClock();
-    if(cfg.budget && R.left[R.i]<=0){ stopTick(); advance(); return; }
-    if(R.deadline && now>=R.deadline){ stopTick(); finish(); return; }
-  },250);
+  },500);
   paintClock();
 }
 function paintClock(){
-  const t=$('#tmr'); if(!t)return;
-  const cfg=MODE_CFG[R.mode];
-  const left = cfg.total ? (R.deadline-Date.now())/1000 : R.left[R.i];
-  t.textContent=mmss(left);
-  t.classList.toggle('hot', left<=(cfg.total?120:15));
   const el=$('#elapsed'); if(el) el.textContent=mmss(R.spent[R.i]);
 }
 function advance(){
@@ -2663,17 +2653,17 @@ const PLAN_T=[
  {t:'أساسيات المستوى الأول',      s:'تدريب موجَّه · ١٠ مواقف', mode:'study', lvl:1, n:10},
  {t:'إكمال المستوى الأول',        s:'تدريب موجَّه · ١٠ مواقف', mode:'study', lvl:1, n:10},
  {t:'مراجعة ما استحقّ',           s:'المراجعة المستحقة',       mode:'due',   lvl:0, n:0},
- {t:'جولة سريعة على المستوى الأول',s:'ثمانية مواقف بمؤقّت',     mode:'drill', lvl:1, n:8},
+ {t:'جولة سريعة على المستوى الأول',s:'ثمانية مواقف · وقت مفتوح', mode:'drill', lvl:1, n:8},
  {t:'دخول المستوى الثاني',        s:'تدريب موجَّه · ١٠ مواقف', mode:'study', lvl:2, n:10},
  {t:'إكمال المستوى الثاني',       s:'تدريب موجَّه · ١٠ مواقف', mode:'study', lvl:2, n:10},
  {t:'معالجة نقاط الضعف',          s:'المواقف التي تعثّرت فيها', mode:'weak',  lvl:0, n:0},
- {t:'محاكاة المستوى الأول',       s:'بمؤقّت وبلا كشف',         mode:'sim',   lvl:1, n:0},
+ {t:'محاكاة المستوى الأول',       s:'بلا كشف حتى النهاية',      mode:'sim',   lvl:1, n:0},
  {t:'دخول المستوى الثالث',        s:'تدريب موجَّه · ١٠ مواقف', mode:'study', lvl:3, n:10},
  {t:'إكمال المستوى الثالث',       s:'تدريب موجَّه · ١٠ مواقف', mode:'study', lvl:3, n:10},
  {t:'مراجعة ما استحقّ',           s:'المراجعة المستحقة',       mode:'due',   lvl:0, n:0},
  {t:'المعضلات والأزمات',          s:'تدريب موجَّه · ١٠ مواقف', mode:'study', lvl:4, n:10},
- {t:'محاكاة المستوى الثالث',      s:'بمؤقّت وبلا كشف',         mode:'sim',   lvl:3, n:0},
- {t:'الاختبار الشامل',            s:'١٦ موقفًا · ٢٤ دقيقة',    mode:'exam',  lvl:0, n:0},
+ {t:'محاكاة المستوى الثالث',      s:'بلا كشف حتى النهاية',      mode:'sim',   lvl:3, n:0},
+ {t:'الاختبار الشامل',            s:'١٦ موقفًا · وقت مفتوح',   mode:'exam',  lvl:0, n:0},
 ];
 function makePlan(){ P().plan={start:ymd(), days:PLAN_T.map(d=>Object.assign({done:false},d))}; save(); }
 function planToday(){
@@ -2774,8 +2764,8 @@ function vHome(){
 
   h+='<button class="feature" data-run="exam">'+
     '<div class="eb">الاختبار الشامل</div>'+
-    '<h4>ستة عشر موقفًا · أربعة وعشرون دقيقة</h4>'+
-    '<p>أربعة مواقف من كل مستوى تُخلط عشوائيًا في اختبار واحد بمؤقّت كلي — بنفس العدد الذي يواجهه المرشّح في فقرة الحكم على المواقف. لا رجوع ولا كشف حتى النهاية، ثم تقرير كامل.</p>'+
+    '<h4>ستة عشر موقفًا · بوقت مفتوح</h4>'+
+    '<p>أربعة مواقف من كل مستوى تُخلط عشوائيًا في اختبار واحد — بنفس العدد الذي يواجهه المرشّح في فقرة الحكم على المواقف. بلا كشف حتى النهاية، ثم تقرير كامل. لا مؤقّت ولا انتقال إجباري: خُذ وقتك.</p>'+
     '<div class="go">←</div></button></div>';
 
   h+='<div class="card" style="margin-top:14px"><div class="eb">أدوات</div><div class="modes">'+
@@ -2822,7 +2812,7 @@ function vLevel(){
 /* ── شاشة الموقف ── */
 function vRun(){
   const ci=R.i, c=R.list[ci], ord=R.ord[ci], a=R.ans[ci], shown=R.shown[ci];
-  const cfg=MODE_CFG[R.mode], timed=!!(cfg.budget||cfg.total);
+  const cfg=MODE_CFG[R.mode];
   const done=Object.keys(a).length;
 
   let ticks='';
@@ -2831,7 +2821,7 @@ function vRun(){
     '<span class="chip gd">'+E(R.label||MODEN(R.mode))+'</span>'+
     '<span class="chip">'+(ci+1)+' / '+R.list.length+'</span>'+
     '<span class="sp"></span>'+
-    (timed?'<span class="timer" id="tmr">--:--</span>':'<span class="timer" id="elapsed">0:00</span>')+
+    '<span class="timer" id="elapsed" title="زمنك في هذا الموقف — للقياس لا للإلزام">0:00</span>'+
     '</div><div class="ticks">'+ticks+'</div></div>';
 
   h+='<article class="dossier"><div class="hd">'+
@@ -2893,7 +2883,6 @@ function vRun(){
     (cfg.back?'<button id="bprev"'+(ci===0?' disabled':'')+'>→ السابق</button>':'<span style="width:1px"></span>')+
     '<div class="st">'+done+' من 4<span class="wide"> ردود مُقدَّرة</span></div>'+
     '<button class="pri" id="bnext"'+dis+'>'+label+'</button>';
-  R.timed=timed;
   return h;
 }
 
@@ -2968,7 +2957,7 @@ function vResult(){
        '<div class="tile"><div class="v">'+(drop>0?'−':'+')+Math.abs(Math.round(drop*100))+'٪</div><div class="k">فرق النصف الثاني</div></div>'+
       '</div>';
     let say;
-    if(pc.rushed.length>=2) say='استعجلت '+pc.rushed.length+' مواقف ودفعت ثمنها دقةً. في الاختبار الفعلي ٩٠ ثانية للموقف كافية لقراءته مرتين — والقراءة الثانية هي التي تلتقط القيد المخفي.';
+    if(pc.rushed.length>=2) say='استعجلت '+pc.rushed.length+' مواقف ودفعت ثمنها دقةً. الوقت هنا مفتوح ولا شيء يستعجلك — والقراءة الثانية للموقف هي التي تلتقط القيد المخفي غالبًا.';
     else if(pc.slow.length>=2) say='استنزفت وقتًا كبيرًا في '+pc.slow.length+' مواقف دون مردود في الدقة. حين تتجاوز ضعف وسيط زمنك، غالبًا لن يغيّر التفكير الإضافي تقديرك — احسم وانتقل.';
     else if(drop>0.12) say='دقّتك في النصف الثاني أقل بـ'+Math.round(drop*100)+'٪. هذا إرهاق لا نقص قدرة، وعلاجه التدريب على جولات بطول الاختبار الفعلي لا على مواقف متفرقة.';
     else say='إيقاعك متّزن: لا استعجال مكلف ولا استنزاف بلا مردود، ودقّتك لا تنهار في النصف الثاني. هذا نصف نجاح الاختبار.';
