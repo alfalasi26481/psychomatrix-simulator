@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14181e">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="../icons/icon-192.png">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<title>مجلس الحكم القيادي</title>
+<meta name="description" content="تدريب متقدم على الحكم على المواقف القيادية: 48 موقفًا على أربعة مستويات، بتحليل خبراء لكل ردّ وملف كفايات تفصيلي.">
+<meta name="author" content="ALFALASI26481">
+<meta name="application-name" content="مجلس الحكم القيادي">
+<meta name="apple-mobile-web-app-title" content="مجلس الحكم">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_AE">
+<meta property="og:site_name" content="مجلس الحكم القيادي">
+<meta property="og:title" content="مجلس الحكم القيادي — تدريب الحكم على المواقف">
+<meta property="og:description" content="48 موقفًا قياديًا على أربعة مستويات صعوبة، بتحليل خبراء لكل ردّ، وملف كفايات من ثمانية أبعاد.">
+<meta property="og:image" content="../icons/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --paper:#eef0f3; --surface:#ffffff; --surface-2:#f7f8fa; --sunk:#e7eaee;
+  --ink:#141820; --ink-2:#4b5361; --muted:#858d9b;
+  --line:#dbdfe6; --hair:#ebedf1;
+  --accent:#7b2430; --accent-2:#a13b47; --accent-soft:#f8ecee;
+  --brass:#8a6d32; --brass-soft:#f7f1e3;
+  --e1:#a3342b; --e1s:#fbecea; --e2:#b0723a; --e2s:#fbf3e9;
+  --e3:#43798a; --e3s:#edf3f5; --e4:#2c6b52; --e4s:#e9f3ed;
+  --shadow:0 1px 2px rgba(20,24,32,.05),0 8px 24px -12px rgba(20,24,32,.18);
+  --f-disp:'Amiri','Times New Roman',serif;
+  --f-body:'IBM Plex Sans Arabic','Segoe UI',Tahoma,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0e1116; --surface:#171b22; --surface-2:#1c212a; --sunk:#12161c;
+    --ink:#eef1f5; --ink-2:#b4bdc9; --muted:#7c8593;
+    --line:#2a3039; --hair:#222831;
+    --accent:#d4737f; --accent-2:#e2909a; --accent-soft:#2b1a1e;
+    --brass:#c9a961; --brass-soft:#282217;
+    --e1:#e0796d; --e1s:#2c1b19; --e2:#d69f5c; --e2s:#2a2217;
+    --e3:#7fb2c0; --e3s:#19252a; --e4:#6bb08f; --e4s:#17251e;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0e1116; --surface:#171b22; --surface-2:#1c212a; --sunk:#12161c;
+  --ink:#eef1f5; --ink-2:#b4bdc9; --muted:#7c8593;
+  --line:#2a3039; --hair:#222831;
+  --accent:#d4737f; --accent-2:#e2909a; --accent-soft:#2b1a1e;
+  --brass:#c9a961; --brass-soft:#282217;
+  --e1:#e0796d; --e1s:#2c1b19; --e2:#d69f5c; --e2s:#2a2217;
+  --e3:#7fb2c0; --e3s:#19252a; --e4:#6bb08f; --e4s:#17251e;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--f-body); font-size:15px; line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0;font-weight:700;text-wrap:balance}
+button{font-family:inherit;color:inherit}
+a{color:var(--accent-2)}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ─────────── الترويسة ─────────── */
+.masthead{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:40;
+  background:var(--surface); border-bottom:1px solid var(--line);
+  display:flex; align-items:center; gap:12px; padding:9px 16px;
+}
+.seal{width:32px;height:32px;flex:none}
+.mast-txt{min-width:0;flex:1}
+.mast-txt .wm{
+  font-family:var(--f-disp); font-size:19px; font-weight:700; line-height:1.3;
+  letter-spacing:.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.mast-txt .sub{font-size:10.5px;color:var(--muted);letter-spacing:1.4px;text-transform:uppercase}
+.mast-act{display:flex;gap:7px;flex:none}
+.icon-btn{
+  background:var(--surface-2); border:1px solid var(--line); border-radius:8px;
+  width:34px;height:34px; display:grid;place-items:center; cursor:pointer;
+  font-size:15px; color:var(--ink-2); transition:border-color .15s,color .15s;
+}
+.icon-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+.wrap{max-width:780px;margin:0 auto;padding:22px 16px 132px}
+.view{animation:rise .32s cubic-bezier(.2,.7,.3,1)}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+/* ─────────── عناصر مشتركة ─────────── */
+.eyebrow{
+  font-size:11px;letter-spacing:2px;color:var(--muted);
+  text-transform:uppercase;font-weight:600;
+}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
+.section-head h3{font-family:var(--f-disp);font-size:20px}
+
+.btn{
+  font-size:14.5px;font-weight:600;border-radius:9px;padding:11px 22px;
+  border:1px solid transparent;cursor:pointer;transition:filter .15s,transform .08s,border-color .15s;
+}
+.btn:active{transform:scale(.985)}
+.btn.solid{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.solid:hover{filter:brightness(1.12)}
+.btn.line{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.btn.line:hover{border-color:var(--accent);color:var(--accent)}
+.btn.quiet{background:transparent;color:var(--muted);border-color:transparent}
+.btn.quiet:hover{color:var(--accent)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+
+/* ─────────── الصفحة الأولى ─────────── */
+.hero{margin-bottom:26px}
+.hero h1{
+  font-family:var(--f-disp); font-size:clamp(30px,8vw,42px); line-height:1.25;
+  margin:8px 0 10px;
+}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero p{color:var(--ink-2);font-size:15.5px;max-width:58ch;margin:0}
+.hero .meta{
+  display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;
+  padding-top:16px;border-top:1px solid var(--line);
+}
+.hero .meta div{min-width:64px}
+.hero .meta .n{font-family:var(--f-disp);font-size:26px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.hero .meta .l{font-size:11.5px;color:var(--muted)}
+
+/* بطاقات المستويات — سلّم رأسي لا شبكة */
+.ladder{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.lvl{
+  display:grid;grid-template-columns:auto 1fr auto;gap:15px;align-items:center;
+  background:var(--surface);border:1px solid var(--line);
+  padding:16px 18px;cursor:pointer;text-align:right;width:100%;
+  transition:border-color .16s,background .16s;
+}
+.lvl:first-child{border-radius:14px 14px 0 0}
+.lvl:last-child{border-radius:0 0 14px 14px}
+.lvl+.lvl{border-top:0}
+.lvl:hover:not(.locked){border-color:var(--accent);background:var(--surface-2);z-index:1}
+.lvl.locked{cursor:not-allowed;opacity:.62}
+.lvl .ord{
+  font-family:var(--f-disp);font-size:30px;font-weight:700;color:var(--accent);
+  width:34px;text-align:center;line-height:1;font-variant-numeric:tabular-nums;
+}
+.lvl.locked .ord{color:var(--muted)}
+.lvl .nm{font-size:16px;font-weight:600;line-height:1.5}
+.lvl .ds{font-size:12.5px;color:var(--muted);margin-top:1px}
+.lvl .end{display:flex;flex-direction:column;align-items:flex-start;gap:5px;flex:none}
+.ring{width:42px;height:42px;display:block}
+.ring .trk{fill:none;stroke:var(--sunk);stroke-width:4}
+.ring .bar{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;transition:stroke-dasharray .7s ease}
+.ring text{fill:var(--ink);font-size:13px;font-weight:600;font-family:var(--f-body)}
+
+.tag{
+  display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;
+  border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:var(--ink-2);
+}
+.tag.brass{border-color:var(--brass);color:var(--brass);background:var(--brass-soft)}
+.tag.acc{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+
+.note{
+  background:var(--surface-2);border:1px solid var(--hair);border-radius:11px;
+  padding:12px 15px;font-size:13px;color:var(--ink-2);
+}
+.note b{color:var(--ink)}
+.note.brass{background:var(--brass-soft);border-color:color-mix(in srgb,var(--brass) 30%,transparent)}
+
+/* ─────────── اختيار الوضع ─────────── */
+.modes{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.mode{
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+  background:var(--surface);border:1.5px solid var(--line);border-radius:12px;
+  padding:15px 17px;cursor:pointer;text-align:right;width:100%;
+  transition:border-color .15s;
+}
+.mode:hover{border-color:var(--accent)}
+.mode .gl{font-size:20px;line-height:1.4;width:24px;text-align:center}
+.mode h4{font-size:15.5px}
+.mode p{margin:2px 0 0;font-size:12.5px;color:var(--muted);line-height:1.7}
+
+/* ─────────── ملف الموقف ─────────── */
+.progress-strip{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.pips{display:flex;gap:3px;flex:1;min-width:120px}
+.pip{height:3px;flex:1;background:var(--sunk);border-radius:2px;transition:background .3s}
+.pip.done{background:var(--accent)}
+.pip.now{background:var(--accent-2)}
+.clock{
+  font-variant-numeric:tabular-nums;font-weight:600;font-size:13.5px;
+  border:1px solid var(--line);border-radius:999px;padding:3px 13px;color:var(--ink-2);
+}
+.clock.warn{color:var(--e1);border-color:var(--e1)}
+
+.case{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.case-head{
+  padding:16px 20px 14px;border-bottom:1px solid var(--hair);
+  background:linear-gradient(180deg,var(--surface-2),var(--surface));
+}
+.case-no{
+  font-size:11px;letter-spacing:2.5px;color:var(--brass);font-weight:600;
+  font-variant-numeric:tabular-nums;
+}
+.case-head h2{font-family:var(--f-disp);font-size:24px;line-height:1.35;margin-top:3px}
+.case-comps{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.case-body{padding:17px 20px 4px}
+.case-body p{
+  margin:0;font-size:16px;line-height:2;color:var(--ink);
+  font-family:var(--f-disp);
+}
+.case-ask{
+  margin:16px 20px 0;padding:11px 15px;border-radius:10px;
+  background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);
+  font-size:13.5px;font-weight:600;color:var(--accent);
+}
+:root[data-theme="dark"] .case-ask,
+:root:not([data-theme="light"]) .case-ask{color:var(--accent-2)}
+
+/* ─────────── الردود ومقياس الفعالية ─────────── */
+.responses{display:flex;flex-direction:column;gap:11px;margin-top:16px}
+.resp{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:14px 16px;transition:border-color .16s;
+}
+.resp.rated{border-color:color-mix(in srgb,var(--accent) 30%,var(--line))}
+.resp .rtxt{font-size:14.5px;line-height:1.85;display:flex;gap:9px}
+.resp .rtxt .ix{
+  font-family:var(--f-disp);font-weight:700;color:var(--muted);flex:none;
+  font-size:15px;line-height:1.75;
+}
+.scale{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:11px}
+.scale button{
+  border:1.5px solid var(--line);background:var(--surface-2);border-radius:9px;
+  padding:8px 4px 7px;cursor:pointer;display:flex;flex-direction:column;
+  align-items:center;gap:4px;transition:all .14s;
+}
+.scale button .bars{display:flex;gap:2px;align-items:flex-end;height:13px}
+.scale button .bars i{width:4px;background:var(--line);border-radius:1px;display:block}
+.scale button .bars i:nth-child(1){height:5px}
+.scale button .bars i:nth-child(2){height:8px}
+.scale button .bars i:nth-child(3){height:11px}
+.scale button .bars i:nth-child(4){height:13px}
+.scale button span{font-size:10.5px;font-weight:600;color:var(--muted);line-height:1.3;text-align:center}
+.scale button:hover{border-color:var(--ink-2)}
+.scale button[data-v="1"].on{border-color:var(--e1);background:var(--e1s)}
+.scale button[data-v="2"].on{border-color:var(--e2);background:var(--e2s)}
+.scale button[data-v="3"].on{border-color:var(--e3);background:var(--e3s)}
+.scale button[data-v="4"].on{border-color:var(--e4);background:var(--e4s)}
+.scale button[data-v="1"].on span{color:var(--e1)} .scale button[data-v="1"].on .bars i{background:var(--e1)}
+.scale button[data-v="2"].on span{color:var(--e2)} .scale button[data-v="2"].on .bars i{background:var(--e2)}
+.scale button[data-v="3"].on span{color:var(--e3)} .scale button[data-v="3"].on .bars i{background:var(--e3)}
+.scale button[data-v="4"].on span{color:var(--e4)} .scale button[data-v="4"].on .bars i{background:var(--e4)}
+.scale button:disabled{cursor:default}
+
+/* كشف الخبير */
+.verdict{
+  margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);
+  animation:rise .26s ease;
+}
+.verdict-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px}
+.vchip{
+  display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;
+  border-radius:999px;padding:2px 11px;border:1px solid;
+}
+.vchip.v1{color:var(--e1);border-color:var(--e1);background:var(--e1s)}
+.vchip.v2{color:var(--e2);border-color:var(--e2);background:var(--e2s)}
+.vchip.v3{color:var(--e3);border-color:var(--e3);background:var(--e3s)}
+.vchip.v4{color:var(--e4);border-color:var(--e4);background:var(--e4s)}
+.match{font-weight:600}
+.match.hit{color:var(--e4)} .match.near{color:var(--e2)} .match.miss{color:var(--e1)}
+.why{margin-top:8px;font-size:13.5px;color:var(--ink-2);line-height:1.85}
+.why b{color:var(--brass);font-weight:600}
+.lesson{
+  margin-top:14px;padding:14px 16px;border-radius:12px;
+  background:var(--brass-soft);border:1px solid color-mix(in srgb,var(--brass) 28%,transparent);
+  font-size:13.5px;line-height:1.85;color:var(--ink-2);
+}
+.lesson .hd{
+  font-family:var(--f-disp);font-size:15px;font-weight:700;color:var(--brass);
+  margin-bottom:3px;display:flex;align-items:center;gap:7px;
+}
+
+/* ─────────── شريط التنقل ─────────── */
+.dock{
+  position:fixed;bottom:0;left:0;right:0;z-index:50;
+  background:var(--surface);border-top:1px solid var(--line);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.dock .mid{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.dock button{
+  background:none;border:0;font-size:14.5px;font-weight:600;cursor:pointer;
+  padding:8px 14px;border-radius:8px;color:var(--ink);
+}
+.dock button:hover:not(:disabled){background:var(--surface-2);color:var(--accent)}
+.dock button:disabled{opacity:.3;cursor:not-allowed}
+.dock button.go{background:var(--accent);color:#fff;padding:10px 22px}
+.dock button.go:hover{filter:brightness(1.12);background:var(--accent)}
+
+/* ─────────── النتائج ─────────── */
+.verdict-seal{text-align:center;padding:10px 0 4px}
+.verdict-seal .score{
+  font-family:var(--f-disp);font-size:66px;font-weight:700;line-height:1.05;
+  font-variant-numeric:tabular-nums;
+}
+.verdict-seal .of{font-size:15px;color:var(--muted)}
+.verdict-seal .band{
+  display:inline-block;margin-top:9px;font-size:14px;font-weight:700;
+  border:1px solid var(--brass);color:var(--brass);background:var(--brass-soft);
+  border-radius:999px;padding:5px 20px;
+}
+.verdict-seal .say{color:var(--ink-2);font-size:14px;margin-top:11px;max-width:52ch;margin-inline:auto}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px;margin-top:20px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 14px;text-align:center}
+.kpi .v{font-family:var(--f-disp);font-size:25px;font-weight:700;line-height:1.15;font-variant-numeric:tabular-nums}
+.kpi .k{font-size:11.5px;color:var(--muted);margin-top:1px}
+
+.bars{display:flex;flex-direction:column;gap:9px}
+.brow{display:grid;grid-template-columns:118px 1fr 40px;gap:11px;align-items:center}
+.brow .bl{font-size:13px;color:var(--ink-2);line-height:1.5}
+.brow .bt{height:8px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.brow .bf{height:100%;border-radius:99px;background:var(--accent);transition:width .8s cubic-bezier(.2,.7,.3,1)}
+.brow .bv{font-size:12.5px;font-weight:600;text-align:left;font-variant-numeric:tabular-nums}
+
+.radar-wrap{display:flex;justify-content:center;padding:6px 0 2px}
+.radar{width:100%;max-width:330px;height:auto}
+.radar .grid{fill:none;stroke:var(--hair);stroke-width:1}
+.radar .axis{stroke:var(--line);stroke-width:1}
+.radar .area{fill:color-mix(in srgb,var(--accent) 18%,transparent);stroke:var(--accent);stroke-width:2;stroke-linejoin:round}
+.radar .dot{fill:var(--accent)}
+.radar .dot.hollow{fill:var(--surface);stroke:var(--muted);stroke-width:1.2}
+.radar .lbl.mute{fill:var(--muted);opacity:.6}
+.radar .lbl{fill:var(--ink-2);font-size:8.5px;font-family:var(--f-body);font-weight:500}
+.radar .tick{fill:var(--muted);font-size:7px;font-family:var(--f-body)}
+
+table.sheet{width:100%;border-collapse:collapse;font-size:13px}
+table.sheet th,table.sheet td{padding:9px 11px;border-bottom:1px solid var(--hair);text-align:right;vertical-align:top}
+table.sheet th{color:var(--muted);font-size:11.5px;font-weight:600;letter-spacing:.4px}
+table.sheet td{color:var(--ink-2)}
+table.sheet td.s{color:var(--ink);font-weight:600}
+.sheet-wrap{overflow-x:auto}
+
+.panel{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:20px;margin-bottom:14px;box-shadow:var(--shadow);
+}
+.panel>h3{font-family:var(--f-disp);font-size:20px;margin-bottom:3px}
+.panel>.hint{color:var(--muted);font-size:12.5px;margin:0 0 15px}
+
+.review-item{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;background:var(--surface)}
+.review-item .rh{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.review-item .rt{font-family:var(--f-disp);font-size:17px;font-weight:700}
+.review-item .rc{font-size:13px;color:var(--ink-2);margin-top:6px;line-height:1.8}
+.review-item details{margin-top:9px}
+.review-item summary{
+  cursor:pointer;font-size:12.5px;font-weight:600;color:var(--accent);
+  list-style:none;padding:5px 0;
+}
+.review-item summary::-webkit-details-marker{display:none}
+.review-item summary::before{content:'▸ ';display:inline-block;transition:transform .2s}
+.review-item details[open] summary::before{content:'▾ '}
+.mini-resp{border-top:1px solid var(--hair);padding:9px 0;font-size:13px;line-height:1.8}
+.mini-resp .mr-top{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin-top:5px}
+
+.empty{text-align:center;padding:34px 18px;color:var(--muted)}
+.empty .gl{font-size:34px;opacity:.5}
+.empty p{margin:9px 0 0;font-size:14px}
+
+@media print{
+  .masthead,.dock,.btn-row,.no-print{display:none!important}
+  body{background:#fff}
+  .wrap{padding:0;max-width:100%}
+  .panel{box-shadow:none;break-inside:avoid;border-color:#ddd}
+}
+@media (max-width:560px){
+  .wrap{padding:18px 14px 132px}
+  .brow{grid-template-columns:96px 1fr 36px}
+  .lvl{grid-template-columns:auto 1fr;gap:12px;padding:14px 15px}
+  .lvl .end{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;width:100%}
+  .case-body p{font-size:15.5px}
+  .scale button span{font-size:9.5px}
+  .dock button{padding:8px 11px;font-size:13.5px}
+  .dock button.go{padding:10px 16px}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <svg class="seal" viewBox="0 0 40 40" aria-hidden="true">
+    <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".28"/>
+    <path d="M20 6.5 L20 31" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+    <path d="M9 13 L31 13" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+    <path d="M9 13 L5.5 21 Q9 24 12.5 21 Z" fill="currentColor" opacity=".9"/>
+    <path d="M31 13 L27.5 21 Q31 24 34.5 21 Z" fill="currentColor" opacity=".55"/>
+    <rect x="13.5" y="30.5" width="13" height="2.6" rx="1.3" fill="currentColor" opacity=".9"/>
+    <circle cx="20" cy="9" r="2.4" fill="currentColor"/>
+  </svg>
+  <div class="mast-txt">
+    <div class="wm">مجلس الحكم القيادي</div>
+    <div class="sub">Leadership Judgment</div>
+  </div>
+  <div class="mast-act">
+    <button class="icon-btn" id="themeBtn" title="تبديل السمة" aria-label="تبديل السمة">◑</button>
+    <button class="icon-btn" id="homeBtn" title="الرئيسية" aria-label="الرئيسية">⌂</button>
+  </div>
+</header>
+
+<main class="wrap"><div id="app"></div></main>
+<div id="dock"></div>
+
+<script>
+'use strict';
+/* ═══════════════════════════════════════════════════════════════
+   مجلس الحكم القيادي — تدريب متقدم على الحكم على المواقف القيادية
+   © جميع الحقوق محفوظة — رمز الملكية الفكرية: ALFALASI26481
+   ═══════════════════════════════════════════════════════════════ */
+/* ─────────── الكفايات الثماني التي يقيسها الحكم على المواقف ─────────── */
+const COMPS = {
+  info : {n:'جمع المعلومات',   d:'تحديد ما إذا كان الموقف يتطلب مزيدًا من البحث قبل الحكم'},
+  idea : {n:'توليد الأفكار',   d:'ابتكار تسلسلات منطقية لحل المشكلات'},
+  init : {n:'المبادرة',        d:'وضع خطط استباقية قبل تفاقم المشكلات'},
+  impr : {n:'التحسين المستمر', d:'التركيز على الأهداف والمعايير لتحقيق النتائج'},
+  emo  : {n:'الوعي العاطفي',   d:'فهم الدوافع الشخصية ودوافع الآخرين'},
+  team : {n:'روح الفريق',      d:'العمل المدمج وضبط الأهداف المشتركة'},
+  trust: {n:'الثقة',           d:'استخلاص أفضل ما في الآخرين ومنحهم مساحة للنمو'},
+  insp : {n:'الإلهام',         d:'توجيه السلوكيات نحو تحقيق الرؤية'},
+};
+const CK = Object.keys(COMPS);
+
+const RATE = {
+  1:{n:'غير فعال إطلاقًا', s:'غير فعال إطلاقًا'},
+  2:{n:'غير فعال',        s:'غير فعال'},
+  3:{n:'فعال',            s:'فعال'},
+  4:{n:'فعال جدًا',       s:'فعال جدًا'},
+};
+
+const LEVELS = [
+  {id:1, n:'قيادة الفريق المباشر', t:'مشرف · رئيس قسم',
+   d:'مواقف يومية مع أفراد فريقك: الأداء، الالتزام، الخلافات الصغيرة، والتحفيز.'},
+  {id:2, n:'الإدارة عبر الأقسام', t:'مدير إدارة',
+   d:'مواقف تتقاطع فيها المصالح: موارد متنازع عليها، جهات متعارضة، وتأثير بلا سلطة.'},
+  {id:3, n:'القيادة التنفيذية', t:'قيادة عليا',
+   d:'قرارات استراتيجية بمعلومات ناقصة، وأثر مؤسسي واسع، وسمعة على المحك.'},
+  {id:4, n:'المعضلات والأزمات', t:'خبير',
+   d:'مواقف لا خيار فيها بلا كلفة: نزاهة، ولاءات متضاربة، وقرارات تحت النار.'},
+];
+
+/* ─────────── بنك المواقف ─────────── */
+/* k = تقدير لجنة الخبراء لفعالية الرد (1–4) · w = مسوّغ التقدير */
+const CASES = [
+
+/* ══════════ المستوى 1 — قيادة الفريق المباشر ══════════ */
+{id:'ق1-01', lvl:1, t:'تراجع مفاجئ', c:['emo','trust'],
+ s:'أحد أفضل أعضاء فريقك التزامًا تراجع أداؤه بوضوح خلال الشهر الأخير، وبدأ يصل متأخرًا ويغيب عن اجتماعات كان لا يفوتها. لم يذكر لك شيئًا، ولاحظ بقية الفريق التغيّر.',
+ l:'التراجع المفاجئ عند متميز إشارة على سبب طارئ لا على إهمال. الاستفسار قبل الإجراء يحفظ الموظف ويكشف السبب قبل أن يتكرر مع غيره.',
+ r:[
+  {t:'جلسة فردية هادئة لفهم ما تغيّر، ثم الاتفاق معه على خطة دعم محددة بمتابعة أسبوعية.', k:4,
+   w:'يعالج السبب لا العرض، ويحفظ كرامة الموظف، ويضع إطارًا قابلًا للقياس بدل الاكتفاء بالتعاطف.'},
+  {t:'تكليفه بمهمة جديدة محفزة تناسب قدراته ومراقبة أثرها على حماسه.', k:3,
+   w:'قد ينجح إن كان السبب فتور الدافعية، لكنه رهان على تشخيص لم يُجرَ بعد.'},
+  {t:'توجيه إنذار رسمي فورًا حتى لا يتأثر انضباط بقية الفريق.', k:1,
+   w:'إجراء عقابي قبل معرفة السبب يخسر أفضل الكفاءات ويُقرأ لدى الفريق كقسوة لا كعدل.'},
+  {t:'الانتظار شهرًا إضافيًا فقد تكون حالة مؤقتة تزول من تلقاء نفسها.', k:2,
+   w:'الصمت الطويل يُقرأ لا مبالاة، ويترك أثر التراجع يتراكم على الفريق وعلى الموظف معًا.'},
+ ]},
+
+{id:'ق1-02', lvl:1, t:'من يقود المهمة', c:['team','emo'],
+ s:'اثنان من فريقك يطالبان بقيادة مشروع مميز سيُعرض على الإدارة العليا. كلاهما كفؤ، والتوتر بينهما بدأ يظهر في الاجتماعات، وباقي الفريق منقسم في تأييده.',
+ l:'التنافس على الفرص صحي حتى يصبح شخصيًا. القائد يحسم بمعيار معلن، لا بمجاملة، ويحوّل الخاسر إلى شريك لا إلى خصم.',
+ r:[
+  {t:'أعلن معيار الاختيار أمام الجميع (خبرة الملف، الحمل الحالي، هدف التطوير)، ثم أحسم وفقه وأسند للآخر دورًا محوريًا موثقًا.', k:4,
+   w:'المعيار المعلن ينقل الخلاف من «محاباة» إلى «قاعدة»، والدور المحوري يحفظ الطرف الثاني داخل المشروع لا خارجه.'},
+  {t:'أجلس معهما معًا لأفهم دوافع كل منهما قبل أن أقرر.', k:3,
+   w:'خطوة استكشافية جيدة لكنها ناقصة: الاستماع بلا معيار حسم يطيل التوتر ويؤجل القرار.'},
+  {t:'أقسم قيادة المشروع بينهما مناصفة لتجنب إغضاب أي طرف.', k:2,
+   w:'القيادة المزدوجة بلا فصل واضح للمسؤولية تُنتج ارتباكًا في التنفيذ وتؤجل الخلاف إلى منتصف المشروع.'},
+  {t:'أُسندها للأعلى صوتًا وإلحاحًا لإنهاء الجدل سريعًا.', k:1,
+   w:'يكافئ الضغط لا الكفاءة، ويعلّم الفريق أن الإلحاح طريق الفرص.'},
+ ]},
+
+{id:'ق1-03', lvl:1, t:'الخبير الرافض', c:['insp','trust'],
+ s:'أطلقت المؤسسة نظامًا رقميًا جديدًا. أكثر أعضاء فريقك خبرة يرفضه علنًا ويقول إن الطريقة القديمة أدق وأسرع، وبدأ اثنان من الأحدث يقلّدانه في التردد.',
+ l:'مقاومة الخبير ليست عنادًا غالبًا، بل خوف على مكانة بناها بخبرته. تحويله إلى مرجع في النظام الجديد يحفظ مكانته ويكسبك أقوى مؤيد.',
+ r:[
+  {t:'أستمع لاعتراضه التقني بجدية، وأكلفه بمهمة مرجعية في النظام الجديد يراجع فيها الثغرات ويدرّب الأحدث.', k:4,
+   w:'يحوّل المقاومة إلى ملكية: الخبير يحفظ مكانته، والفريق يرى أقوى المعترضين وقد صار المرجع.'},
+  {t:'أعرض عليه بيانات مقارنة بين النظامين وأطلب رأيه المكتوب قبل تعميم أي إجراء.', k:3,
+   w:'يحترم خبرته ويستند للأدلة، لكنه يبقي الموقف نقاشًا فنيًا دون معالجة دافعه الحقيقي.'},
+  {t:'أذكّره أمام الفريق بأن القرار مؤسسي وغير قابل للنقاش.', k:2,
+   w:'يفرض الامتثال الظاهري ويخسر خبرته، ويحوّل ترددًا فرديًا إلى قضية عامة أمام الأحدث.'},
+  {t:'أعفيه من استخدام النظام مؤقتًا حفاظًا على إنتاجيته العالية.', k:1,
+   w:'الاستثناء لأقوى شخصية في الفريق يُسقط النظام عمليًا ويعلّم الجميع أن القواعد قابلة للتفاوض.'},
+ ]},
+
+{id:'ق1-04', lvl:1, t:'إجازة في الذروة', c:['emo','impr'],
+ s:'قبل يومين من تسليم مهم، طلب أحد أعضاء الفريق إجازة اضطرارية ثلاثة أيام لظرف عائلي لم يفصّله. غيابه يعني إعادة توزيع عمله على فريق منهك أصلًا.',
+ l:'الظرف الاضطراري اختبار لثقة الفريق بك أكثر منه اختبار جدولة. الموازنة الصحيحة: امنح الإجازة وأعد تصميم العمل، لا أن تختار بين الإنسان والتسليم.',
+ r:[
+  {t:'أوافق على الإجازة فورًا، ثم أجمع الفريق لإعادة توزيع الحد الأدنى الحرج وأتفاوض على ما يمكن تأجيله من نطاق التسليم.', k:4,
+   w:'يحفظ الإنسان ويحمي التسليم معًا، ويعالج العبء بإعادة تصميم العمل لا بتحميله على المنهكين.'},
+  {t:'أوافق وأطلب منه تسليم ملخص مكتوب لما أنجزه ونقاط الاستئناف قبل مغادرته.', k:3,
+   w:'تصرف عملي يقلل كلفة الغياب، لكنه يترك عبء إعادة التوزيع كاملًا على بقية الفريق.'},
+  {t:'أطلب منه تأجيل يومين حتى يمر التسليم ثم يأخذ إجازته كاملة.', k:2,
+   w:'قد يكون مقبولًا لو كان الظرف مرنًا، لكن طلب التأجيل دون معرفة طبيعته يخاطر بثقة الفريق كلها.'},
+  {t:'أرفض الطلب وأذكّره بأن الجميع يضحّي في المواعيد الحرجة.', k:1,
+   w:'الرفض في ظرف اضطراري يُدفع ثمنه ولاءً مفقودًا يفوق كلفة أي تسليم واحد.'},
+ ]},
+
+{id:'ق1-05', lvl:1, t:'الغارق في التفاصيل', c:['trust','impr'],
+ s:'موظفة انضمت قبل أربعة أشهر، جودة عملها ممتازة لكن سرعتها نصف المتوقع لأنها تراجع كل تفصيل مرارًا. بدأت تتأخر عن مواعيدها الداخلية وتعتذر كثيرًا.',
+ l:'الإتقان المفرط عند الجدد خوف من الخطأ لا حبٌّ للتفاصيل. تعريف «جيد بما يكفي» صراحةً هو ما يحرر سرعتهم دون أن يفقدوا جودتهم.',
+ r:[
+  {t:'أضع معها معيارًا مكتوبًا لمستوى «الجاهز للتسليم» لكل نوع مهمة، وأتفق على سقف زمني تجريبي مع مراجعة بعد أسبوعين.', k:4,
+   w:'يعالج الجذر: غياب تعريف واضح للكفاية. المعيار المكتوب يمنحها إذنًا بالتوقف عند حد معلوم.'},
+  {t:'أطمئنها أن أخطاء المرحلة الأولى متوقعة ومقبولة، وأكلفها بمهمة قصيرة بوقت محدد للتدريب على الإيقاع.', k:3,
+   w:'يخفف الخوف ويبني الإيقاع تدريجيًا، لكنه يفتقر إلى معيار جودة صريح تقيس عليه نفسها.'},
+  {t:'أقلل حجم مهامها حتى تلحق بالمواعيد.', k:2,
+   w:'يخفي العَرَض ويؤخر نموها، ويرسل لها إشارة بأن قدرتها محل شك.'},
+  {t:'أنبهها أن السرعة عنصر في التقييم وأترك لها معالجة الأمر.', k:1,
+   w:'يضيف ضغطًا على سبب المشكلة نفسه (الخوف) بلا أداة، فيزيد التردد والمراجعة.'},
+ ]},
+
+{id:'ق1-06', lvl:1, t:'شكوى من زميل', c:['info','emo'],
+ s:'جاءك موظف يشكو أن زميله لا ينجز نصيبه في مهمة مشتركة وأنه يحمل العبء وحده منذ شهر. لم تصلك شكوى سابقة، والزميل المذكور لم يتغيب ولم يُلاحظ عليه شيء.',
+ l:'الشكوى رواية طرف واحد، والقائد الذي يتصرف بها وحدها يخسر عدالته. الاستماع ثم التحقق ثم المعالجة المشتركة — بهذا الترتيب.',
+ r:[
+  {t:'أستمع له كاملًا وأشكره، ثم أراجع توزيع المهام ومخرجاتها الفعلية قبل أن أتحدث مع الطرف الآخر.', k:4,
+   w:'يقدّر المبادرة بالشكوى ويستند إلى دليل موضوعي قبل الحكم، فلا يظلم غائبًا عن النقاش.'},
+  {t:'أجمع الاثنين فورًا لمواجهة الشكوى وحلها أمامي.', k:2,
+   w:'المواجهة قبل التحقق تحرج الشاكي وتضع المشكو منه في موقع الدفاع، فتتحول القضية إلى خصومة.'},
+  {t:'أعيد توزيع المهمة بحيث يعمل كل منهما منفصلًا عن الآخر.', k:2,
+   w:'يزيل الاحتكاك ولا يزيل السبب، ويحرم الفريق من تعلّم حل الخلاف.'},
+  {t:'أطلب منه التحلي بالصبر وأن يعالج الأمر مباشرة مع زميله.', k:1,
+   w:'إعادة المشكلة لصاحبها بعد أن رفعها إليك تُفقده الثقة في جدوى اللجوء إلى قيادته.'},
+ ]},
+
+{id:'ق1-07', lvl:1, t:'مكافأة واحدة', c:['team','impr'],
+ s:'خُصصت لفريقك مكافأة تقديرية واحدة فقط عن ربع حقق فيه الفريق كله نتائج استثنائية بجهد جماعي واضح، ولا يمكن تقسيمها.',
+ l:'المكافأة الفردية في إنجاز جماعي تختبر عدالتك. المعيار الشفاف يحمي القرار، والتقدير غير المادي للبقية يحفظ روح الفريق.',
+ r:[
+  {t:'أعلن معيارًا واحدًا واضحًا للاستحقاق قبل الإعلان عن الفائز، وأوثّق إسهام كل فرد في تقرير الربع يصل للإدارة.', k:4,
+   w:'يحمي القرار بمعيار مسبق ويمنح البقية تقديرًا موثقًا له قيمة مهنية حقيقية.'},
+  {t:'أمنحها لمن كان أثره الأكبر على النتيجة وأشرح للفريق سبب الاختيار بأمثلة محددة.', k:4,
+   w:'الشفافية في السبب هي ما يجعل التفضيل مقبولًا؛ الأمثلة المحددة تحوّل الاختيار من ذوق إلى دليل.'},
+  {t:'أمنحها بالتناوب لمن لم ينلها سابقًا تحقيقًا للعدالة.', k:2,
+   w:'يساوي بين المجتهد وغيره، ويحوّل التقدير إلى دور لا إلى استحقاق، فيفقد معناه.'},
+  {t:'أعتذر عن استلامها تجنبًا لإثارة الحساسية داخل الفريق.', k:1,
+   w:'يحرم الفريق من تقدير استحقه، ويُقرأ ضعفًا في القدرة على اتخاذ قرار صعب.'},
+ ]},
+
+{id:'ق1-08', lvl:1, t:'صوت يعلو على الجميع', c:['team','insp'],
+ s:'في اجتماعات فريقك، يستحوذ أحد الأعضاء على معظم وقت النقاش ويقاطع الآخرين قبل إكمال أفكارهم. أفكاره جيدة غالبًا، لكن ثلاثة أعضاء توقفوا عن المشاركة تمامًا.',
+ l:'الصمت في الاجتماع ليس رضًا بل انسحاب. ضبط قواعد النقاش يعالج السلوك بلا إحراج، ويستعيد الأصوات التي خسرتها دون أن تلاحظ.',
+ r:[
+  {t:'أضع قاعدة نقاش معلنة للجميع (جولة رأي قبل النقاش المفتوح)، ثم أنبهه على انفراد بأثر المقاطعة على مشاركة الآخرين.', k:4,
+   w:'يعالج المستويين: قاعدة عامة تحمي الجميع بلا إحراج، وتغذية راجعة خاصة تعالج السلوك عند مصدره.'},
+  {t:'أوجّه أسئلة مباشرة بالاسم للأعضاء الصامتين لأفتح لهم مساحة.', k:3,
+   w:'يستعيد الأصوات المفقودة فورًا لكنه لا يعالج سلوك المقاطعة، فيتكرر الموقف في كل اجتماع.'},
+  {t:'أقاطعه بحزم أمام الجميع حين يقاطع ليعرف الفريق أن السلوك مرفوض.', k:2,
+   w:'يوقف السلوك في اللحظة ويكسب صداقة الصامتين، لكنه يصنع خصمًا ويحوّل الاجتماع إلى ساحة.'},
+  {t:'أتجاهل الأمر ما دامت أفكاره تفيد النقاش.', k:1,
+   w:'ثمن الأفكار الجيدة هنا هو صمت ثلاثة أعضاء — وهي صفقة خاسرة لأي فريق.'},
+ ]},
+
+{id:'ق1-09', lvl:1, t:'تكليف قبل الإغلاق', c:['init','impr'],
+ s:'قبل نصف ساعة من نهاية الدوام وصل تكليف عاجل يُسلَّم صباح الغد، والفريق أنهى أسبوعًا مرهقًا، والمعلومات المرفقة ناقصة.',
+ l:'التكليف العاجل الناقص يُدار بفرز لا بحماس: ما يمكن إنجازه الآن، وما يحتاج معلومة، وما يُفاوَض عليه — قبل أن تطلب من أحد البقاء.',
+ r:[
+  {t:'أحصر النواقص فورًا وأحدد ما يمكن إنجازه بالمتاح، ثم أطلب تطوعًا من اثنين فقط للجزء الحرج مع تعويض واضح.', k:4,
+   w:'يفصل الممكن عن المعطل، ويحصر العبء في أقل عدد، ويحفظ العدالة بالتعويض بدل الاستنزاف.'},
+  {t:'أتواصل مع جهة التكليف لتوضيح النواقص والتفاوض على تسليم مرحلي صباحًا.', k:4,
+   w:'يهاجم سبب الأزمة لا عرضها؛ التسليم المرحلي مخرج مهني يحمي الجودة والفريق معًا.'},
+  {t:'أطلب من الفريق كله البقاء حتى إنجاز المهمة.', k:2,
+   w:'استنزاف غير مبرر لمن لا يحتاجهم العمل، وثمنه يظهر في الأسبوع التالي لا الليلة.'},
+  {t:'أنجزها بنفسي بعد انصراف الفريق تجنبًا لإثقالهم.', k:2,
+   w:'نبيل في ظاهره، لكنه يخفي حجم العبء عن الإدارة ويجعل الحالة الاستثنائية قاعدة متوقعة.'},
+ ]},
+
+{id:'ق1-10', lvl:1, t:'ترقية قبل أوانها', c:['trust','emo'],
+ s:'موظف مجتهد طلب ترقية بعد سنة واحدة. أداؤه جيد لكنه لم يتولَّ بعد أي مسؤولية قيادية، والدرجة الأعلى تتطلب خبرة لا يملكها. يبدو عليه الحماس والقلق معًا.',
+ l:'رفض الطلب دون رسم طريق يُنتج موظفًا محبطًا؛ والوعد غير الممكن يُنتج موظفًا فاقدًا للثقة. الطريق المكتوب هو الجواب الوحيد الذي يحفظ الاثنين.',
+ r:[
+  {t:'أوضح بصراحة الفجوة بين مستواه ومتطلبات الدرجة، وأضع معه خطة مكتوبة بمهام تطويرية ومحطات مراجعة ربعية.', k:4,
+   w:'يحوّل «لا» إلى «ليس بعد، وهذا الطريق»؛ الخطة المكتوبة تُبقي الدافعية وتجعل القرار قابلًا للقياس لا للتأويل.'},
+  {t:'أشكره على طموحه وأكلفه بقيادة مبادرة صغيرة لاختبار جاهزيته القيادية عمليًا.', k:3,
+   w:'يمنحه فرصة حقيقية ودليلًا عمليًا، لكنه يترك توقعه بالترقية معلقًا بلا إطار زمني واضح.'},
+  {t:'أخبره أن الترقيات تتبع سياسة المؤسسة ولا شأن لي بها.', k:2,
+   w:'صحيح إجرائيًا وفاشل قياديًا: يتنصل من دورك في تطويره ويتركه بلا اتجاه.'},
+  {t:'أعده بترقية في الدورة القادمة لأحافظ على حماسه.', k:1,
+   w:'وعد لا تملكه يشتري رضًا شهرين ويكلفك مصداقيتك عند أول دورة تمر.'},
+ ]},
+
+{id:'ق1-11', lvl:1, t:'خطأ وصل للمتعامل', c:['info','impr'],
+ s:'اكتشفت أن تقريرًا سُلّم لمتعامل خارجي قبل أسبوع يحتوي خطأً في بيانات ثانوية لا تغيّر النتيجة النهائية لكنها تظهر في المرفقات. لم يلاحظه أحد بعد.',
+ l:'الأخطاء الصغيرة المكتشفة ذاتيًا هي أرخص فرصة لبناء الثقة. إخفاؤها يحوّل خطأً ثانويًا إلى مسألة نزاهة إن ظهر لاحقًا.',
+ r:[
+  {t:'أبلغ المتعامل بتصحيح موثق يوضح الخطأ ونطاق أثره، وأراجع داخليًا سبب تسربه عبر مراحل المراجعة.', k:4,
+   w:'الإفصاح الذاتي يحوّل الخطأ إلى دليل على دقة المؤسسة، والمراجعة الداخلية تمنع تكراره.'},
+  {t:'أصحح النسخة الداخلية وأدرج التصحيح ضمن التقرير القادم دون إشعار منفصل.', k:2,
+   w:'يعالج الملف ولا يعالج الثقة؛ اكتشاف المتعامل لاحقًا أن الخطأ كان معلومًا أشد ضررًا من الخطأ نفسه.'},
+  {t:'أتجاهل الأمر ما دام لا يغيّر النتيجة ولم يلاحظه أحد.', k:1,
+   w:'يعلّق مصداقية المؤسسة على ألّا ينتبه أحد — رهان يخسر مرة واحدة فيكلف كل شيء.'},
+  {t:'أبلغ رئيسي المباشر بالخطأ وأترك له قرار الإفصاح.', k:3,
+   w:'تصرف سليم في التسلسل، لكنه ينقل القرار دون أن يقدم توصية، فيبطئ معالجة تحتاج سرعة.'},
+ ]},
+
+{id:'ق1-12', lvl:1, t:'الكفؤ الصامت', c:['trust','insp'],
+ s:'عضو في فريقك ينجز عمله بجودة عالية لكنه لا يشارك برأي في أي اجتماع ولا يتقدم لأي مبادرة. حين تسأله مباشرة يعطي إجابات قصيرة دقيقة ثم يصمت.',
+ l:'الصمت قد يكون طبعًا لا انسحابًا. المطلوب ليس تحويله إلى متحدث، بل فتح قنوات مساهمة تناسب طبيعته قبل الحكم على مشاركته.',
+ r:[
+  {t:'أفتح له قناة مساهمة تناسبه (مراجعة مكتوبة قبل الاجتماع، أو عرض بندٍ يخصه)، وأسأله على انفراد عمّا يسهّل مشاركته.', k:4,
+   w:'يفصل «المشاركة» عن «الحديث في الاجتماع»، فيستخرج قيمته دون إجباره على قالب لا يناسبه.'},
+  {t:'أكلفه بعرض نتائج عمله أمام الفريق شهريًا لبناء ثقته تدريجيًا.', k:3,
+   w:'يبني الثقة بالتعرض المتدرج، لكنه يفترض أن الحل في التدريب دون التحقق من السبب.'},
+  {t:'أطلب منه في الاجتماع أن يبدي رأيه في كل بند ليعتاد المشاركة.', k:2,
+   w:'الإلزام العلني يضاعف التوتر عند الشخصية المتحفظة وقد يدفعها لمزيد من الانكماش.'},
+  {t:'أتركه على حاله ما دامت مخرجاته ممتازة.', k:2,
+   w:'مقبول للإنتاجية وخاسر للتطوير: يحرم الفريق من خبرته ويحرمه من مسار نمو يستحقه.'},
+ ]},
+
+/* ══════════ المستوى 2 — الإدارة عبر الأقسام ══════════ */
+{id:'ق2-01', lvl:2, t:'أولويتان متعارضتان', c:['info','impr'],
+ s:'طلبت منك جهتان أعلى منك تنفيذ مهمتين في التوقيت نفسه، ولا يمكن إنجازهما معًا بالجودة المطلوبة. كل جهة تعتبر مهمتها الأولوية القصوى، ولا تتواصلان مباشرة.',
+ l:'تعارض الأولويات ليس قرارك بل قرارهم؛ دورك أن تجعل التعارض مرئيًا بالأرقام بدل أن تبتلعه وتدفع ثمنه وحدك.',
+ r:[
+  {t:'أعرض التعارض مكتوبًا على الجهتين مع تقدير دقيق للوقت والموارد، وأطلب تحديد الأولوية أو تعديل أحد المواعيد.', k:4,
+   w:'يعيد القرار لمن يملكه، ويحوّل خلافًا ضمنيًا إلى مفاضلة صريحة مبنية على أرقام.'},
+  {t:'أنجز الأعلى أثرًا على المؤسسة حسب تقديري المهني، وأشعر الجهة الأخرى مبكرًا بموعد بديل واقعي.', k:3,
+   w:'قرار مسؤول حين يتعذر التصعيد، لكنه يحمّلك مفاضلة ليست صلاحيتك وقد تُفسَّر انحيازًا.'},
+  {t:'أحاول إنجاز المهمتين معًا بجودة أقل دون إخبار أي جهة.', k:1,
+   w:'يخفي المشكلة حتى تنفجر عند التسليم، ويكلفك الثقة لدى الجهتين معًا بدل واحدة.'},
+  {t:'أنفّذ مهمة الجهة الأقوى نفوذًا وأؤجل الأخرى دون إشعار.', k:1,
+   w:'يجعل النفوذ معيار الأولوية لا المصلحة، ويؤسس لسابقة تتكرر ضدك لاحقًا.'},
+ ]},
+
+{id:'ق2-02', lvl:2, t:'المورد المماطل', c:['init','impr'],
+ s:'مورد خارجي تأخر في تسليم مكوّن أساسي، وتبريراته متكررة وغير مقنعة. الموعد النهائي بعد أسبوعين ولا بديل جاهز، والعقد يتضمن غرامات تأخير لم تُفعَّل.',
+ l:'المماطلة تُعالَج بمسارين متوازيين: تصعيد ملزم مع المورد، وتقليل اعتمادك عليه. الاكتفاء بالمتابعة اليومية رهان على وعد سبق أن أُخلف.',
+ r:[
+  {t:'أعقد اجتماع تصعيد مع إدارة المورد بخطة زمنية ملزمة موثقة، وبالتوازي أبدأ تأهيل بديل احتياطي.', k:4,
+   w:'مسار مزدوج: يضغط بالتوثيق ويقلل الاعتماد في الوقت نفسه، فلا يبقى مصيرك بيد طرف أخلّ مرتين.'},
+  {t:'أعيد ترتيب خطة المشروع للعمل على المسارات غير المعتمدة على المورد ريثما يُحسم الموقف.', k:3,
+   w:'يكسب وقتًا ويحمي التقدم، لكنه لا يضغط على المورد ولا يبني بديلًا.'},
+  {t:'أواصل المتابعة اليومية وأنتظر وفاءه بوعده الأخير.', k:2,
+   w:'يكرر ما ثبت فشله؛ المتابعة بلا آلية إلزام لا تغير سلوك من اعتاد التأجيل.'},
+  {t:'أنهي التعاقد فورًا وأبحث عن مورد جديد.', k:1,
+   w:'يضيف كلفة تعاقد وتأهيل إلى مشروع لم يتبقَّ له أسبوعان — الحل أسوأ من المشكلة.'},
+ ]},
+
+{id:'ق2-03', lvl:2, t:'الفضل المنسوب', c:['emo','trust'],
+ s:'في اجتماع أمام الإدارة العليا، عرض زميلك نتائج مشروع مشترك ونسب لنفسه الجزء الأكبر من عمل أنجزتَه أنت، ولم يشر إلى دورك. لاحظ اثنان من الحاضرين ذلك.',
+ l:'استرداد الفضل في اللحظة يكلفك أكثر مما يعيد. المعالجة الخاصة أولًا، ثم التوثيق المهني — والتصعيد آخر الأدوات لا أولها.',
+ r:[
+  {t:'أتحدث معه على انفراد بعد الاجتماع لأوضح أثر ما حدث، وأتفق معه على آلية عرض مشتركة للمشاريع القادمة.', k:4,
+   w:'يعالج السلوك مع صاحبه أولًا ويحوّل الحادثة إلى قاعدة تمنع تكرارها، دون إشعال خصومة.'},
+  {t:'أرسل للإدارة ملخصًا مكتوبًا يوثق توزيع المهام في المشروع بأسلوب مهني محايد.', k:3,
+   w:'يصحح السجل بهدوء، لكنه قد يُقرأ ردًّا غير مباشر إن لم يسبقه حديث صريح مع الزميل.'},
+  {t:'أقاطعه أثناء الاجتماع لتصحيح المعلومة أمام الجميع.', k:2,
+   w:'يسترد الفضل ويخسر الحليف؛ الإدارة تتذكر المشهد أكثر مما تتذكر التصحيح.'},
+  {t:'أمتنع عن التعاون معه مستقبلًا دون إخباره بالسبب.', k:1,
+   w:'عقاب صامت يضر المؤسسة، ولا يصحح المعلومة، ولا يمنع تكرار السلوك مع غيرك.'},
+ ]},
+
+{id:'ق2-04', lvl:2, t:'البوابة المغلقة', c:['idea','emo'],
+ s:'مشروعك يحتاج موافقة قسم آخر، ومديره يماطل في الرد منذ ثلاثة أسابيع رغم المتابعات. لا سلطة لك عليه، ومشروعك يتأخر، وتسمع أن فريقه مثقل بأولويات أخرى.',
+ l:'التأثير بلا سلطة يبدأ من مصلحة الطرف الآخر لا من حاجتك أنت. من يفهم ضغط زميله يجد مدخلًا لا يجده من يكرر المطالبة.',
+ r:[
+  {t:'أطلب لقاءً قصيرًا لأفهم ضغوطه وأولوياته، ثم أقترح تخفيف عبء المراجعة عليه (ملف جاهز، نطاق أضيق، أو دعم من فريقي).', k:4,
+   w:'يحوّل طلبك من عبء إضافي إلى حل لمشكلته، وهو المدخل الوحيد الفعال حين لا تملك سلطة.'},
+  {t:'أرسل له خطابًا رسميًا موثقًا يحدد أثر التأخير على المشروع ومهلة زمنية للرد.', k:3,
+   w:'يوثّق الموقف ويحرّك الإجراء، لكنه يضع العلاقة في مسار رسمي قد يبطئ ما بعده.'},
+  {t:'أصعّد الأمر مباشرة إلى الإدارة العليا لإلزامه بالرد.', k:2,
+   w:'قد يحصّل الموافقة ويخسر التعاون؛ التصعيد قبل استنفاد المحاولة المباشرة يُقرأ تجاوزًا.'},
+  {t:'أمضي في المشروع دون موافقته وأعالج الأمر لاحقًا.', k:1,
+   w:'يخلق مخالفة إجرائية ومسؤولية عليك، ويحوّل زميلًا مترددًا إلى معترض صريح.'},
+ ]},
+
+{id:'ق2-05', lvl:2, t:'ميزانية مقتطعة', c:['idea','impr'],
+ s:'في منتصف مشروع مهم، خُفضت ميزانيته 30% لأسباب مؤسسية عامة. الأهداف المعلنة للمشروع لم تتغير، والفريق علم بالخبر وبدأ يتساءل عن الجدوى.',
+ l:'خفض الموارد مع ثبات الأهداف معادلة مستحيلة؛ مهمة القائد أن يعيد التفاوض على أحد طرفيها بالأرقام، لا أن يطلب من فريقه سد الفرق.',
+ r:[
+  {t:'أعيد ترتيب النطاق بأثر كل مكوّن على الهدف، وأعرض على الإدارة خيارين موثقين: نطاق أضيق بالجودة نفسها، أو موعد أبعد بالنطاق نفسه.', k:4,
+   w:'يترجم الخفض إلى مفاضلة صريحة أمام صاحب القرار بدل ابتلاعه، ويحمي الجودة والفريق معًا.'},
+  {t:'أشرح للفريق الصورة كاملة وأشركهم في تحديد ما يمكن الاستغناء عنه دون المساس بالهدف.', k:4,
+   w:'الشفافية تُطفئ الشائعة، والإشراك يحوّل الخفض من قرار مفروض إلى مشكلة يملكها الفريق.'},
+  {t:'أمضي بالخطة كما هي وأطلب من الفريق جهدًا إضافيًا لتعويض الفارق.', k:1,
+   w:'تحميل الفجوة على الناس يُنتج إرهاقًا وجودة أقل، ويخفي أثر الخفض عن من قرره.'},
+  {t:'أجمّد المشروع حتى تُعاد الميزانية كاملة.', k:2,
+   w:'رد فعل لا قرار؛ يهدر ما أُنجز ويضعف موقفك حين تطلب موارد مستقبلًا.'},
+ ]},
+
+{id:'ق2-06', lvl:2, t:'تمدد النطاق', c:['impr','emo'],
+ s:'الجهة المستفيدة الداخلية تضيف طلبات جديدة كل أسبوع باعتبارها «تفاصيل بسيطة». تراكمت الإضافات حتى صارت تعادل ثلث المشروع، والموعد النهائي لم يتغير.',
+ l:'كل إضافة «بسيطة» صغيرة وحدها وكبيرة مجتمعة. جعل الكلفة مرئية عند كل طلب هو ما يوقف التمدد دون أن تبدو معرقلًا.',
+ r:[
+  {t:'أضع آلية معلنة: كل طلب جديد يُقدَّر أثره على الموعد والموارد ويُعتمد أو يؤجل بقرار موثق من الجهة نفسها.', k:4,
+   w:'يوقف التمدد بلا رفض: صاحب الطلب هو من يفاضل، فيرى الكلفة التي كانت مخفية عنه.'},
+  {t:'أجمع الإضافات في ملحق مرحلة ثانية وأعرضه عليهم مع أثر إدراجه في المرحلة الحالية.', k:4,
+   w:'يحفظ العلاقة ويحمي التسليم، ويعطي طلباتهم مكانًا حقيقيًا بدل رفضها.'},
+  {t:'أقبل ما يمكن قبوله وأتحمل الفارق بجهد الفريق حفاظًا على العلاقة.', k:2,
+   w:'يشتري رضًا مؤقتًا بثمن يدفعه فريقك، ويؤكد للجهة أن الإضافة بلا كلفة.'},
+  {t:'أرفض أي إضافة بعد اعتماد النطاق التزامًا بالعقد.', k:2,
+   w:'دفاع سليم شكلًا، لكنه يُقرأ جمودًا ويهدر فرص تحسين حقيقية ظهرت أثناء التنفيذ.'},
+ ]},
+
+{id:'ق2-07', lvl:2, t:'انفجار في الاجتماع', c:['emo','team'],
+ s:'في اجتماع خطة الربع، احتد الخلاف بين مديرة المبيعات ومدير العمليات: هي تتهم فريقه بإفشال وعودها، وهو يتهمها ببيع ما لا يمكن تسليمه. ارتفعت الأصوات والفريق كله يشاهد.',
+ l:'الصراع العلني بين قياديين يُدار على مرحلتين: إيقاف التصعيد فورًا دون إذلال أحد، ثم معالجة الجذر ببيانات في جلسة مهيكلة.',
+ r:[
+  {t:'أوقف النقاش بحزم وأحدد جلسة ثلاثية غدًا مبنية على بيانات الوعود مقابل التسليم، ثم أكمل جدول اليوم.', k:4,
+   w:'يفصل إيقاف التصعيد عن معالجة السبب، ويحوّل الاتهامات المتبادلة إلى مقارنة أرقام.'},
+  {t:'أعترف أمام الجميع بوجود فجوة حقيقية بين البيع والتسليم وأعلن أنها أولويتي هذا الربع.', k:3,
+   w:'ينزع الشخصنة عن الخلاف ويعطيه إطارًا مؤسسيًا، لكنه لا يوقف التوتر في اللحظة ولا يحدد آلية.'},
+  {t:'أنحاز لمن أراه محقًا وأحسم الجدال أمام الجميع.', k:2,
+   w:'الحكم العلني بلا بيانات يُنتج مظلومًا يحتفظ بمعلوماته عنك لاحقًا.'},
+  {t:'أؤجل الموضوع بلطف وأغيّر مسار النقاش على أمل أن يهدآ لاحقًا.', k:2,
+   w:'التأجيل بلا موعد معالجة تجنّب بثياب دبلوماسية؛ ينفجر الخلاف أشد بعد أسبوعين.'},
+ ]},
+
+{id:'ق2-08', lvl:2, t:'عبء قسم آخر', c:['impr','team'],
+ s:'يتحمل فريقك منذ شهرين مهام يفترض أن يؤديها قسم مجاور يعاني نقص كوادر. بدأ أثر ذلك يظهر على مهامكم الأساسية، والإدارة تشكر فريقك على «المرونة».',
+ l:'المساعدة المؤقتة التي لا تُوثَّق تتحول إلى مسؤولية دائمة. جعل العبء مرئيًا بالأرقام هو ما يفتح باب الحل المؤسسي.',
+ r:[
+  {t:'أوثّق حجم العمل المنقول وأثره على مخرجاتنا بالأرقام، وأعرضه على الإدارة مع خيارات: تدعيم القسم، أو نقل رسمي للمهام مع مواردها، أو موعد انتهاء للترتيب المؤقت.', k:4,
+   w:'يحوّل شكوى إلى ملف قرار؛ الخيارات الثلاثة تُظهرك حلّالًا لا متذمرًا.'},
+  {t:'أتحدث مع مدير القسم المجاور لوضع جدول زمني واضح لاستعادة المهام.', k:3,
+   w:'خطوة صحيحة تحفظ العلاقة، لكنها تتجاوز سبب المشكلة (نقص الكوادر) الذي لا يملك حله.'},
+  {t:'أستمر في التغطية حفاظًا على سير العمل وسمعة فريقي في المرونة.', k:2,
+   w:'يثبّت الخلل ويحوّل الاستثناء إلى قاعدة، والثمن يظهر في مخرجاتكم الأساسية لا في شكركم.'},
+  {t:'أوقف التغطية فورًا وأعيد المهام إلى القسم المعني.', k:1,
+   w:'يعالج فريقك ويضر المؤسسة والمتعاملين، ويجعلك طرفًا في المشكلة بدل أن تكون جزءًا من حلها.'},
+ ]},
+
+{id:'ق2-09', lvl:2, t:'نظام مفروض', c:['insp','emo'],
+ s:'قررت الإدارة العليا اعتماد نظام عمل جديد يزيد الأعباء الإدارية على فريقك مقابل فائدة رقابية غير واضحة لهم. أنت مطالب بتطبيقه، ولك تحفظات شخصية عليه.',
+ l:'القائد ليس ناطقًا باسم الإدارة ولا معارضًا أمام فريقه. الصدق في نقل ما تملك وما لا تملك، مع قناة حقيقية للملاحظات، هو ما يحفظ الثقة والتنفيذ معًا.',
+ r:[
+  {t:'أشرح القرار وأسبابه بصدق دون تبرير زائف، وأفتح قناة موثقة لجمع ملاحظات الفريق أرفعها للإدارة، وأحسّن ما أملكه من إجراءات لتخفيف العبء.', k:4,
+   w:'يفصل ما تملكه عمّا لا تملكه، ويمنح الفريق صوتًا حقيقيًا بدل تنفيس عاطفي، ويخفض العبء فعليًا.'},
+  {t:'أطبّق النظام بالكامل ثم أجمع بيانات ثلاثة أشهر عن كلفته الفعلية لأبني عليها مراجعة موضوعية.', k:4,
+   w:'يحوّل الاعتراض إلى دليل؛ التطبيق الجاد أولًا هو ما يمنح مراجعتك لاحقًا مصداقية.'},
+  {t:'أبلغهم بالقرار مقتضبًا وأطالب بالالتزام دون نقاش.', k:2,
+   w:'يحقق امتثالًا شكليًا ويهدر فرصة جمع ملاحظات كان يمكن أن تحسّن النظام.'},
+  {t:'أُظهر تحفظي أمام الفريق وأحمّل الإدارة مسؤولية الأعباء الجديدة.', k:1,
+   w:'يشتري تعاطفًا لحظيًا ويهدم موقعك: قائد لا يملك قراره لا يُنتظر منه قيادة تنفيذه.'},
+ ]},
+
+{id:'ق2-10', lvl:2, t:'طلب فوق الطاقة', c:['info','impr'],
+ s:'طلبت الإدارة العليا من فريقك إنجاز مبادرة خلال ستة أسابيع. تقديرك المهني أنها تحتاج اثني عشر أسبوعًا بالجودة المطلوبة، والطلب جاء بصيغة توجيه لا نقاش.',
+ l:'الموافقة على مستحيل ليست ولاءً بل تأجيل للفشل. البديل المهني: اعرض ما يمكن إنجازه في المدة، لا أن ترفض المدة.',
+ r:[
+  {t:'أعرض خطة مرحلية: ما يمكن تسليمه خلال ستة أسابيع بجودة كاملة، وما يحتاج الفترة الأطول، مع أثر كل خيار على الهدف.', k:4,
+   w:'يحترم التوجيه ويقدم حلًا لا اعتراضًا، ويمنح الإدارة قرارًا واعيًا بدل مفاجأة عند التسليم.'},
+  {t:'أوضح التقدير الزمني بالأرقام وأطلب موارد إضافية تجعل الستة أسابيع ممكنة.', k:4,
+   w:'يفتح الطريق الثالث بين القبول والرفض: تغيير المعادلة بالموارد بدل تغيير الوقت أو الجودة.'},
+  {t:'أوافق على المدة وأبدأ العمل، وأبلغ الإدارة بالتأخير حين يقترب الموعد.', k:1,
+   w:'يؤجل خبرًا سيئًا حتى يصبح أسوأ، ويحرم الإدارة من فرصة القرار وأنت وحدك من يتحمل النتيجة.'},
+  {t:'أعتذر عن التكليف لعدم واقعية المدة.', k:2,
+   w:'صادق لكنه عقيم؛ يترك الحاجة قائمة بلا بديل ويقرأه المسؤول عجزًا لا تقديرًا.'},
+ ]},
+
+{id:'ق2-11', lvl:2, t:'كفاءة يتنازعها قسمان', c:['team','trust'],
+ s:'موظف متميز في فريقك طلبه قسم استراتيجي آخر لمشروع وطني مهم. انتقاله يضعف فريقك في ربع حرج، ورفضك قد يحبط الموظف الذي يرى الفرصة نقلة في مساره.',
+ l:'حجز الكفاءات يحميك ربعًا ويكلفك سمعتك سنوات. القائد الذي تُعرف عنه المسامحة في نمو أفراده تقصده الكفاءات لا تهرب منه.',
+ r:[
+  {t:'أتفاوض على انتقال مرحلي بتاريخ محدد يضمن نقل معرفته وتأهيل بديل، وأدعم انتقاله صراحة أمامه وأمام القسم الآخر.', k:4,
+   w:'يحقق الثلاثة: مصلحة المؤسسة، ونمو الموظف، وحماية فريقك بالتسليم المنظم.'},
+  {t:'أترك القرار له بعد أن أوضح له بصدق أثر انتقاله على الفريق وفرصته في المشروع الجديد.', k:3,
+   w:'يحترم استقلاله ويمنحه صورة كاملة، لكنه يحمّله عبء قرار مؤسسي ليس مسؤوليته وحده.'},
+  {t:'أرفض الانتقال في هذا الربع وأعده بالموافقة في الربع القادم.', k:2,
+   w:'يحمي الفريق مؤقتًا ويضع علاقتك بالموظف رهن وعد قد لا تملك الوفاء به.'},
+  {t:'أرفض الطلب وأوضح للقسم الآخر أن الفريق لا يحتمل فقدانه.', k:1,
+   w:'يوقف فرصة نمو ومصلحة مؤسسية، ويحوّل الموظف إلى محبط باقٍ بجسده لا بحماسه.'},
+ ]},
+
+{id:'ق2-12', lvl:2, t:'الرقم الخاطئ', c:['info','init'],
+ s:'قبل ساعة من إرسال تقرير الربع إلى المجلس، اكتشفت خطأً في رقم جوهري أعدّه قسم آخر. تصحيحه يغيّر خلاصة التقرير، ومعدّه غير متاح، والموعد لا يقبل التأجيل.',
+ l:'الرقم الخاطئ أمام المجلس يكلف مصداقية سنوات. التحقق السريع ثم الإفصاح الموثق أفضل بكثير من إرسال يعتمد على ألّا ينتبه أحد.',
+ r:[
+  {t:'أتحقق من مصدر الرقم بأسرع سبيل متاح، وأرسل التقرير مع ملاحظة صريحة بالبند قيد المراجعة وأثره على الخلاصة.', k:4,
+   w:'يحفظ الموعد والمصداقية معًا؛ الإفصاح عن عدم اليقين أقوى من ادعاء يقين غير موجود.'},
+  {t:'أبلغ رئيسي فورًا بالخطأ وأثره وأقدم له خيارين: الإرسال بملاحظة، أو طلب تمديد ساعتين.', k:4,
+   w:'يصعّد في وقته ومعه توصية، فيمنح صاحب القرار خيارات لا مشكلة فقط.'},
+  {t:'أرسل التقرير كما هو وأرسل تصحيحًا بعد التأكد من معدّ الرقم.', k:2,
+   w:'التصحيح اللاحق أمام مجلس اتخذ انطباعه بالفعل أضعف أثرًا وأعلى كلفة.'},
+  {t:'أصحح الرقم بتقديري الشخصي حتى تستقيم الخلاصة.', k:1,
+   w:'تعديل رقم دون مصدر موثق أخطر من الخطأ نفسه، ويحوّل سهوًا إلى مسألة نزاهة.'},
+ ]},
+
+/* ══════════ المستوى 3 — القيادة التنفيذية ══════════ */
+{id:'ق3-01', lvl:3, t:'ضجيج المنافس', c:['idea','impr'],
+ s:'أطلق منافسكم الرئيسي خدمة جديدة تصدّرت الأخبار، والإدارة العليا متوترة وتطالب بردّ سريع. بياناتكم تُظهر أن متعامليكم بالكاد يستخدمون هذا النوع من الخدمات، وأكبر شكاواهم في سرعة الاستجابة.',
+ l:'التفكير الاستراتيجي انحياز لبيانات متعامليك على ضجيج منافسك — مع إدارة قلق المؤسسة لا تجاهله، لأن القرار الصحيح المرفوض لا يُنفَّذ.',
+ r:[
+  {t:'أُعد ردًّا مبنيًا على البيانات: استخدام متعاملينا الفعلي، وكلفة الفرصة البديلة، وخطة تفوّق في نقطة قوتنا، مع مؤشر مراقبة يقلب القرار إن تغيّر سلوك السوق.', k:4,
+   w:'يقدم قرارًا مدروسًا لا رفضًا، ويضع شرط مراجعة يحمي من العناد إن تغيّرت المعطيات.'},
+  {t:'أطلق تجربة محدودة النطاق للميزة على شريحة صغيرة لقياس الطلب الحقيقي قبل أي التزام كبير.', k:3,
+   w:'يشتري معلومة بكلفة منخفضة ويهدئ الإدارة، لكنه يصرف انتباهًا وموارد عن الأولوية الأثبت.'},
+  {t:'أوجّه بنسخ الميزة خلال شهر لطمأنة الإدارة وإظهار المواكبة.', k:1,
+   w:'يشتري هدوءًا قصيرًا بثمن استراتيجي: منتج نصف ناضج لا يستخدمه أحد، وتأخير لما يشتكي منه المتعاملون فعلًا.'},
+  {t:'أرفض الفكرة في الاجتماع بجملة أننا لا نلهث خلف المنافسين وأغلق النقاش.', k:2,
+   w:'قد يكون الاتجاه صائبًا، لكن الرفض بلا بديل مدروس يبدو مكابرة ويعيد الضغط أشد.'},
+ ]},
+
+{id:'ق3-02', lvl:3, t:'ظل إعادة الهيكلة', c:['emo','insp'],
+ s:'تدرس الإدارة إعادة هيكلة قد تشمل تقليصًا في إدارتك. لم يُحسم القرار بعد ولا يُسمح بالإفصاح، لكن الشائعة انتشرت وبدأ الأداء يتراجع وسألك ثلاثة من فريقك مباشرة.',
+ l:'في الغموض المؤسسي لا تملك الحقيقة كاملة، لكنك تملك الصدق. من يقول «لا أعرف، وسأخبركم فور أن أعرف» ويفي، يحفظ فريقه؛ ومن ينفي ثم يقع القرار يفقدهم إلى الأبد.',
+ r:[
+  {t:'أصارحهم بما أملك: أن دراسة جارية ولم يُحسم شيء، وأني لا أستطيع الإفصاح عن التفاصيل، وألتزم بإخبارهم فور صدور أي قرار — وأفي بذلك.', k:4,
+   w:'الصدق في حدود المسموح يبني ثقة تصمد بعد صدور القرار أيًّا كان، ويوقف الشائعة بمرجع موثوق.'},
+  {t:'أنقل للإدارة أثر الغموض على الأداء وأطالب بإعلان جدول زمني واضح للقرار ولو دون تفاصيله.', k:4,
+   w:'يعالج السبب المؤسسي لا عرضه؛ الجدول الزمني وحده يخفض القلق حتى قبل معرفة المحتوى.'},
+  {t:'أطمئنهم بأن لا شيء يستدعي القلق وأن عملهم في أمان.', k:1,
+   w:'وعد لا تملكه؛ إن وقع التقليص خسرت مصداقيتك مع من بقي قبل من غادر.'},
+  {t:'أتجنب الموضوع وأطلب منهم التركيز على العمل حتى تتضح الصورة.', k:2,
+   w:'الصمت يفسّره القلق بأسوأ الاحتمالات، ويترك الشائعة تملأ الفراغ الذي تركه قائدهم.'},
+ ]},
+
+{id:'ق3-03', lvl:3, t:'عاصفة السمعة', c:['init','info'],
+ s:'انتشر مقطع على وسائل التواصل ينتقد خدمة مؤسستكم، وحصد تفاعلًا واسعًا خلال ساعات. الواقعة صحيحة جزئيًا: الخلل حدث فعلًا لكن سياقه مختلف عمّا يُروى، وفرق العمل مشغولة بالرد الداخلي.',
+ l:'في أزمة السمعة، سرعة الاعتراف أهم من كمال الرواية. الصمت الطويل يُقرأ إقرارًا، والإنكار المتسرع يخلق أزمة ثانية أكبر من الأولى.',
+ r:[
+  {t:'أُصدر بيانًا سريعًا يقرّ بالواقعة ويعتذر عن الأثر ويعلن إجراءً محددًا بتوقيت، ثم أنشر السياق الكامل بعد التحقق خلال ٢٤ ساعة.', k:4,
+   w:'يفصل الاعتراف الفوري عن الرواية الكاملة، فيوقف التصعيد دون التزام بمعلومة لم تُتحقق.'},
+  {t:'أتواصل مباشرة مع المتضرر لمعالجة حالته أولًا، وأعلن ذلك كإجراء لا كدفاع.', k:4,
+   w:'المعالجة الحقيقية أقوى من أي بيان، وإعلانها يحوّل الأزمة إلى دليل على جدية المؤسسة.'},
+  {t:'أنتظر اكتمال التحقيق الداخلي قبل أي تعليق خارجي.', k:2,
+   w:'صحيح إجرائيًا وخاطئ توقيتًا؛ فراغ الساعات الأولى يملؤه غيرك وتصبح روايته هي الأصل.'},
+  {t:'أنشر توضيحًا يصحح المعلومات غير الدقيقة في المقطع ويبيّن أن المؤسسة لم تقصّر.', k:1,
+   w:'الدفاع قبل الاعتذار في واقعة صحيحة جزئيًا يفجّر موجة ثانية أشد، لأنه يبدو إنكارًا لضرر وقع.'},
+ ]},
+
+{id:'ق3-04', lvl:3, t:'قرار بمعلومات ناقصة', c:['idea','impr'],
+ s:'أمامك فرصة استحواذ على فريق تقني متكامل تنتهي مهلتها بعد ٤٨ ساعة. المعلومات المالية المتاحة جزئية، والفحص النافي للجهالة يحتاج أسبوعين، والفرصة لن تتكرر بهذا السعر.',
+ l:'القرار تحت ضيق الوقت لا يُقاس بكمال المعلومة بل بحجم الخسارة المحتملة. من يستطيع تحديد أسوأ سيناريو ويحتمله يستطيع أن يقرر.',
+ r:[
+  {t:'أحدد أسوأ سيناريو محتمل وكلفته، وأتفاوض على بنود حماية (دفعات مشروطة، ضمانات، حق انسحاب) تجعل المخاطرة محتملة، ثم أحسم.', k:4,
+   w:'يحوّل المجهول إلى مخاطرة محدودة مقدّرة؛ بنود الحماية هي بديل الوقت الذي لا تملكه.'},
+  {t:'أطلب تمديد المهلة أسبوعًا مقابل تنازل في السعر أو دفعة تثبيت.', k:3,
+   w:'محاولة ذكية لشراء الوقت، لكنها تعتمد على قبول الطرف الآخر وقد تكشف حاجتك.'},
+  {t:'أعتذر عن الفرصة لأن القرار دون فحص كامل مخالف لحوكمة المؤسسة.', k:2,
+   w:'آمن ومكلف؛ الحوكمة تضع حدودًا للمخاطرة لا تمنعها، والفرص النادرة نادرًا ما تنتظر اكتمال الملفات.'},
+  {t:'أوافق اعتمادًا على سمعة الفريق وقوة الانطباع الأول.', k:1,
+   w:'قرار بحجم استحواذ مبني على انطباع لا على تقدير خسارة هو مقامرة بمال المؤسسة.'},
+ ]},
+
+{id:'ق3-05', lvl:3, t:'القيادي السام', c:['emo','insp'],
+ s:'مدير تنفيذي في فريقك يحقق أعلى الأرقام في المؤسسة، لكن ثلاث استقالات في ستة أشهر خرجت من إدارته، وتقارير الموارد البشرية تشير إلى أسلوب تعامل قاسٍ. أرقامه تجعل الإدارة العليا متمسكة به.',
+ l:'الأرقام العالية من إدارة تنزف كفاءات أرقام مستدانة من المستقبل. القائد يقيس الكلفة الكاملة ويضع سقفًا زمنيًا للتغيير، لا يفاضل بين النتيجة والناس إلى الأبد.',
+ r:[
+  {t:'أعرض عليه الأثر بالبيانات (الاستقالات، كلفة الإحلال، نتائج الاستطلاع) وأضع خطة تغيير سلوكي بمؤشرات ومهلة محددة، وأوضح تبعات عدم التغيير.', k:4,
+   w:'يواجه بالدليل لا بالانطباع، ويمنح فرصة عادلة بسقف زمني — وهو ما يحمي المؤسسة والفرد معًا.'},
+  {t:'أُدرج مؤشرات بيئة العمل ودوران الموظفين ضمن تقييمه ومكافأته رسميًا.', k:4,
+   w:'يغيّر المعادلة التي تصنع السلوك: ما لا يُقاس ولا يُكافأ عليه لا يتغير مهما نُصح صاحبه.'},
+  {t:'أنقل إليه ملاحظات عامة عن أهمية أسلوب التعامل دون مواجهة صريحة.', k:2,
+   w:'الرسائل الملطفة مع شخصية تقيس نفسها بالأرقام لا تصل؛ تمر عليه كنصيحة عابرة.'},
+  {t:'أؤجل المعالجة حتى يهدأ ضغط الأرقام ثم أراجع الوضع.', k:1,
+   w:'كل شهر تأجيل يعني كفاءات إضافية تغادر ورسالة للمؤسسة بأن النتائج تشتري الاستثناء.'},
+ ]},
+
+{id:'ق3-06', lvl:3, t:'الشراكة المغرية', c:['impr','insp'],
+ s:'عُرضت عليكم شراكة تضاعف إيرادات قطاع كامل، لكن الفحص كشف مخالفات بيئية سابقة للشريك وسجل عمالي غير نظيف رغم تسوية القضايا قانونيًا. لا مانع قانوني من التعاقد.',
+ l:'ما هو قانوني ليس بالضرورة مقبولًا مؤسسيًا. سمعة تُبنى في عشر سنوات يمكن أن تُستهلك بصفقة واحدة يُحكم عليها بمعايير اليوم لا بمعايير العقد.',
+ r:[
+  {t:'أشترط في العقد معايير التزام ملزمة بمؤشرات وتدقيق مستقل وحق إنهاء فوري عند المخالفة، وأحسم بناءً على قبوله بها.', k:4,
+   w:'يحوّل الخطر إلى شرط تعاقدي قابل للقياس، ويجعل استعداد الشريك للالتزام هو الاختبار الحقيقي.'},
+  {t:'أعرض الملف كاملًا على لجنة الحوكمة وأطلب قرارًا مؤسسيًا موثقًا لا قرارًا فرديًا.', k:4,
+   w:'قرار بهذا الأثر السمعي يتجاوز صلاحية فرد؛ التوثيق المؤسسي يحمي القرار والمؤسسة معًا.'},
+  {t:'أمضي في الشراكة ما دام لا يوجد مانع قانوني، والسجل قديم ومسوّى.', k:1,
+   w:'يختزل القرار في الحد الأدنى القانوني ويتجاهل أن السمعة تُحاسَب بمعيار أخلاقي لا قضائي.'},
+  {t:'أرفض الشراكة فورًا حفاظًا على سمعة المؤسسة.', k:2,
+   w:'يحمي السمعة ويهدر قيمة كبيرة دون محاولة هيكلة تحمي الطرفين؛ الرفض أول الحلول لا آخرها.'},
+ ]},
+
+{id:'ق3-07', lvl:3, t:'ربع متراجع', c:['info','impr'],
+ s:'أنهت المؤسسة ربعًا دون المستهدف بفارق واضح. يطلب المجلس تفسيرًا في اجتماع بعد ثلاثة أيام. الأسباب مركّبة: سوق متباطئ، وتأخر مشروع داخلي، وقرار تسعير اتخذتَه أنت.',
+ l:'المجلس لا يعاقب على النتيجة بل على غياب التشخيص. تحمّل المسؤولية عن قرارك بالذات هو ما يشتري لك الثقة لتنفيذ خطة التصحيح.',
+ r:[
+  {t:'أعرض تفكيكًا رقميًا لمساهمة كل سبب في الفجوة، وأتحمل مسؤولية قرار التسعير صراحة، مع خطة تصحيح بمؤشرات ومواعيد.', k:4,
+   w:'الأرقام تمنع الجدل، والاعتراف بقرارك يشتري المصداقية، والخطة تحوّل الجلسة من محاسبة إلى قرار.'},
+  {t:'أقدم الخطة التصحيحية أولًا ثم أشرح الأسباب باختصار لتوجيه النقاش نحو المستقبل.', k:3,
+   w:'يوجّه الطاقة للأمام، لكنه قد يُقرأ تهربًا من التشخيص إن لم يسبقه تحمّل واضح للمسؤولية.'},
+  {t:'أركز على العوامل الخارجية وتباطؤ السوق لأنها السبب الأكبر موضوعيًا.', k:2,
+   w:'قد يكون صحيحًا جزئيًا، لكنه يبدو تبريرًا ويحرمك من مصداقية الاعتراف بما كان بيدك.'},
+  {t:'أعلن مستهدفًا طموحًا للربع القادم لتعويض الفجوة وطمأنة المجلس.', k:1,
+   w:'يستبدل التشخيص بوعد أكبر؛ إن لم يتحقق خسرت الربعين معًا وخسرت ثقة المجلس نهائيًا.'},
+ ]},
+
+{id:'ق3-08', lvl:3, t:'خلافة قيادية', c:['trust','insp'],
+ s:'يتقاعد قيادي محوري بعد ستة أشهر. أمامك مرشحان: نائبه الحالي (خبير بالملف، محدود في التفكير الاستراتيجي)، وقيادية من إدارة أخرى (رؤية أقوى، لا تعرف الملف). الفريق يتوقع ترقية النائب.',
+ l:'قرار الخلافة يُقاس بما تحتاجه المرحلة القادمة لا بما خدم المرحلة الماضية. وحين تخالف توقع الفريق، الشفافية في المعيار هي ما يمنع القرار من أن يُقرأ ظلمًا.',
+ r:[
+  {t:'أحدد أولًا ما تحتاجه المرحلة القادمة من الموقع، ثم أقيّم المرشحين على ذلك المعيار بأدلة، وأعلن المعيار قبل إعلان الاسم.', k:4,
+   w:'يجعل القرار مستقبليًا لا مكافأة على الماضي، والإعلان المسبق للمعيار يحمي الفريق من الشعور بالمفاجأة.'},
+  {t:'أبدأ خطة إحلال من الآن: أكلف المرشحين بمهام قيادية حقيقية خلال الأشهر الستة وأقرر بناءً على الأداء.', k:4,
+   w:'يستثمر المهلة في دليل عملي بدل التقدير النظري، ويجعل القرار نتيجة أداء لا انطباع.'},
+  {t:'أرقي النائب احترامًا لخبرته ولتوقع الفريق، وأدعم جانبه الاستراتيجي ببرنامج تطوير.', k:3,
+   w:'خيار مقبول يحفظ استقرار الفريق، لكنه يراهن على سد فجوة استراتيجية بالتدريب في موقع لا يحتمل التجربة.'},
+  {t:'أؤجل القرار حتى الشهر الأخير تجنبًا لبلبلة مبكرة في الفريق.', k:1,
+   w:'يهدر ستة أشهر كان يمكن أن تكون فترة تهيئة، ويترك الفريق في غموض أشد من أي قرار.'},
+ ]},
+
+{id:'ق3-09', lvl:3, t:'استثمار غير مضمون', c:['idea','init'],
+ s:'يقترح فريقك التقني استثمارًا كبيرًا في تقنية ناشئة قد تغيّر طريقة عمل القطاع خلال خمس سنوات، أو قد لا تنضج أبدًا. الكلفة تعادل ميزانية تطوير سنة كاملة، والعائد غير قابل للتقدير الآن.',
+ l:'الرهان الاستراتيجي لا يُقاس بالعائد المتوقع بل بكلفة التأخر. الصياغة الصحيحة: أصغر استثمار يشتري لك موقعًا إن نضجت التقنية، ولا يؤلمك إن لم تنضج.',
+ r:[
+  {t:'أقسّمه إلى مراحل بمحطات قرار: استثمار أولي محدود بمعايير نجاح معلنة، والتوسع مشروط بتحققها.', k:4,
+   w:'يحوّل رهانًا كبيرًا إلى سلسلة رهانات صغيرة قابلة للإيقاف، وهي الصيغة الوحيدة العقلانية تحت عدم اليقين.'},
+  {t:'أبني شراكة أو تجربة مشتركة مع جهة بحثية تتقاسم الكلفة والمخاطرة وتسرّع التعلم.', k:4,
+   w:'يشتري الموقع والمعرفة بجزء من الكلفة، ويقلل المخاطرة دون التخلي عن الفرصة.'},
+  {t:'أؤجل القرار سنة حتى تتضح جدوى التقنية في السوق.', k:2,
+   w:'يقلل مخاطرة المال ويزيد مخاطرة الموقع؛ من ينتظر الوضوح يدخل متأخرًا وبكلفة أعلى.'},
+  {t:'أعتمد الاستثمار كاملًا لأن التأخر عن التحول التقني أخطر من كلفته.', k:2,
+   w:'الاتجاه قد يكون صائبًا لكن الحجم غير مبرر؛ الالتزام الكامل دفعة واحدة يحرمك خيار التراجع.'},
+ ]},
+
+{id:'ق3-10', lvl:3, t:'تسرّب بيانات', c:['init','info'],
+ s:'أبلغك فريق الأمن السيبراني باختراق محدود طال بيانات اتصال لعدد من المتعاملين دون بيانات مالية. لم يُكتشف الأمر خارجيًا بعد، والتحقيق الكامل يحتاج أيامًا، والإفصاح قد يثير قلقًا واسعًا.',
+ l:'في حوادث البيانات، المعيار تنظيمي لا تسويقي. التأخير في الإبلاغ يحوّل حادثة أمنية إلى مخالفة، ويسلب المؤسسة روايتها لصالح من يكتشفها.',
+ r:[
+  {t:'أبلغ الجهة التنظيمية ضمن المهلة النظامية، وأخطر المتأثرين بما حدث وما لم يحدث وبالإجراء الوقائي، مع احتواء فني فوري.', k:4,
+   w:'يفي بالالتزام النظامي ويحفظ ثقة المتعاملين، وتحديد «ما لم يحدث» يمنع الهلع الذي يخشاه القرار البديل.'},
+  {t:'أعقد فريق أزمة فورًا يعمل بالتوازي: احتواء تقني، وتجهيز الإفصاح، وتقدير الأثر التنظيمي.', k:4,
+   w:'التوازي هو الصواب التشغيلي؛ انتظار انتهاء مسار قبل بدء آخر يهدر المهلة النظامية.'},
+  {t:'أنتظر اكتمال التحقيق لتكون الرسالة دقيقة ومكتملة قبل أي إفصاح.', k:2,
+   w:'اكتمال الرواية لا يبرر تجاوز المهلة؛ الدقة تُدار بالإفصاح المرحلي لا بالصمت.'},
+  {t:'أعالج الثغرة داخليًا وأكتفي بالمراقبة ما دام الأثر محدودًا ولم يُكتشف.', k:1,
+   w:'إخفاء حادثة بيانات مخالفة تنظيمية وخيانة لثقة المتعاملين، وكلفتها عند الانكشاف أضعاف كلفة الإفصاح.'},
+ ]},
+
+{id:'ق3-11', lvl:3, t:'ضغط لتفضيل مورد', c:['impr','emo'],
+ s:'خلال منافسة مفتوحة، ألمح إليك مسؤول ذو نفوذ بأن ترسية العقد على مورد بعينه «ستكون موضع تقدير». عرض هذا المورد ليس الأفضل فنيًا لكنه ضمن النطاق المقبول.',
+ l:'حصانة قرار الشراء في إجراءاته لا في شجاعة متخذه. من يحوّل الضغط الشخصي إلى قرار لجنة موثق يحمي المؤسسة ونفسه معًا دون مواجهة.',
+ r:[
+  {t:'أُبقي التقييم في مساره المؤسسي بمعايير موثقة ولجنة، وأوثّق أي تدخل خارج القنوات الرسمية عبر الجهة المختصة.', k:4,
+   w:'يحصّن القرار بالإجراء ويوثق الضغط دون مواجهة شخصية، فيحمي النزاهة والعلاقة معًا.'},
+  {t:'أبلغ لجنة الحوكمة أو الامتثال بالواقعة وأطلب مراقبًا مستقلًا لبقية مراحل المنافسة.', k:4,
+   w:'ينقل العبء من فرد إلى نظام، ووجود المراقب يقطع الطريق على أي ضغط لاحق.'},
+  {t:'أرسي على المورد المقترح ما دام ضمن النطاق المقبول فنيًا وتجنبًا لخصومة لا لزوم لها.', k:1,
+   w:'يفتح باب تدخلات لا تُغلق، ويعرّضك ومؤسستك لمساءلة حين يظهر أثر التفضيل لاحقًا.'},
+  {t:'أواجه المسؤول وأخبره بوضوح أن تدخله غير مقبول.', k:2,
+   w:'موقف صحيح مبدئيًا لكنه بلا توثيق؛ يخلق خصومة ولا يترك أثرًا يحميك إن أُنكر الحديث.'},
+ ]},
+
+{id:'ق3-12', lvl:3, t:'ثقافة تقاوم', c:['insp','emo'],
+ s:'برنامج التحول الذي أطلقته قبل عام حقق أهدافه التقنية بالكامل، لكن تبنّي الموظفين للممارسات الجديدة لم يتجاوز الثلث. الأنظمة جاهزة والناس عادوا لطرقهم القديمة بهدوء.',
+ l:'التحول الذي ينجح تقنيًا ويفشل سلوكيًا لم يجب عن سؤال الموظف: «ماذا يعني هذا لعملي اليومي؟». الإجابة لا تأتي من تعميم بل من قدوة ومعنى وحوافز متسقة.',
+ r:[
+  {t:'أبحث مع عيّنة من غير المتبنّين عن العوائق الحقيقية في عملهم اليومي، ثم أعالجها وأربط الحوافز والتقييم بالممارسة الجديدة.', k:4,
+   w:'يشخّص قبل أن يعالج، ثم يغيّر ما يصنع السلوك فعلًا: العوائق والحوافز لا التعميمات.'},
+  {t:'أُشرك المديرين المباشرين كقدوة أولى وأجعل التزامهم الشخصي بالممارسة شرطًا معلنًا في تقييمهم.', k:4,
+   w:'الموظف يقلّد مديره لا التعميم؛ بلا التزام طبقة الإشراف لا يصمد أي تحول.'},
+  {t:'أطلق حملة توعية داخلية مكثفة تشرح فوائد التحول وأهدافه.', k:2,
+   w:'يعالج نقص المعرفة وهو نادرًا ما يكون السبب؛ الناس لا يقاومون لأنهم لم يفهموا بل لأن العائد لهم غير واضح.'},
+  {t:'أفرض الممارسة الجديدة بإجراء إلزامي وأمنع استخدام الطرق القديمة تقنيًا.', k:3,
+   w:'يرفع التبني رقميًا بسرعة، لكنه ينتج امتثالًا شكليًا وحلولًا التفافية ما لم يعالَج سبب المقاومة.'},
+ ]},
+
+/* ══════════ المستوى 4 — المعضلات والأزمات ══════════ */
+{id:'ق4-01', lvl:4, t:'مخالفة من أعلى', c:['init','impr'],
+ s:'خلال جولة ميدانية، تجاوز قيادي أعلى منك إجراء سلامة إلزاميًا أمام عدد من الموظفين، وقال إن الوقت لا يسمح. لم يقع ضرر، لكن الموظفين رأوا المشهد وأحدهم سألك عنه لاحقًا.',
+ l:'قواعد السلامة تموت لحظة استثناء أقوى شخص في الموقع. المعالجة ليست فضح أحد بل تثبيت أن القاعدة فوق الجميع — بالإجراء لا بالمواجهة.',
+ r:[
+  {t:'أتحدث معه على انفراد فورًا وأوضح أثر المشهد على التزام الفريق، وأوثّق الواقعة عبر قناة السلامة المعتمدة بلا تشهير.', k:4,
+   w:'يجمع المعالجة المباشرة بالتوثيق النظامي، فيحفظ القاعدة ومكانة الشخص في آن.'},
+  {t:'أجيب سائلي بوضوح أن الإجراء إلزامي على الجميع بلا استثناء، وأعيد التذكير به في اجتماع السلامة القادم دون الإشارة لأحد.', k:4,
+   w:'يعيد تثبيت القاعدة عند من اهتزت لديهم، وهو الضرر الحقيقي للواقعة، دون تحويلها إلى قضية شخصية.'},
+  {t:'أتجاهل الواقعة لأنها لم تُحدث ضررًا ولأن صاحبها أعلى مني.', k:1,
+   w:'الصمت هنا موافقة صامتة؛ يعلّم الفريق أن القواعد تسقط عند مستوى معين من السلطة.'},
+  {t:'أرفع الأمر مباشرة إلى لجنة السلامة العليا دون التحدث معه.', k:2,
+   w:'التصعيد قبل المحاولة المباشرة في واقعة بلا ضرر يُقرأ استهدافًا ويغلق باب المعالجة الهادئة.'},
+ ]},
+
+{id:'ق4-02', lvl:4, t:'مخالفة رئيسك', c:['impr','init'],
+ s:'أثناء مراجعة روتينية، لاحظت نمطًا في اعتمادات مالية صغيرة متكررة وقّعها رئيسك المباشر لجهة واحدة، بما يوحي بتجاوز محتمل. الأدلة ظرفية وقد يكون هناك تفسير نظامي لا تعرفه.',
+ l:'الاشتباه ليس اتهامًا، والصمت ليس حيادًا. المسار المهني: تحقق من فهمك أولًا، ثم استخدم القناة المخصصة — لا التحقيق الشخصي ولا التجاهل.',
+ r:[
+  {t:'أوثّق الملاحظة بدقة وأستفسر عن الإطار النظامي لهذا النوع من الاعتمادات عبر الجهة المختصة دون اتهام، ثم أتصرف بحسب الجواب.', k:4,
+   w:'يفصل التحقق من الفهم عن الاتهام، ويستخدم قناة مؤهلة للحكم بدل أن تتحول أنت إلى محقق وخصم.'},
+  {t:'أبلّغ عبر قناة الإبلاغ الداخلية المعتمدة بالوقائع المجردة وأترك التقييم لجهة الاختصاص.', k:4,
+   w:'المسار المصمم لهذه الحالة بالضبط: يحمي المؤسسة، ويحمي المبلّغ، ويحمي المشتبه به من حكم متسرع.'},
+  {t:'أسأله مباشرة عن هذه الاعتمادات في لقاء عادي.', k:2,
+   w:'قد ينهي الالتباس بسرعة، لكنه ينبّه صاحب المخالفة إن وُجدت، ويضعك في مواجهة بلا سند.'},
+  {t:'أتجاهل الأمر لأن الأدلة ظرفية ولأن التبليغ عن الرئيس المباشر مكلف مهنيًا.', k:1,
+   w:'يجعل الكلفة الشخصية معيار النزاهة، ويحمّلك لاحقًا مسؤولية العلم والسكوت.'},
+ ]},
+
+{id:'ق4-03', lvl:4, t:'الظرف الصحي', c:['emo','trust'],
+ s:'موظف أمضى تسع سنوات في فريقك بأداء ممتاز انهار أداؤه منذ أربعة أشهر بعد تشخيص مرضي في أسرته أخبرك به سرًّا. الفريق بدأ يتذمر من تحميل عبئه عليهم، ولا يعلمون السبب.',
+ l:'حفظ سر الموظف واجب، وإنصاف الفريق واجب آخر. الحل ليس المفاضلة بينهما بل إعادة ترتيب العمل رسميًا بأداة مؤسسية تشرح العبء دون كشف السبب.',
+ r:[
+  {t:'أرتب معه ترتيبًا مؤقتًا موثقًا (تخفيف حمل، مرونة، إجازة مرضية) عبر الموارد البشرية، وأبلغ الفريق بوجود ترتيب استثنائي معتمد دون ذكر سببه.', k:4,
+   w:'يحفظ الخصوصية ويعالج تذمر الفريق بشرعية الإجراء، ويمنح الموظف مسارًا نظاميًا لا شفقة شخصية.'},
+  {t:'أتفق معه على خطة تعافٍ بمراحل ومواعيد مراجعة، وأعيد توزيع العبء رسميًا مع تقدير معلن لمن تحمّلوه.', k:4,
+   w:'يمنع تحوّل الاستثناء إلى وضع دائم، ويحفظ عدالة من حملوا الفرق بالاعتراف بجهدهم.'},
+  {t:'أستمر في تغطيته شخصيًا وأطلب من الفريق الصبر دون تفسير.', k:2,
+   w:'نية طيبة بلا إطار؛ الغموض يولّد تفسيرًا بالمحاباة ويستنزف عدالتك أمام البقية.'},
+  {t:'أُخضعه لإجراءات الأداء المعتادة كأي موظف تراجع أداؤه، التزامًا بالعدالة.', k:1,
+   w:'المساواة الشكلية في ظرف استثنائي ظلم؛ تخسر موظفًا بتسع سنوات وتعلّم الفريق أن المؤسسة لا تسند أحدًا.'},
+ ]},
+
+{id:'ق4-04', lvl:4, t:'استثناء المتعامل الكبير', c:['impr','emo'],
+ s:'أكبر متعامل لديكم يطلب استثناءً من سياسة معتمدة، ويلمّح إلى مراجعة علاقته بالمؤسسة إن لم يُلبَّ. الاستثناء لا يخالف القانون لكنه يخالف سياسة داخلية طُبقت على الجميع.',
+ l:'الاستثناء لأكبر متعامل يُلغي السياسة عمليًا لأن الجميع سيعلم. الطريق الصحيح: عالج حاجته الحقيقية بوسيلة لا تكسر القاعدة، أو غيّر القاعدة للجميع.',
+ r:[
+  {t:'أبحث عن حاجته الفعلية خلف الطلب وأصمم حلًا بديلًا يحققها ضمن السياسة، وأعرضه عليه بوضوح.', k:4,
+   w:'يفصل المطلب عن الحاجة؛ أغلب طلبات الاستثناء لها حل داخل القاعدة لم يبحث عنه أحد.'},
+  {t:'أرفع الحالة لمراجعة السياسة نفسها إن ثبت أنها غير عملية، بحيث يُعدَّل الحكم للجميع لا لطرف واحد.', k:4,
+   w:'يحوّل الضغط الفردي إلى تحسين مؤسسي، ويحفظ مبدأ المساواة أمام القاعدة.'},
+  {t:'أمنحه الاستثناء بقرار موثق نظرًا لحجم أعماله وأهميته للمؤسسة.', k:1,
+   w:'التوثيق لا يشرعن كسر القاعدة؛ ستصل السابقة لبقية المتعاملين وتفقد السياسة قيمتها كلها.'},
+  {t:'أرفض الطلب متمسكًا بالسياسة وأوضح له أنها تُطبق على الجميع.', k:3,
+   w:'موقف مبدئي سليم، لكنه يغلق الملف دون البحث عن حل ويخاطر بعلاقة كان يمكن حفظها.'},
+ ]},
+
+{id:'ق4-05', lvl:4, t:'الضرر الصامت', c:['impr','init'],
+ s:'اكتشفت أن خللًا في نظام قديم تسبب خلال سنتين في احتساب رسوم زائدة على شريحة من المتعاملين بمبالغ صغيرة فرديًا وكبيرة إجماليًا. لم يشتكِ أحد ولم ينتبه أحد، والإصلاح تم.',
+ l:'إصلاح الخلل لا يُسقط حق المتضرر. المؤسسة التي تردّ ما أخذته دون أن يُطالَب به تشتري ثقة لا يشتريها أي تسويق.',
+ r:[
+  {t:'أعرض على الإدارة خطة تصحيح كاملة: حصر المتأثرين، وردّ المبالغ، وإشعارهم بما حدث وبالإجراء المتخذ.', k:4,
+   w:'يعيد الحق لأصحابه ويحوّل خطأً مؤسسيًا إلى دليل نزاهة، ويسدّ مسؤولية قانونية مؤجلة.'},
+  {t:'أبلّغ الجهة التنظيمية والمراجعة الداخلية بالواقعة وأثرها وأتبع توجيهاتهما في آلية التصحيح.', k:4,
+   w:'يضمن أن يكون التصحيح مطابقًا للمتطلبات، ويحمي المؤسسة من اجتهاد فردي في مسألة حقوق.'},
+  {t:'أكتفي بإصلاح الخلل وأوقف تكراره دون فتح ملف الماضي.', k:1,
+   w:'يوقف الضرر ويُبقي الحق مأخوذًا؛ وانكشافه لاحقًا يحوّل خطأً تقنيًا إلى اتهام بالإخفاء.'},
+  {t:'أرد المبالغ لمن يطالب بها فقط إذا ظهرت شكاوى مستقبلًا.', k:1,
+   w:'يجعل الحق رهنًا بانتباه صاحبه، وهو تمييز بين المتضررين لا يصمد أمام أي مراجعة.'},
+ ]},
+
+{id:'ق4-06', lvl:4, t:'ولاءان', c:['team','insp'],
+ s:'نُقلت إلى قيادة إدارة كان لها قائد محبوب غادر بخلاف مع المؤسسة. فريقك منقسم: مجموعة تتعامل معك بتحفظ ولاءً له، ومجموعة تنتظر منك تغييرًا سريعًا يثبت اختلافك عنه.',
+ l:'القائد الجديد لا يكسب فريقًا بإدانة سابقه ولا بتقليده. الانتصار لمصلحة الفريق في أول ملف حقيقي هو ما يوحّد المنقسمين حولك.',
+ r:[
+  {t:'لا أدخل في تقييم سابقي إطلاقًا، وأستمع للجميع فرديًا في أول أسبوعين، ثم أنتصر لأول حاجة حقيقية للفريق وأحققها.', k:4,
+   w:'الأثر الملموس يوحّد ما لا يوحّده الكلام، وتجنّب تقييم السابق يمنع الانقسام من أن يتجدد حولك.'},
+  {t:'أعلن بوضوح احترامي لما بُني سابقًا وأطرح خطة الأشهر الثلاثة المقبلة وأدعو الجميع للمساهمة فيها.', k:3,
+   w:'يطمئن الطرفين ويعطي اتجاهًا، لكن الخطة قبل الاستماع تخاطر بمعالجة ما ليس مشكلة.'},
+  {t:'أُجري تغييرات سريعة في الإجراءات لأثبت أن مرحلة جديدة بدأت.', k:2,
+   w:'يرضي المنتظرين ويؤكد مخاوف المتحفظين، ويغيّر قبل أن يفهم ما يستحق التغيير.'},
+  {t:'أوضح للفريق أسباب مغادرة القائد السابق لإزالة الغموض.', k:1,
+   w:'الخوض في ملف شخصي لطرف غائب يهدم ثقتك عند الجميع: من يتحدث عن غائب اليوم يتحدث عن حاضر غدًا.'},
+ ]},
+
+{id:'ق4-07', lvl:4, t:'قرار في غياب القيادة', c:['init','idea'],
+ s:'وقع تعطل تشغيلي يتصاعد أثره كل ساعة. القرار المطلوب يتجاوز صلاحيتك، والمسؤول الأعلى غير متاح على أي قناة منذ ساعتين، والانتظار حتى الصباح يضاعف الخسارة.',
+ l:'تجاوز الصلاحية في الطوارئ ليس مخالفة إذا كان موثقًا، محدودًا بأقل تدخل يوقف الضرر، ومبلَّغًا عنه فور إمكانه. التردد نفسه قرار وله كلفة.',
+ r:[
+  {t:'أتخذ أقل قرار يوقف تصاعد الضرر ضمن أقرب صلاحية متاحة، وأوثّق المبررات والبدائل لحظيًا، وأبلغ فور توفر المسؤول.', k:4,
+   w:'يحد الضرر بأقل تجاوز، والتوثيق اللحظي هو ما يفرّق بين قرار مسؤول ومخالفة صلاحية.'},
+  {t:'أفعّل بروتوكول الطوارئ وأتواصل مع البديل في التسلسل الإداري أو رئيس لجنة الأزمات.', k:4,
+   w:'المسار الصحيح دائمًا: الصلاحية لا تختفي بغياب شخص، والبحث عن البديل قبل التجاوز واجب.'},
+  {t:'أنتظر عودته وأوثّق محاولات الاتصال لحماية نفسي من المساءلة.', k:1,
+   w:'يحمي الفرد ويضحّي بالمؤسسة؛ التوثيق لا يعوّض خسارة كان يمكن منعها.'},
+  {t:'أتخذ القرار الكامل الذي أراه صحيحًا وأعرضه عليه لاحقًا للاعتماد.', k:2,
+   w:'قد ينجح، لكنه يتجاوز الضرورة إلى ما هو أبعد منها ويضعك في مواجهة مساءلة صلاحية حقيقية.'},
+ ]},
+
+{id:'ق4-08', lvl:4, t:'معلومة لا تُقال', c:['emo','trust'],
+ s:'بحكم موقعك تعلم قرارًا سيصدر بعد شهر بإلغاء مشروع يعمل عليه فريقك بحماس، وأنت ملزم بالسرية. يواصل الفريق العمل بجهد إضافي، وأحدهم رفض للتوّ عرضًا خارجيًا ليكمل المشروع.',
+ l:'لا يمكنك كشف السر، لكن يمكنك ألّا تُنفق جهد فريقك فيما تعلم أنه ذاهب. إعادة توجيه الجهد وتوسيع الخيارات قرار مشروع لا يكسر السرية.',
+ r:[
+  {t:'أطلب من صانع القرار إذنًا بالإفصاح المبكر أو تقديم إعلان القرار، مبيّنًا كلفة استمرار الفريق في جهد سيُهدر.', k:4,
+   w:'يهاجم القيد نفسه بدل الالتفاف عليه؛ كثير من قيود السرية تُرفع حين تُعرض كلفتها على صاحبها.'},
+  {t:'أعيد توجيه جهد الفريق نحو مكوّنات قابلة لإعادة الاستخدام، وأوقف أي التزام إضافي طويل الأمد دون كشف السبب.', k:4,
+   w:'يحمي جهد الفريق ضمن صلاحياتك دون كسر السرية، ويقلل الخسارة حين يصدر القرار.'},
+  {t:'أواصل كالمعتاد التزامًا بالسرية وأتعامل مع الأثر عند صدور القرار.', k:2,
+   w:'يفي بالحرف ويخون الروح؛ ثقة الفريق تُقاس بما فعلته وأنت تعلم، لا بما قلته بعد الإعلان.'},
+  {t:'ألمّح للموظف الذي رفض العرض بأن يعيد النظر في قراره.', k:1,
+   w:'كسر جزئي للسرية بأسوأ صوره: يضر بك مهنيًا، ويضع الموظف في حيرة بلا معلومة تكفي لقرار.'},
+ ]},
+
+{id:'ق4-09', lvl:4, t:'تضارب مصالح', c:['impr','emo'],
+ s:'تقدّمت شركة يملك أحد أقاربك حصة فيها لمنافسة تشرف عليها لجنتها. عرضها قوي فنيًا وقد يفوز باستحقاق، ولا تعلم اللجنة بالصلة، ولا يوجد نص صريح يمنع.',
+ l:'تضارب المصالح يُقاس بالمظهر لا بالنية. الإفصاح والتنحي لا يعني أنك مذنب، بل يعني أن النتيجة ستصمد أمام أي مراجعة مستقبلية.',
+ r:[
+  {t:'أفصح عن الصلة كتابةً للجنة والجهة المختصة، وأتنحى عن أي دور في التقييم والترسية.', k:4,
+   w:'الإفصاح والتنحي هما المعيار المهني؛ يحميان نزاهة النتيجة وسمعتك سواء فاز العرض أو خسر.'},
+  {t:'أفصح عن الصلة وأترك للجنة أو جهة الحوكمة قرار مدى مشاركتي.', k:3,
+   w:'الإفصاح صحيح، لكن ترك القرار لمن قد يحرج برفضك يبقي ظل الشبهة على النتيجة.'},
+  {t:'أواصل الإشراف بحياد كامل ما دام لا يوجد نص يمنع ولا مصلحة مباشرة لي.', k:1,
+   w:'الحياد الشخصي لا يُثبت لاحقًا؛ اكتشاف الصلة بعد الترسية يُبطل الثقة في المنافسة كلها.'},
+  {t:'أستبعد عرض الشركة من المنافسة تجنبًا للشبهة.', k:2,
+   w:'يظلم متنافسًا مستحقًا ويبقيك طرفًا في قرار كان يجب أن تتنحى عنه أصلًا.'},
+ ]},
+
+{id:'ق4-10', lvl:4, t:'الوفاء أم الكفاءة', c:['trust','impr'],
+ s:'وظيفة إشرافية شاغرة، ومرشحان: موظف أمضى اثني عشر عامًا بولاء وانضباط وأداء جيد، وموظفة انضمت قبل ثلاث سنوات بأداء متميز ومؤشرات قيادية أوضح. الفريق يتوقع ترقية الأقدم.',
+ l:'الأقدمية ليست استحقاقًا للقيادة ولا مانعًا منها. المعيار هو متطلبات الدور — ومن يخسر يستحق مسارًا حقيقيًا لا جملة مجاملة.',
+ r:[
+  {t:'أقيّم الاثنين على متطلبات الدور بأدلة موثقة، وأعلن المعيار مسبقًا، وأضع لمن لم يُختر مسارًا تطويريًا واضحًا بفرصة قادمة محددة.', k:4,
+   w:'يحسم بالمعيار لا بالأقدمية ولا بالمجاملة، ويحفظ الخاسر بمسار حقيقي بدل تسكينه بكلمة طيبة.'},
+  {t:'أرشّح الأكفأ وأشرح لمن لم يُختر بصراحة الفجوة المحددة وكيف يسدّها، مع تقدير علني لسنواته.', k:4,
+   w:'يجمع بين قرار صحيح وتعامل إنساني؛ الصراحة المحددة أكرم من الغموض، والتقدير العلني يحفظ مكانته.'},
+  {t:'أرقّي الأقدم وفاءً لسنواته وتجنبًا لإحباط بقية القدامى.', k:2,
+   w:'يرسل رسالة بأن الأقدمية تكفي، فيفقد المتميزون دافعهم ويخسر الفريق قيادة أقدر.'},
+  {t:'أؤجل شغل الوظيفة حتى تهدأ حساسية الفريق تجاه الموضوع.', k:1,
+   w:'يترك الفريق بلا قيادة ويطيل الحساسية بدل حسمها، والتأجيل بلا سبب مهني يُقرأ عجزًا عن القرار.'},
+ ]},
+
+{id:'ق4-11', lvl:4, t:'الإعلام على الباب', c:['init','info'],
+ s:'أثناء عطل تشغيلي ما زال قيد المعالجة، اتصل صحفي يطلب تصريحًا خلال ساعة وإلا نشر بما لديه. المتحدث الرسمي مسافر، والمعلومات الفنية لم تكتمل، والعطل مرئي للجمهور.',
+ l:'مع الإعلام لا يوجد خيار «بلا تعليق»؛ الفراغ يُملأ بروايات أسوأ. المهني: تصريح قصير عما تعرفه يقينًا وموعد تحديث — بمن يملك الصلاحية.',
+ r:[
+  {t:'أنسّق فورًا مع الاتصال المؤسسي لإصدار تصريح قصير معتمد: ما نعرفه يقينًا، ما نعمل عليه، وموعد التحديث القادم.', k:4,
+   w:'يملأ الفراغ بمعلومة رسمية دون تجاوز صلاحية ولا التزام بما لم يُتحقق، ويحفظ زمام الرواية.'},
+  {t:'أطلب من الصحفي مهلة محددة وأعطيه موعدًا دقيقًا لتصريح رسمي ألتزم به.', k:3,
+   w:'يشتري وقتًا بمهنية، لكنه يترك ساعة كاملة بلا موقف رسمي وقد لا يقبل المهلة.'},
+  {t:'أصرّح بما أعرفه شخصيًا لتقديم رواية المؤسسة قبل النشر.', k:2,
+   w:'نية صحيحة بصلاحية خاطئة؛ تصريح غير معتمد بمعلومات ناقصة قد يصبح هو الأزمة.'},
+  {t:'أمتنع عن التعليق حتى عودة المتحدث الرسمي واكتمال المعلومات.', k:1,
+   w:'الصمت أمام عطل مرئي يُقرأ إخفاءً، وتُنشر القصة بمصادر أخرى تصبح هي المرجع.'},
+ ]},
+
+{id:'ق4-12', lvl:4, t:'تجميل التقرير', c:['impr','emo'],
+ s:'قبل عرض تقرير الأداء على المجلس، طلب منك مسؤول أعلى «تلطيف» عرض مؤشرين متراجعين بإبرازهما ضمن سياق أوسع يخفف وقعهما. لا تزوير في الأرقام، لكن الخلاصة ستتغير لدى القارئ.',
+ l:'التضليل بالعرض تضليل وإن صحّت الأرقام. الحل المهني: اعرض السياق كاملًا ظاهرًا لا مذابًا، فتكسب دقة العرض وثقة المجلس معًا.',
+ r:[
+  {t:'أعرض المؤشرين بوضوح مع سياقهما وأسبابهما وخطة المعالجة في الموضع نفسه، وأوضح للمسؤول أن هذا أقوى أمام المجلس من التخفيف.', k:4,
+   w:'يلبي حاجته الحقيقية (ألّا يبدو الوضع خارج السيطرة) بوسيلة مشروعة: السياق الظاهر مع خطة، لا الإخفاء.'},
+  {t:'أُبقي عرض الأرقام كما هو وأوثّق طلب التعديل ومن صدر عنه.', k:3,
+   w:'يحمي دقة التقرير ونفسك، لكنه يحوّل الموقف إلى مواجهة صامتة دون محاولة لحل يرضي الطرفين.'},
+  {t:'أنفّذ التلطيف ما دامت الأرقام صحيحة ولم يُطلب مني تغييرها.', k:1,
+   w:'الأرقام الصحيحة المعروضة لتضليل القارئ أخطر من الخطأ، لأنها مقصودة ويصعب الدفاع عنها لاحقًا.'},
+  {t:'أرفض الطلب وأبلغ رئيس لجنة التدقيق بمحاولة التأثير على التقرير.', k:2,
+   w:'التصعيد الفوري في طلب عرض (لا تزوير) قبل أي نقاش يُفوّت حلًا مهنيًا ويصعّد ما كان قابلًا للمعالجة.'},
+ ]},
+
+];
+const SHORT = {info:'المعلومات', idea:'الأفكار', init:'المبادرة', impr:'التحسين',
+               emo:'الوعي', team:'الفريق', trust:'الثقة', insp:'الإلهام'};
+const ROUND = 8;              // عدد المواقف في الجولة الواحدة
+const PRESSURE_SEC = 90;      // ثوانٍ لكل موقف في وضع الضغط
+
+/* ─────────── الحالة ─────────── */
+const KEY = 'psymx-judgment:v1';
+const el = document.getElementById('app');
+const dockEl = document.getElementById('dock');
+
+function blank(){
+  return {v:1, seen:{}, comp:{}, rounds:[], best:{}, openAll:false};
+}
+function load(){
+  try{ const r = localStorage.getItem(KEY);
+    if(r){ const p = JSON.parse(r); if(p && p.v===1) return Object.assign(blank(), p); } }catch(e){}
+  return blank();
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+let S = load();
+
+/* السمة */
+try{ const t = localStorage.getItem('psymx-judgment:theme'); if(t) document.documentElement.dataset.theme = t; }catch(e){}
+document.getElementById('themeBtn').onclick = () => {
+  const cur = document.documentElement.dataset.theme;
+  const next = cur === 'dark' ? 'light' : cur === 'light' ? 'dark'
+    : (matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark');
+  document.documentElement.dataset.theme = next;
+  try{ localStorage.setItem('psymx-judgment:theme', next); }catch(e){}
+};
+document.getElementById('homeBtn').onclick = () => go('home');
+
+/* ─────────── أدوات ─────────── */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function shuffle(a){ const x = a.slice();
+  for(let i=x.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [x[i],x[j]] = [x[j],x[i]]; } return x; }
+const casesOf = lvl => CASES.filter(c => c.lvl === lvl);
+const pct = (num, den) => den > 0 ? Math.round(num/den*100) : 0;
+function fmt(sec){ const m = Math.floor(sec/60), s = sec%60; return m + ':' + String(s).padStart(2,'0'); }
+
+/* تقدم المستوى: نسبة المواقف التي رآها المتدرب من مواقف المستوى */
+function lvlSeen(lvl){ return casesOf(lvl).filter(c => S.seen[c.id]).length; }
+function lvlOpen(lvl){ return lvl === 1 || S.openAll || (S.best[lvl-1] !== undefined); }
+
+/* درجة ردّ واحد: 3 نقاط للتطابق التام وتنقص بمقدار الفارق */
+const pts = (mine, exp) => mine === undefined ? 0 : Math.max(0, 3 - Math.abs(mine - exp));
+
+/* ─────────── جلسة الجولة ─────────── */
+let R = null;   // {lvl, mode, order, opts, ans, idx, revealed, t0, left, timer}
+
+function startRound(lvl, mode){
+  const pool = shuffle(casesOf(lvl)).slice(0, ROUND);
+  R = { lvl, mode,
+        order: pool.map(c => c.id),
+        opts : Object.fromEntries(pool.map(c => [c.id, shuffle(c.r.map((_,i)=>i))])),
+        ans  : {}, idx: 0, revealed: false, left: PRESSURE_SEC, timer: null };
+  go('case');
+}
+const curCase = () => CASES.find(c => c.id === R.order[R.idx]);
+
+function stopTimer(){ if(R && R.timer){ clearInterval(R.timer); R.timer = null; } }
+function tick(){
+  stopTimer();
+  if(!R || R.mode !== 'pressure') return;
+  R.left = PRESSURE_SEC;
+  R.timer = setInterval(() => {
+    R.left--;
+    const c = document.getElementById('clock');
+    if(c){ c.textContent = '⏱ ' + fmt(R.left); c.classList.toggle('warn', R.left <= 15); }
+    if(R.left <= 0){ stopTimer(); nextCase(); }
+  }, 1000);
+}
+
+function rate(ri, v){
+  const c = curCase();
+  (R.ans[c.id] ??= {})[ri] = v;
+  render();
+}
+function allRated(){
+  const c = curCase(); const a = R.ans[c.id] || {};
+  return c.r.every((_, i) => a[i] !== undefined);
+}
+function revealNow(){ R.revealed = true; stopTimer(); render(); }
+
+function nextCase(){
+  stopTimer();
+  const c = curCase();
+  S.seen[c.id] = true;
+  if(R.idx + 1 < R.order.length){ R.idx++; R.revealed = false; save(); go('case'); }
+  else finishRound();
+}
+
+function finishRound(){
+  stopTimer();
+  let got = 0, max = 0, exact = 0, resp = 0;
+  const compAgg = {};
+  for(const id of R.order){
+    const c = CASES.find(x => x.id === id); const a = R.ans[id] || {};
+    let cg = 0, cm = 0;
+    c.r.forEach((rr, i) => { got += pts(a[i], rr.k); cg += pts(a[i], rr.k); max += 3; cm += 3; resp++;
+                             if(a[i] === rr.k) exact++; });
+    c.c.forEach(k => { (compAgg[k] ??= {g:0, m:0}); compAgg[k].g += cg; compAgg[k].m += cm; });
+  }
+  const score = pct(got, max);
+  for(const [k, v] of Object.entries(compAgg)){
+    (S.comp[k] ??= {g:0, m:0}); S.comp[k].g += v.g; S.comp[k].m += v.m;
+  }
+  S.best[R.lvl] = Math.max(S.best[R.lvl] ?? 0, score);
+  S.rounds.push({lvl:R.lvl, mode:R.mode, score, exact, resp, at:new Date().toISOString().slice(0,10)});
+  if(S.rounds.length > 60) S.rounds = S.rounds.slice(-60);
+  R.result = {score, exact, resp, comp:compAgg};
+  save(); go('result');
+}
+
+/* ─────────── التوجيه ─────────── */
+let view = 'home';
+function go(v){ view = v; render(); window.scrollTo({top:0, behavior:'smooth'}); }
+
+function render(){
+  dockEl.innerHTML = '';
+  if(view === 'home')        home();
+  else if(view === 'level')  level();
+  else if(view === 'case')   caseView();
+  else if(view === 'result') result();
+  else if(view === 'profile')profile();
+  else if(view === 'review') review();
+  else { view = 'home'; home(); }
+}
+
+/* ─────────── الرئيسية ─────────── */
+function home(){
+  const totalSeen = Object.keys(S.seen).length;
+  const rounds = S.rounds.length;
+  const avg = rounds ? Math.round(S.rounds.reduce((a,b)=>a+b.score,0)/rounds) : null;
+  el.innerHTML = `
+  <div class="view">
+    <section class="hero">
+      <div class="eyebrow">تدريب متقدم · ${CASES.length} موقفًا قياديًا</div>
+      <h1>الحكم على <em>المواقف القيادية</em></h1>
+      <p>لا يوجد في هذه المواقف خيار واحد صحيح وثلاثة خاطئة. مهمتك أن تقدّر <strong>فعالية كل ردّ</strong>
+      على حدة، كما تفعل لجنة الخبراء — ثم ترى تقديرها ومسوّغه.</p>
+      <div class="meta">
+        <div><div class="n">${CASES.length}</div><div class="l">موقفًا</div></div>
+        <div><div class="n">${CASES.length*4}</div><div class="l">ردًّا مُقدَّرًا</div></div>
+        <div><div class="n">4</div><div class="l">مستويات صعوبة</div></div>
+        <div><div class="n">${totalSeen}</div><div class="l">واجهتَه</div></div>
+        ${avg !== null ? `<div><div class="n">${avg}%</div><div class="l">متوسط جولاتك</div></div>` : ''}
+      </div>
+    </section>
+
+    <div class="section-head"><h3>مستويات الصعوبة</h3>
+      <button class="btn quiet" id="unlockBtn" style="padding:4px 8px;font-size:12px">
+        ${S.openAll ? 'إعادة التدرّج' : 'فتح كل المستويات'}</button></div>
+    <div class="ladder">
+      ${LEVELS.map(L => {
+        const open = lvlOpen(L.id), seen = lvlSeen(L.id), tot = casesOf(L.id).length;
+        const best = S.best[L.id];
+        const p = pct(seen, tot), dash = 2*Math.PI*17;
+        return `<button class="lvl ${open?'':'locked'}" data-lvl="${L.id}" ${open?'':'disabled'}>
+          <div class="ord">${L.id}</div>
+          <div>
+            <div class="nm">${L.n}</div>
+            <div class="ds">${L.t} · ${tot} مواقف</div>
+            <div class="ds" style="margin-top:5px">${open ? L.d : 'يُفتح بإكمال جولة من المستوى السابق'}</div>
+          </div>
+          <div class="end">
+            <svg class="ring" viewBox="0 0 40 40" aria-hidden="true">
+              <circle class="trk" cx="20" cy="20" r="17"/>
+              <circle class="bar" cx="20" cy="20" r="17"
+                stroke-dasharray="${(dash*p/100).toFixed(1)} ${dash.toFixed(1)}"
+                transform="rotate(-90 20 20)"/>
+              <text x="20" y="24" text-anchor="middle">${seen}</text>
+            </svg>
+            ${best !== undefined ? `<span class="tag brass">أفضل ${best}%</span>` : ''}
+          </div>
+        </button>`;
+      }).join('')}
+    </div>
+
+    <div class="btn-row">
+      <button class="btn line" id="profBtn">ملف الكفايات</button>
+      <button class="btn line" id="revBtn">مكتبة المواقف</button>
+    </div>
+
+    <div class="note" style="margin-top:20px">
+      <b>كيف يُحتسب حكمك؟</b> كل ردّ تُقدّره يُقارَن بتقدير لجنة الخبراء: التطابق التام ٣ نقاط،
+      والفارق درجة واحدة نقطتان، ودرجتان نقطة، وثلاث درجات صفر. فالمطلوب دقة الحكم لا حفظ الإجابة.
+    </div>
+    <div class="note" style="margin-top:10px;font-size:12px;color:var(--muted)">
+      محتوى تدريبي غير رسمي، يحاكي بنية تقييم الحكم على المواقف القيادية وكفاياته الثماني ولا ينقل أسئلته الفعلية.
+      © جميع الحقوق محفوظة — <b>ALFALASI26481</b>
+    </div>
+  </div>`;
+  el.querySelectorAll('.lvl:not(.locked)').forEach(b =>
+    b.onclick = () => { pick = +b.dataset.lvl; go('level'); });
+  el.querySelector('#unlockBtn').onclick = () => { S.openAll = !S.openAll; save(); render(); };
+  el.querySelector('#profBtn').onclick = () => go('profile');
+  el.querySelector('#revBtn').onclick  = () => go('review');
+}
+
+/* ─────────── اختيار الوضع ─────────── */
+let pick = 1;
+function level(){
+  const L = LEVELS.find(x => x.id === pick);
+  const tot = casesOf(pick).length;
+  el.innerHTML = `
+  <div class="view">
+    <div class="eyebrow">المستوى ${L.id} — ${L.t}</div>
+    <h2 style="font-family:var(--f-disp);font-size:29px;margin:6px 0 8px">${L.n}</h2>
+    <p style="color:var(--ink-2);margin:0 0 4px;max-width:56ch">${L.d}</p>
+    <div class="note" style="margin-top:16px">
+      الجولة <b>${Math.min(ROUND, tot)} مواقف</b> تُسحب عشوائيًا من <b>${tot}</b> في هذا المستوى،
+      وترتيب الردود داخل كل موقف يتبدّل في كل جولة — فلا ينفع حفظ الموضع.
+    </div>
+    <div class="section-head" style="margin-top:22px"><h3>اختر وضع التدريب</h3></div>
+    <div class="modes">
+      <button class="mode" data-m="practice"><span class="gl">◐</span>
+        <div><h4>مُدارَس</h4><p>بعد تقدير ردود كل موقف يظهر تقدير لجنة الخبراء ومسوّغه لكل ردّ، ثم درس الموقف. بلا وقت.</p></div></button>
+      <button class="mode" data-m="exam"><span class="gl">▣</span>
+        <div><h4>تقييم</h4><p>تقدّر المواقف كاملة بلا أي كشف، ثم تُعرض النتيجة وتحليل الفجوات في النهاية. بلا وقت.</p></div></button>
+      <button class="mode" data-m="pressure"><span class="gl">◔</span>
+        <div><h4>تحت الضغط</h4><p>${PRESSURE_SEC} ثانية لكل موقف — تقرأ وتقدّر وتنتقل. يقيس حكمك حين لا يتوفر ترف التأمل.</p></div></button>
+    </div>
+  </div>`;
+  el.querySelectorAll('.mode').forEach(b => b.onclick = () => startRound(pick, b.dataset.m));
+  dock(`<button id="bk">❯ رجوع</button><span class="mid">المستوى ${L.id}</span><span></span>`);
+  document.getElementById('bk').onclick = () => go('home');
+}
+
+/* ─────────── شاشة الموقف ─────────── */
+function caseView(){
+  const c = curCase(), a = R.ans[c.id] || {}, ord = R.opts[c.id];
+  const done = allRated(), rev = R.revealed;
+  const modeName = {practice:'مُدارَس', exam:'تقييم', pressure:'تحت الضغط'}[R.mode];
+
+  el.innerHTML = `
+  <div class="view">
+    <div class="progress-strip">
+      <span class="tag">${modeName}</span>
+      <div class="pips">${R.order.map((_,i) =>
+        `<div class="pip ${i<R.idx?'done':i===R.idx?'now':''}"></div>`).join('')}</div>
+      ${R.mode==='pressure' ? `<span class="clock" id="clock">⏱ ${fmt(R.left)}</span>`
+        : `<span class="tag">${R.idx+1} / ${R.order.length}</span>`}
+    </div>
+
+    <article class="case">
+      <div class="case-head">
+        <div class="case-no">${esc(c.id)}</div>
+        <h2>${esc(c.t)}</h2>
+        <div class="case-comps">${c.c.map(k => `<span class="tag">${COMPS[k].n}</span>`).join('')}</div>
+      </div>
+      <div class="case-body"><p>${esc(c.s)}</p></div>
+      <div class="case-ask">بناءً على الموقف أعلاه، قدّر فعالية كل ردّ على حدة.</div>
+      <div style="height:16px"></div>
+    </article>
+
+    <div class="responses">
+      ${ord.map((ri, pos) => {
+        const rr = c.r[ri], mine = a[ri];
+        const gap = mine === undefined ? null : Math.abs(mine - rr.k);
+        return `<div class="resp ${mine!==undefined?'rated':''}">
+          <div class="rtxt"><span class="ix">${pos+1}</span><span>${esc(rr.t)}</span></div>
+          <div class="scale">
+            ${[1,2,3,4].map(v => `<button data-v="${v}" data-ri="${ri}"
+                class="${mine===v?'on':''}" ${rev?'disabled':''}
+                aria-label="${RATE[v].n}">
+                <span class="bars">${[1,2,3,4].map(b=>`<i${b<=v?' style="opacity:1"':' style="opacity:.35"'}></i>`).join('')}</span>
+                <span>${RATE[v].s}</span></button>`).join('')}
+          </div>
+          ${rev ? `<div class="verdict">
+            <div class="verdict-line">
+              <span class="vchip v${rr.k}">تقدير الخبراء: ${RATE[rr.k].n}</span>
+              <span class="match ${gap===0?'hit':gap===1?'near':'miss'}">${
+                mine===undefined ? 'لم تُقدّره' :
+                gap===0 ? '✓ طابقتَه تمامًا' :
+                gap===1 ? '≈ فارق درجة واحدة' : '✕ فارق ' + gap + ' درجات'}</span>
+            </div>
+            <div class="why"><b>لماذا؟</b> ${esc(rr.w)}</div>
+          </div>` : ''}
+        </div>`;
+      }).join('')}
+    </div>
+
+    ${rev ? `<div class="lesson">
+      <div class="hd">✦ درس الموقف</div>${esc(c.l)}</div>` : ''}
+  </div>`;
+
+  el.querySelectorAll('.scale button').forEach(b =>
+    b.onclick = () => rate(+b.dataset.ri, +b.dataset.v));
+
+  const last = R.idx === R.order.length - 1;
+  if(R.mode === 'practice' && !rev){
+    dock(`<button id="pv" ${R.idx===0?'disabled':''}>❯ السابق</button>
+          <span class="mid">${R.idx+1} من ${R.order.length}</span>
+          <button class="go" id="nx" ${done?'':'disabled'}>اكشف تقدير الخبراء</button>`);
+    document.getElementById('nx').onclick = revealNow;
+  } else {
+    dock(`<button id="pv" ${R.idx===0?'disabled':''}>❯ السابق</button>
+          <span class="mid">${R.idx+1} من ${R.order.length}</span>
+          <button class="go" id="nx" ${(done||R.mode==='pressure'||rev)?'':'disabled'}>
+            ${last ? 'أنهِ الجولة' : 'الموقف التالي ❮'}</button>`);
+    document.getElementById('nx').onclick = nextCase;
+  }
+  const pv = document.getElementById('pv');
+  if(pv) pv.onclick = () => { if(R.idx>0){ R.idx--; R.revealed = false; stopTimer(); go('case'); } };
+  if(R.mode === 'pressure' && !rev) tick();
+}
+function dock(html){ dockEl.innerHTML = `<div class="dock">${html}</div>`; }
+
+/* ─────────── نتيجة الجولة ─────────── */
+function band(s){
+  return s >= 85 ? {n:'حكم قيادي راسخ', d:'تقديراتك تطابق لجنة الخبراء في أغلب الردود — وهذا مستوى من يُستشار في المواقف لا من يُدرَّب عليها.'}
+       : s >= 70 ? {n:'حكم ناضج', d:'اتجاهك صحيح في معظم المواقف، والفجوة في التمييز بين «الفعال» و«الفعال جدًا» — وهي أدق مهارات الحكم.'}
+       : s >= 55 ? {n:'حكم قيد التشكّل', d:'تميّز الجيد من السيئ، لكن ترتيب البدائل الجيدة فيما بينها يحتاج صقلًا. راجع مسوّغات الخبراء بتأنٍ.'}
+       : {n:'يحتاج تأسيسًا', d:'راجع دروس المواقف في وضع «مُدارَس» قبل التقييم: المطلوب منطق المفاضلة لا الانطباع الأول.'};
+}
+function result(){
+  const r = R.result, b = band(r.score);
+  const gaps = [];
+  for(const id of R.order){
+    const c = CASES.find(x => x.id === id), a = R.ans[id] || {};
+    c.r.forEach((rr,i) => { const g = a[i]===undefined ? 3 : Math.abs(a[i]-rr.k);
+      if(g >= 2) gaps.push({c, rr, mine:a[i], g}); });
+  }
+  gaps.sort((x,y) => y.g - x.g);
+  el.innerHTML = `
+  <div class="view">
+    <section class="panel">
+      <div class="verdict-seal">
+        <div class="eyebrow">المستوى ${R.lvl} — ${LEVELS.find(l=>l.id===R.lvl).n}</div>
+        <div class="score">${r.score}<span class="of"> / 100</span></div>
+        <div class="band">${b.n}</div>
+        <div class="say">${b.d}</div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="v">${r.exact}</div><div class="k">تطابق تام من ${r.resp}</div></div>
+        <div class="kpi"><div class="v">${pct(r.exact, r.resp)}%</div><div class="k">دقة الحكم</div></div>
+        <div class="kpi"><div class="v">${R.order.length}</div><div class="k">مواقف الجولة</div></div>
+        <div class="kpi"><div class="v">${S.best[R.lvl]}%</div><div class="k">أفضل نتيجة لك</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>الكفايات في هذه الجولة</h3>
+      <p class="hint">أداؤك في المواقف التي تقيس كل كفاية</p>
+      <div class="bars">
+        ${Object.entries(r.comp).sort((a,b)=>pct(b[1].g,b[1].m)-pct(a[1].g,a[1].m)).map(([k,v]) => {
+          const p = pct(v.g, v.m);
+          return `<div class="brow"><div class="bl">${COMPS[k].n}</div>
+            <div class="bt"><div class="bf" style="width:${Math.max(2,p)}%"></div></div>
+            <div class="bv">${p}%</div></div>`; }).join('')}
+      </div>
+    </section>
+
+    ${gaps.length ? `<section class="panel">
+      <h3>أبعد تقديراتك عن الخبراء</h3>
+      <p class="hint">هنا يقع التعلّم الحقيقي — راجع المسوّغ لا الدرجة</p>
+      ${gaps.slice(0,5).map(g => `<div class="review-item">
+        <div class="rh"><span class="rt">${esc(g.c.t)}</span><span class="tag">${esc(g.c.id)}</span></div>
+        <div class="rc">${esc(g.rr.t)}</div>
+        <div class="mr-top">
+          <span class="vchip v${g.rr.k}">الخبراء: ${RATE[g.rr.k].n}</span>
+          <span class="match miss">تقديرك: ${g.mine===undefined?'لم تُقدّره':RATE[g.mine].n}</span>
+        </div>
+        <div class="why" style="margin-top:7px">${esc(g.rr.w)}</div>
+      </div>`).join('')}
+    </section>` : `<div class="note brass">لا فجوة كبيرة في أي ردّ — كل تقديراتك ضمن درجة واحدة من لجنة الخبراء.</div>`}
+
+    <div class="btn-row no-print">
+      <button class="btn solid" id="again">جولة جديدة بمواقف مختلفة</button>
+      ${R.lvl < 4 && lvlOpen(R.lvl+1) ? `<button class="btn line" id="up">المستوى ${R.lvl+1} ❮</button>` : ''}
+      <button class="btn line" id="prof">ملف الكفايات</button>
+    </div>
+  </div>`;
+  el.querySelector('#again').onclick = () => startRound(R.lvl, R.mode);
+  const up = el.querySelector('#up'); if(up) up.onclick = () => { pick = R.lvl+1; go('level'); };
+  el.querySelector('#prof').onclick = () => go('profile');
+  dock(`<button id="hm">⌂ الرئيسية</button><span class="mid">نتيجة الجولة</span><span></span>`);
+  document.getElementById('hm').onclick = () => go('home');
+}
+
+/* ─────────── ملف الكفايات + الرادار ─────────── */
+function radar(vals, measured){
+  const cx = 150, cy = 138, R0 = 88, n = CK.length;
+  const pt = (i, r) => { const ang = -Math.PI/2 + i*2*Math.PI/n;
+    return [cx + r*Math.cos(ang), cy + r*Math.sin(ang)]; };
+  const rings = [0.25,0.5,0.75,1].map(f =>
+    `<polygon class="grid" points="${CK.map((_,i)=>pt(i,R0*f).map(v=>v.toFixed(1)).join(',')).join(' ')}"/>`).join('');
+  const axes = CK.map((_,i) => { const [x,y] = pt(i,R0);
+    return `<line class="axis" x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"/>`; }).join('');
+  const poly = CK.map((k,i) => pt(i, R0*Math.max(0.04,(vals[k]||0)/100)).map(v=>v.toFixed(1)).join(',')).join(' ');
+  const dots = CK.map((k,i) => { const [x,y] = pt(i, R0*Math.max(0.04,(vals[k]||0)/100));
+    return measured.has(k)
+      ? `<circle class="dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6"/>`
+      : `<circle class="dot hollow" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6"/>`; }).join('');
+  const labels = CK.map((k,i) => { const [x,y] = pt(i, R0+16);
+    const anchor = Math.abs(x-cx) < 6 ? 'middle' : (x > cx ? 'start' : 'end');
+    return `<text class="lbl${measured.has(k)?'':' mute'}" x="${x.toFixed(1)}" y="${(y+3).toFixed(1)}" text-anchor="${anchor}">${SHORT[k]}</text>`; }).join('');
+  return `<svg class="radar" viewBox="0 0 300 286" role="img" aria-label="رادار الكفايات">
+    ${rings}${axes}<polygon class="area" points="${poly}"/>${dots}${labels}
+    <text class="tick" x="${cx+3}" y="${cy-R0+8}">100</text>
+    <text class="tick" x="${cx+3}" y="${cy-4}">0</text></svg>`;
+}
+function profile(){
+  const has = Object.keys(S.comp).length > 0;
+  const vals = {}; CK.forEach(k => { const v = S.comp[k]; vals[k] = v ? pct(v.g, v.m) : 0; });
+  const measured = new Set(CK.filter(k => S.comp[k]));
+  const unmeasured = CK.filter(k => !measured.has(k));
+  const ranked = [...measured].sort((a,b) => vals[b]-vals[a]);
+  const rounds = S.rounds.length;
+  el.innerHTML = `
+  <div class="view">
+    <section class="panel">
+      <h3>ملف الكفايات القيادية</h3>
+      <p class="hint">${has ? `مبني على ${rounds} جولة · ${Object.keys(S.seen).length} موقفًا واجهتَه`
+                            : 'لم تكتمل أي جولة بعد'}</p>
+      ${has ? `<div class="radar-wrap">${radar(vals, measured)}</div>
+      ${unmeasured.length ? `<p style="text-align:center;font-size:12px;color:var(--muted);margin:2px 0 0">
+        لم تُقَس بعد: ${unmeasured.map(k=>COMPS[k].n).join(' · ')} — تظهر على المحور بعلامة مفرغة حتى تواجه مواقف تقيسها.</p>` : ''}
+      <div class="bars" style="margin-top:14px">
+        ${ranked.map(k => `<div class="brow">
+          <div class="bl">${COMPS[k].n}</div>
+          <div class="bt"><div class="bf" style="width:${Math.max(2,vals[k])}%"></div></div>
+          <div class="bv">${vals[k]}%</div></div>`).join('')}
+      </div>` : `<div class="empty"><div class="gl">◇</div>
+        <p>أكمل جولة واحدة ليظهر رادار كفاياتك الثماني.</p></div>`}
+    </section>
+
+    ${has && ranked.length >= 2 ? `<section class="panel">
+      <h3>قراءة الملف</h3>
+      <p class="hint">ما تقوله تقديراتك عن نمط حكمك</p>
+      <div class="note brass" style="margin-bottom:11px">
+        <b>أقوى ما لديك — ${COMPS[ranked[0]].n} (${vals[ranked[0]]}%)</b><br>${COMPS[ranked[0]].d}
+      </div>
+      <div class="note">
+        <b>أولى أولوياتك — ${COMPS[ranked[ranked.length-1]].n} (${vals[ranked[ranked.length-1]]}%)</b><br>
+        ${COMPS[ranked[ranked.length-1]].d}<br>
+        <span style="color:var(--muted);font-size:12.5px">راجع في مكتبة المواقف كل موقف يحمل وسم هذه الكفاية، واقرأ مسوّغ الخبراء لكل ردّ قبل أن تعيد تقديره.</span>
+      </div>
+    </section>` : ''}
+
+    ${rounds ? `<section class="panel">
+      <h3>سجل الجولات</h3>
+      <p class="hint">آخر ${Math.min(rounds,10)} جولات</p>
+      <div class="sheet-wrap"><table class="sheet">
+        <tr><th>المستوى</th><th>الوضع</th><th>النتيجة</th><th>دقة الحكم</th><th>التاريخ</th></tr>
+        ${S.rounds.slice(-10).reverse().map(x => `<tr>
+          <td class="s">${LEVELS.find(l=>l.id===x.lvl).n}</td>
+          <td>${({practice:'مُدارَس',exam:'تقييم',pressure:'تحت الضغط'})[x.mode]}</td>
+          <td class="s">${x.score}%</td><td>${pct(x.exact,x.resp)}%</td><td>${x.at}</td></tr>`).join('')}
+      </table></div>
+    </section>` : ''}
+
+    <div class="btn-row no-print">
+      ${has ? `<button class="btn line" id="pr">طباعة الملف</button>` : ''}
+      <button class="btn line" id="rv">مكتبة المواقف</button>
+      ${rounds ? `<button class="btn quiet" id="rs">مسح كل نتائجي</button>` : ''}
+    </div>
+  </div>`;
+  const pr = el.querySelector('#pr'); if(pr) pr.onclick = () => window.print();
+  el.querySelector('#rv').onclick = () => go('review');
+  const rs = el.querySelector('#rs');
+  if(rs) rs.onclick = () => { if(confirm('سيُمسح سجلك وملف كفاياتك نهائيًا. نتابع؟')){
+      S = blank(); save(); go('home'); } };
+  dock(`<button id="hm">⌂ الرئيسية</button><span class="mid">ملف الكفايات</span><span></span>`);
+  document.getElementById('hm').onclick = () => go('home');
+}
+
+/* ─────────── مكتبة المواقف ─────────── */
+let revLvl = 0;
+function review(){
+  const list = revLvl ? casesOf(revLvl) : CASES;
+  el.innerHTML = `
+  <div class="view">
+    <div class="section-head"><h3>مكتبة المواقف</h3><span class="tag">${list.length} موقفًا</span></div>
+    <p style="color:var(--muted);font-size:13px;margin:0 0 14px">
+      كل موقف بتقدير لجنة الخبراء لكل ردّ ومسوّغه. افتح ما تريد مراجعته — المواقف التي لم تواجهها بعد
+      تبقى مطوية حتى لا تفسد عليك الجولة.</p>
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:15px">
+      <button class="btn ${revLvl===0?'solid':'line'}" data-f="0" style="padding:6px 15px;font-size:13px">الكل</button>
+      ${LEVELS.map(L => `<button class="btn ${revLvl===L.id?'solid':'line'}" data-f="${L.id}"
+        style="padding:6px 15px;font-size:13px">${L.id} · ${L.n}</button>`).join('')}
+    </div>
+    ${list.map(c => {
+      const seen = S.seen[c.id];
+      return `<div class="review-item">
+        <div class="rh"><span class="rt">${esc(c.t)}</span>
+          <span style="display:flex;gap:6px;flex-wrap:wrap">
+            <span class="tag">${esc(c.id)}</span>
+            ${seen ? '<span class="tag brass">واجهتَه</span>' : ''}
+          </span></div>
+        <div class="rc">${esc(c.s)}</div>
+        <div class="case-comps" style="margin-top:8px">${c.c.map(k=>`<span class="tag">${COMPS[k].n}</span>`).join('')}</div>
+        <details${seen?' open':''}>
+          <summary>تقدير لجنة الخبراء ومسوّغاته</summary>
+          ${c.r.map(rr => `<div class="mini-resp">${esc(rr.t)}
+            <div class="mr-top"><span class="vchip v${rr.k}">${RATE[rr.k].n}</span></div>
+            <div class="why">${esc(rr.w)}</div></div>`).join('')}
+          <div class="lesson" style="margin-top:11px"><div class="hd">✦ درس الموقف</div>${esc(c.l)}</div>
+        </details>
+      </div>`;
+    }).join('')}
+  </div>`;
+  el.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { revLvl = +b.dataset.f; go('review'); });
+  dock(`<button id="hm">⌂ الرئيسية</button><span class="mid">مكتبة المواقف</span><span></span>`);
+  document.getElementById('hm').onclick = () => go('home');
+}
+
+render();
+
+/* عامل الخدمة: يعمل عند الاستضافة فقط */
+if('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')){
+  window.addEventListener('load', () => {
+    const had = !!navigator.serviceWorker.controller; let done = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if(!had || done) return; done = true; location.reload();
+    });
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>

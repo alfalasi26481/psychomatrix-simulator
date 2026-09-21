@@ -1165,6 +1165,7 @@ function renderHome(){
       📋 ${doneCount===4?'عرض تقرير المرشح النهائي':`تقرير المرشح يُفتح بعد إكمال الأدوات الأربع (${doneCount}/4)`}
     </button>
     <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a class="btn gold" href="judgment/" style="text-decoration:none;display:inline-block">⚖️ مجلس الحكم القيادي — تدريب متقدم</a>
       <button class="btn ghost" onclick="go('install')">📲 تثبيت التطبيق على جهازك</button>
       ${doneCount>0?`<button class="btn danger" onclick="resetAll()">مسح جميع النتائج</button>`:''}
     </div>
