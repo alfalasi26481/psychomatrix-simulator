@@ -30,7 +30,7 @@
 <meta name="twitter:image" content="https://alfalasi26481.github.io/psychomatrix-simulator/lta/icons/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap">
 <style>
 /* ══ Leadership Test Ability — نظام بصري داكن الأساس ══ */
 :root{
@@ -45,7 +45,7 @@
   --e4:#5aa987; --e4s:rgba(90,169,135,.13);
   --glow:0 0 0 1px rgba(201,168,106,.18), 0 18px 50px -24px rgba(0,0,0,.9);
   --lift:0 1px 0 rgba(255,255,255,.03) inset, 0 12px 34px -20px rgba(0,0,0,.85);
-  --d:'Reem Kufi','Segoe UI',sans-serif;
+  --d:'Tajawal','Segoe UI',Tahoma,sans-serif;
   --b:'IBM Plex Sans Arabic','Segoe UI',Tahoma,system-ui,sans-serif;
   --l:'Cormorant Garamond','Times New Roman',serif;
 }
@@ -148,12 +148,12 @@ button{font-family:inherit;color:inherit}
 .hero .crest{width:96px;height:96px;margin:0 auto 14px;display:block}
 .hero .lockup{font-family:var(--l);font-size:clamp(34px,10vw,54px);font-weight:600;letter-spacing:1.5px;line-height:1.08;color:var(--ink)}
 .hero .lockup b{color:var(--gold);font-weight:600}
-.hero .ar{font-family:var(--d);font-size:clamp(17px,4.6vw,22px);color:var(--ink-2);margin-top:12px;letter-spacing:.4px}
+.hero .ar{font-family:var(--d);font-weight:500;font-size:clamp(17px,4.6vw,22px);color:var(--ink-2);margin-top:12px;letter-spacing:.4px}
 .hero .say{color:var(--muted);font-size:14.5px;max-width:52ch;margin:14px auto 0;line-height:1.95}
 .hero .rule{margin:22px auto 0;max-width:280px}
 
-.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:24px}
-.fig{background:var(--surface);padding:15px 10px;text-align:center}
+.figs{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:24px}
+.fig{flex:1 1 84px;min-width:0;background:var(--surface);padding:15px 10px;text-align:center}
 .fig .n{font-family:var(--l);font-size:28px;font-weight:600;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
 .fig .k{font-size:10.5px;color:var(--muted);margin-top:5px;letter-spacing:.3px}
 
@@ -193,7 +193,7 @@ button{font-family:inherit;color:inherit}
   background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;cursor:pointer;transition:.18s}
 .mode:hover{border-color:var(--gold);transform:translateX(-3px)}
 .mode .sg{width:30px;height:30px;flex:none;border-radius:8px;border:1px solid var(--gold-line);background:var(--gold-soft);display:grid;place-items:center;color:var(--gold);font-size:14px}
-.mode h4{font-family:var(--d);font-size:16.5px}
+.mode h4{font-family:var(--d);font-size:16.5px;font-weight:700}
 .mode p{margin:3px 0 0;font-size:12.5px;color:var(--muted);line-height:1.75}
 
 /* ── الموقف ── */
@@ -254,7 +254,7 @@ button{font-family:inherit;color:inherit}
 .rsn{margin-top:9px;font-size:13.5px;color:var(--ink-2);line-height:1.9}
 .rsn b{color:var(--gold);font-weight:600}
 .axiom{margin-top:16px;padding:16px 18px;border-radius:14px;background:linear-gradient(140deg,var(--gold-soft),transparent);border:1px solid var(--gold-line);font-size:13.5px;line-height:1.9;color:var(--ink-2)}
-.axiom .t{font-family:var(--d);font-size:15px;color:var(--gold);margin-bottom:4px;letter-spacing:.3px}
+.axiom .t{font-family:var(--d);font-weight:700;font-size:15px;color:var(--gold);margin-bottom:4px;letter-spacing:.3px}
 
 /* ── شريط القيادة ── */
 .deck[hidden]{display:none}
@@ -276,11 +276,11 @@ button{font-family:inherit;color:inherit}
 .gauge .fg{fill:none;stroke:url(#gg);stroke-width:9;stroke-linecap:round;transition:stroke-dasharray 1.1s cubic-bezier(.16,.8,.3,1)}
 .gauge .nv{fill:var(--ink);font-family:var(--l);font-size:44px;font-weight:600}
 .gauge .nu{fill:var(--muted);font-size:11px;font-family:var(--b)}
-.grade-name{font-family:var(--d);font-size:21px;color:var(--gold);margin-top:6px;text-align:center}
+.grade-name{font-family:var(--d);font-weight:700;font-size:21px;color:var(--gold);margin-top:6px;text-align:center}
 .grade-say{color:var(--ink-2);font-size:14px;text-align:center;max-width:50ch;margin:9px auto 0;line-height:1.9}
 
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:22px}
-.tile{background:var(--surface);padding:14px 10px;text-align:center}
+.tiles{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:22px}
+.tile{flex:1 1 100px;min-width:0;background:var(--surface);padding:14px 10px;text-align:center}
 .tile .v{font-family:var(--l);font-size:25px;font-weight:600;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
 .tile .k{font-size:10.5px;color:var(--muted);margin-top:5px}
 
@@ -305,7 +305,7 @@ button{font-family:inherit;color:inherit}
 /* تحليل نمط الحكم */
 .bias{border:1px solid var(--line);border-radius:14px;padding:15px 17px;margin-bottom:11px;background:var(--surface)}
 .bias .bh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-.bias .bt{font-family:var(--d);font-size:15.5px}
+.bias .bt{font-family:var(--d);font-weight:700;font-size:15.5px}
 .bias .bs{font-size:13px;color:var(--ink-2);margin-top:7px;line-height:1.85}
 .scaleline{position:relative;height:30px;margin-top:11px}
 .scaleline .rail{position:absolute;top:13px;left:0;right:0;height:3px;background:var(--sunk);border-radius:99px}
@@ -326,7 +326,7 @@ table.tb td{color:var(--ink-2)} table.tb td.s{color:var(--ink);font-weight:600}
 
 .entry{border:1px solid var(--line);border-radius:15px;padding:16px 18px;margin-bottom:11px;background:var(--surface)}
 .entry .eh{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
-.entry .et{font-family:var(--d);font-size:17px}
+.entry .et{font-family:var(--d);font-weight:700;font-size:17px}
 .entry .ec{font-size:13px;color:var(--ink-2);margin-top:7px;line-height:1.85}
 .entry details{margin-top:10px}
 .entry summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--gold);list-style:none;padding:6px 0}
