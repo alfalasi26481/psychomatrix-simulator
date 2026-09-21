@@ -5,7 +5,7 @@
 //    الاعتماد على الذاكرة أولًا كان يُبقي من فتح التطبيق سابقًا على نسخة قديمة
 //    إلى الأبد حتى بعد نشر تحديث.
 //  • الأيقونات والملفات الثابتة: الذاكرة أولًا (لا تتغير) مع تحديث صامت بالخلفية.
-const VERSION = 'v2';
+const VERSION = 'v3';
 const CACHE = 'lta-' + VERSION;
 const ASSETS = ['./', './index.html', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/og-image.png'];
