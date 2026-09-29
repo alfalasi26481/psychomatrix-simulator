@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#08090d">
+<link rel="preload" as="image" href="art/hero.webp" type="image/webp">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -555,6 +556,39 @@ body{font-size:.94rem}
 .tog{width:44px;height:24px;border-radius:99px;background:var(--sunk);border:1px solid var(--line);position:relative;cursor:pointer;transition:.16s}
 .tog i{position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:99px;background:var(--muted);transition:.16s}
 .tog.on{background:var(--gold);border-color:var(--gold)} .tog.on i{right:22px;background:#14110a}
+
+/* ══ الأعمال الفنية ══ */
+.hero2{position:relative;border-radius:22px;overflow:hidden;background:#0b0d13;min-height:360px;display:flex;align-items:flex-end;text-align:center;border:1px solid var(--line);box-shadow:var(--lift);isolation:isolate}
+.hero2 .hbg{position:absolute;inset:-4%;background:#0b0d13 url(art/hero.webp) center 38%/cover no-repeat;z-index:0}
+@media (prefers-reduced-motion:no-preference){.hero2 .hbg{animation:kb 22s ease-in-out infinite alternate}}
+@keyframes kb{from{transform:scale(1) translateY(0)}to{transform:scale(1.07) translateY(-1.5%)}}
+.hero2::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,13,19,.08) 0%,rgba(11,13,19,.42) 42%,rgba(11,13,19,.90) 72%,#0b0d13 100%)}
+.hero2 .hv{position:relative;z-index:2;padding:132px 20px 26px;width:100%}
+.hero2 .crest{width:70px;height:70px;margin:0 auto 10px;display:block;filter:drop-shadow(0 6px 18px rgba(201,168,106,.35))}
+.hero2 .lockup{font-family:var(--l);font-size:clamp(36px,10vw,56px);font-weight:600;letter-spacing:2px;line-height:1.05;color:#f3efe4}
+.hero2 .ar{font-family:var(--d);font-weight:600;font-size:clamp(17px,4.6vw,22px);color:#e2c78d;margin-top:10px}
+.hero2 .say{color:#c7c2b6;font-size:14.5px;max-width:54ch;margin:12px auto 0;line-height:1.95}
+.hero2 .cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.hero2 .cta .b.o{background:rgba(255,255,255,.06);color:#f3efe4;border-color:rgba(255,255,255,.18);backdrop-filter:blur(6px)}
+.hero2 .cta .b.o:hover{border-color:#e2c78d;color:#e2c78d}
+.modcard .mart{height:118px;margin:-18px -18px 12px;background:#0b0d13 center/cover no-repeat;position:relative;border-bottom:1px solid var(--hair)}
+.modcard .mart::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,19,0) 35%,var(--surface) 100%)}
+.modcard .mi{position:relative;margin-top:-34px;background:var(--surface);box-shadow:var(--lift)}
+.modcard:hover .mart{filter:brightness(1.12)}
+.feature.fart{background:#0b0d13 url(art/sim.webp) center/cover no-repeat;border-color:rgba(201,168,106,.45);color:#f3efe4;min-height:150px}
+.feature.fart::before{content:'';position:absolute;inset:0;background:linear-gradient(270deg,rgba(11,13,19,.94) 0%,rgba(11,13,19,.86) 48%,rgba(11,13,19,.18) 100%)}
+.feature.fart>*{position:relative}
+.feature.fart .eb{color:#e2c78d}.feature.fart h4{color:#f3efe4}.feature.fart p{color:#c7c2b6}.feature.fart .go{color:#e2c78d;opacity:.9}
+.art{height:clamp(150px,34vw,220px);border-radius:18px;background:#0b0d13 center/cover no-repeat;margin:18px 0 4px;border:1px solid var(--line);box-shadow:var(--lift);position:relative;overflow:hidden}
+.art::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,19,0) 50%,rgba(11,13,19,.45) 100%)}
+.art.sm{height:clamp(110px,24vw,150px)}
+.mode .th{width:64px;height:48px;border-radius:10px;background:#0b0d13 center/cover no-repeat;border:1px solid var(--line);flex:none}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.steps3 div{border:1px solid var(--line);border-radius:14px;padding:14px 12px;background:var(--surface);text-align:center}
+.steps3 b{display:block;font-family:var(--l);font-size:22px;color:var(--gold);margin-bottom:4px}
+.steps3 span{font-size:12.5px;color:var(--ink-2);line-height:1.7;display:block}
+@media (max-width:600px){.hero2{min-height:330px;border-radius:18px}.hero2 .hv{padding-top:118px}.steps3{grid-template-columns:1fr 1fr 1fr;gap:6px}.steps3 div{padding:10px 6px}.steps3 span{font-size:11px}.modcard .mart{height:100px}}
+
 @media print{.bar,.deck,.brow,.noprint,.tabbar,.rail{display:none!important} body{background:#fff;color:#000} .page{padding:0;max-width:100%} .card{box-shadow:none;border-color:#ccc;break-inside:avoid;background:#fff}}
 @media (max-width:600px){
   .page{padding:20px 14px 170px}
@@ -3332,14 +3366,17 @@ function lines(rows){return '<div class="lines">'+rows.map(r=>'<div class="ln"><
 function tiles(list){return '<div class="tiles">'+list.map(t=>'<div class="tile"><div class="v">'+t.v+'</div><div class="k">'+E(t.k)+'</div></div>').join('')+'</div>'}
 const FOOT='<div class="foot">MIYAR · مِعيار — منصّة الاستعداد الشاملة لاختبارات السيكومتري<br>المحتوى تدريبي بالكامل ولا يمثّل بنك أسئلة أي اختبار رسمي ولا يُنسب إلى أي جهة.<br>جميع الحقوق محفوظة&nbsp;&nbsp;<b dir="ltr">© ALFALASI26481</b></div>';
 function h1(eb,t,sub){return '<div class="eb">'+E(eb)+'</div><h1 style="font-family:var(--d);font-size:clamp(24px,6.2vw,32px);margin-top:8px">'+E(t)+'</h1>'+(sub?'<p style="color:var(--ink-2);max-width:60ch;margin:10px 0 0;line-height:1.95">'+E(sub)+'</p>':'')}
+function art(n,sm){return '<div class="art'+(sm?' sm':'')+'" style="background-image:url(art/'+n+'.webp)" aria-hidden="true"></div>'}
 function card(eb,t,hint,body,extra){return '<div class="card" style="margin-top:14px'+(extra||'')+'"><div class="eb">'+E(eb)+'</div><h3 style="margin-top:7px">'+E(t)+'</h3>'+(hint?'<p class="hint">'+E(hint)+'</p>':'')+body+'</div>'}
 
 /* ══════════════ الرئيسية ══════════════ */
 VIEWS.home=function(){
   const p=P(), st=p.streak, simA=p.sim.active;
   const crest='<svg class="crest" viewBox="0 0 96 96" aria-hidden="true">'+MARK+'</svg>';
-  let h='<section class="hero">'+crest+'<div class="lockup">MIYAR</div><div class="ar">مِعيار — منصّة الاستعداد الشاملة للسيكومتري</div>'+
-   '<p class="say">الأدوات الأربع في مكان واحد بأعدادها ومقاييسها الرسمية: قدرات بمولّدات لا تنضب، وشخصية تُقرأ بأمانة لا بـ«إجابة صحيحة»، وسلوكيات معطّلة، وحكم على المواقف — وتقرير مرشّح موحّد.</p><hr class="gold-rule rule"></section>';
+  let h='<section class="hero2"><div class="hbg"></div><div class="hv">'+crest+'<div class="lockup">MIYAR</div><div class="ar">مِعيار — منصّة الاستعداد الشاملة للسيكومتري</div>'+
+   '<p class="say">الأدوات الأربع بأعدادها ومقاييسها الرسمية، ومولّدات قدرات لا تنضب، وقراءة أمينة للشخصية، وتقرير مرشّح موحّد.</p>'+
+   '<div class="cta"><button class="b g" data-go="sim">'+(simA?'أكمل المحاكاة الشاملة':'ابدأ المحاكاة الشاملة')+'</button><button class="b o" data-go="gcat">تدريب سريع على القدرات</button></div></div></section>';
+  h+='<div class="steps3"><div><b>١</b><span>تدرّب في أي أداة — كلها مفتوحة</span></div><div><b>٢</b><span>خض المحاكاة بالتسلسل الرسمي</span></div><div><b>٣</b><span>اقرأ تقريرك وأهم ثلاث خطوات</span></div></div>';
   const gq=Object.keys(p.gcat.items).length, jq=Object.keys(p.cases).length;
   h+='<div class="figs">'+
    '<div class="fig"><div class="n">∞</div><div class="k">أسئلة قدرات مولّدة</div></div>'+
@@ -3362,12 +3399,12 @@ VIEWS.home=function(){
     ['jud','الحكم على المواقف','١٦ موقفًا رسميًا · ١٢٠ في البنك','مقياس رباعي رسمي، وأنماط ردّ، وإيقاع، ومعايرة ثقة، وتكرار متباعد.',JUD.overall().pct],
   ];
   h+='<div class="card" style="margin-top:14px"><div class="eb">الأدوات الأربع — جميعها مفتوحة</div><h3 style="margin-top:7px">اختر ميدان التدريب</h3><div class="mods">';
-  mods.forEach(m=>{h+='<button class="modcard" data-go="'+m[0]+'"><div class="mi">'+ICONS[m[0]]+'</div><h4>'+E(m[1])+'</h4><div class="rl">'+E(m[2])+'</div><div class="dd">'+E(m[3])+'</div>'+
+  mods.forEach(m=>{h+='<button class="modcard" data-go="'+m[0]+'"><div class="mart" style="background-image:url(art/'+m[0]+'.webp)"></div><div class="mi">'+ICONS[m[0]]+'</div><h4>'+E(m[1])+'</h4><div class="rl">'+E(m[2])+'</div><div class="dd">'+E(m[3])+'</div>'+
     '<div class="ft"><div class="meter"><i style="width:'+Math.round(clamp(m[4],0,1)*100)+'%"></i></div><span class="chip gd">'+Math.round(clamp(m[4],0,1)*100)+'٪</span></div></button>'});
-  h+='</div><button class="feature" data-go="sim"><div class="eb">المحاكاة الشاملة</div><h4>الأدوات الأربع بالتسلسل الرسمي</h4><p>قدرات ← شخصية ← سلوكيات ← حكم، بالأعداد الرسمية وبحفظ تلقائي واستئناف. تنتهي بتقرير مرشّح موحّد ومؤشر جاهزية.</p><div class="go">←</div></button></div>';
+  h+='</div><button class="feature fart" data-go="sim"><div class="eb">المحاكاة الشاملة</div><h4>الأدوات الأربع بالتسلسل الرسمي</h4><p>قدرات ← شخصية ← سلوكيات ← حكم، بالأعداد الرسمية وبحفظ تلقائي واستئناف. تنتهي بتقرير مرشّح موحّد ومؤشر جاهزية.</p><div class="go">←</div></button></div>';
   h+='<div class="card" style="margin-top:14px"><div class="eb">أدوات</div><div class="modes">'+
-   '<button class="mode" data-go="report"><div class="sg">'+ICONS.report+'</div><div><h4>تقرير المرشّح</h4><p>صورة موحّدة من الأدوات الأربع، مؤشر جاهزية، وأهمّ ثلاث خطوات.</p></div></button>'+
-   '<button class="mode" data-go="jud-library"><div class="sg">'+ICONS.lib+'</div><div><h4>مكتبة المواقف</h4><p>المئة والعشرون موقفًا بتقديرات الخبراء ومسوّغاتها وأنماطها.</p></div></button>'+
+   '<button class="mode" data-go="report"><div class="th" style="background-image:url(art/report.webp)"></div><div><h4>تقرير المرشّح</h4><p>صورة موحّدة من الأدوات الأربع، مؤشر جاهزية، وأهمّ ثلاث خطوات.</p></div></button>'+
+   '<button class="mode" data-go="jud-library"><div class="th" style="background-image:url(art/jud.webp)"></div><div><h4>مكتبة المواقف</h4><p>المئة والعشرون موقفًا بتقديرات الخبراء ومسوّغاتها وأنماطها.</p></div></button>'+
    '<button class="mode" data-go="guide"><div class="sg">'+ICONS.spark+'</div><div><h4>كيف تُقاس الأدوات</h4><p>ما يقيسه كل اختبار فعلًا، وكيف تُحسب الدرجات، وما الذي يكشفه عن أسلوبك.</p></div></button>'+
    '<button class="mode" data-go="settings"><div class="sg">'+ICONS.gear+'</div><div><h4>الملف والنسخ الاحتياطي</h4><p>ملفات متعددة، وتصدير/استيراد التقدّم، وحجم الخط والسمة.</p></div></button></div></div>';
   return h+FOOT;
@@ -3576,6 +3613,7 @@ function gDomStats(d){ const it=P().gcat.items; let n=0,ok=0; Object.keys(it).fo
 VIEWS.gcat=function(){
   const g=P().gcat, due=gDueList().length, weak=gWeakList().length, last=g.runs.slice(-1)[0];
   let h=h1('القدرات — GCAT','اختبار القدرات المعرفية العامة','٤٢ سؤالًا في ٢٠ دقيقة بالتركيب الرسمي: ١٤ لفظيًا و١٤ عدديًا و١٤ تجريديًا. في مِعيار تُولَّد الأسئلة على جهازك بلا حدود، وكل خيار خاطئ موسوم بنوع الخطأ الذي يمثّله.');
+  h+=art('gcat');
   h+='<div class="figs" style="margin-top:16px">'+
     '<div class="fig"><div class="n">'+AI(g.runs.length)+'</div><div class="k">جولة</div></div>'+
     '<div class="fig"><div class="n">'+AI(Object.values(g.items).reduce((s,x)=>s+x.tries,0))+'</div><div class="k">سؤالًا أُجيب</div></div>'+
@@ -3744,6 +3782,7 @@ function pqNarrative(run){
 VIEWS.pq=function(){
   const p=P(), runs=p.pq.runs, act=p.pq.active, last=runs[runs.length-1];
   let h=h1('الشخصية — PQ10','استبيان الشخصية المهنية','١٤٤ بندًا على مقياس خماسي، تقيس عشرة أبعاد في خمس مجموعات. لا إجابة صحيحة: المقيّم يقرأ البروفايل ثم يفحص صدق الاستجابة — الاتساق والتطرّف والإذعان والرغبة الاجتماعية. مِعيار يريك ما يراه.');
+  h+=art('pq');
   h+='<div class="figs" style="margin-top:16px"><div class="fig"><div class="n">١٤٤</div><div class="k">بندًا</div></div><div class="fig"><div class="n">١٠</div><div class="k">أبعاد</div></div><div class="fig"><div class="n">٤٩</div><div class="k">بندًا معكوسًا</div></div><div class="fig"><div class="n">'+AI(runs.length)+'</div><div class="k">مرة أُجري</div></div></div>';
   if(act) h+='<div class="card" style="margin-top:20px"><div class="eb">قيد التنفيذ</div><h3 style="margin-top:7px">استبيان لم يكتمل</h3><p class="hint">أجبت عن '+AI(Object.keys(act.ans).length)+' من '+AI(act.order.length)+' بندًا.</p><div class="brow"><button class="b g" data-pqresume="1">أكمل من حيث توقفت</button><button class="b q" data-pqdrop="1">إلغاء</button></div></div>';
   h+='<div class="card" style="margin-top:14px"><div class="eb">ابدأ</div><h3 style="margin-top:7px">الاستبيان الكامل</h3><div class="opt2"><span>إضافة ٦ بنود رغبة اجتماعية (تكشف تجميل الصورة — للتدريب فقط، ليست من الـ١٤٤)</span><div class="tog '+(V.sd===false?'':'on')+'" data-pqsd="1"><i></i></div></div>'+
@@ -3808,6 +3847,7 @@ VIEWS['dbx-result']=function(){
 VIEWS.dbx=function(){
   const p=P(), runs=p.dbx.runs, act=p.dbx.active, last=runs[runs.length-1];
   let h=h1('السلوكيات المعطّلة','مقياس السلوكيات المعطّلة','٦٠ بندًا رسميًا في ست سمات تظهر تحت الضغط وتعطّل الأداء: التحفظ، الانفعالية، العدائية، الاندفاعية، الصرامة، اللامألوفية. مِعيار يضيف نسخة موسّعة بـ١٢٠ بندًا فيها بنود معكوسة تكشف الموافقة الآلية.');
+  h+=art('dbx');
   h+='<div class="figs" style="margin-top:16px"><div class="fig"><div class="n">٦٠</div><div class="k">بندًا رسميًا</div></div><div class="fig"><div class="n">١٢٠</div><div class="k">في النسخة الموسّعة</div></div><div class="fig"><div class="n">٦</div><div class="k">سمات</div></div><div class="fig"><div class="n">'+AI(runs.length)+'</div><div class="k">مرة أُجري</div></div></div>';
   if(act) h+='<div class="card" style="margin-top:20px"><div class="eb">قيد التنفيذ</div><h3 style="margin-top:7px">مقياس لم يكتمل</h3><p class="hint">أجبت عن '+AI(Object.keys(act.ans).length)+' من '+AI(act.order.length)+' بندًا.</p><div class="brow"><button class="b g" data-dbresume="1">أكمل من حيث توقفت</button><button class="b q" data-dbdrop="1">إلغاء</button></div></div>';
   h+='<div class="card" style="margin-top:14px"><div class="eb">ابدأ</div><h3 style="margin-top:7px">اختر النسخة</h3><div class="modes">'+
@@ -4106,6 +4146,7 @@ function startPlanDay(i){
 function vHome(){
   const o=overall(), due=dueList().length, weak=weakList().length, st=P().streak, pt=planToday();
   let h=h1('الحكم على المواقف','الحكم على المواقف القيادية','١٦ موقفًا في الاختبار الرسمي بمقياس رباعي، ومئة وعشرون في البنك: أربعة ردود لكل موقف وتقدير مُسوَّغ من لجنة خبراء لكل ردّ. أنت لا تختار الأفضل فقط — بل تزن الأربعة.');
+  h+=art('jud');
 
   h+='<div class="figs">'+
    '<div class="fig"><div class="n">١٢٠</div><div class="k">موقفًا قياديًا</div></div>'+
@@ -4853,6 +4894,7 @@ function stepsHTML(step,results){ return '<div class="steps">'+SIM_STEPS.map((s,
 VIEWS.sim=function(){
   const p=P(), a=p.sim.active, runs=p.sim.runs;
   let h=h1('المحاكاة الشاملة','الأدوات الأربع بالتسلسل الرسمي','قدرات ← شخصية ← سلوكيات ← حكم، بالأعداد الرسمية. حفظ تلقائي بعد كل إجابة، واستئناف من حيث توقفت، وتقرير مرشّح موحّد في النهاية. الزمن يُقاس ولا يُلزم.');
+  h+=art('sim');
   if(a){ h+='<div class="card" style="margin-top:18px"><div class="eb">قيد التنفيذ · بدأت '+E(ymd(a.started))+'</div><h3 style="margin-top:7px">الخطوة '+AI(a.step+1)+' من ٤ — '+E(SIM.stepName(a.step))+'</h3>'+stepsHTML(a.step,a.results)+
     '<div class="brow"><button class="b g" data-simnext="1">'+(a[SIM_STEPS[a.step][0]]?'أكمل '+E(SIM.stepName(a.step))+' من حيث توقفت':'ابدأ '+E(SIM.stepName(a.step)))+'</button><button class="b q" data-simdrop="1">إلغاء المحاكاة</button></div></div>' }
   else h+='<div class="card" style="margin-top:18px"><div class="eb">جلسة كاملة</div><h3 style="margin-top:7px">نحو ٥٠–٦٠ دقيقة</h3>'+stepsHTML(-1,{})+'<div class="brow"><button class="b g" data-simbegin="1">ابدأ المحاكاة الشاملة</button></div><p class="hint" style="margin-top:8px">يمكنك التوقف بين الأدوات والعودة لاحقًا؛ التقدّم محفوظ على هذا الجهاز.</p></div>';
@@ -4911,6 +4953,7 @@ function reportResults(){
 VIEWS.report=function(){
   const p=P(), r=reportResults(), rd=readiness(r), b=readyBand(rd.v), any=Object.keys(r).length;
   let h=h1('تقرير المرشّح','صورتك الموحّدة من الأدوات الأربع','يُبنى من آخر نتيجة في كل أداة. للتقرير الأدقّ أجرِ المحاكاة الشاملة.');
+  h+=art('report',1);
   if(!any) return h+'<div class="blank" style="margin-top:18px"><div class="g">—</div><p>لا نتائج بعد. أكمل أداة واحدة على الأقل، أو ابدأ المحاكاة الشاملة.</p></div><div class="brow"><button class="b g" data-go="sim">المحاكاة الشاملة</button><button class="b o" data-go="home">← الرئيسية</button></div>'+FOOT;
   h+='<div class="card" style="margin-top:18px"><div class="eb">مؤشر الجاهزية'+(rd.cov<1?' · جزئي ('+AI(Math.round(rd.cov*100))+'٪ من الأدوات)':'')+'</div><div class="ready"><div class="rn" style="color:'+b[1]+'">'+AI(Math.round(rd.v*100))+'</div><div class="rt"><b style="color:'+b[1]+'">'+E(b[0])+'</b><br>'+(rd.cov<1?'أدوات لم تُقَس بعد: '+SIM_STEPS.filter(s=>!r[s[0]]).map(s=>s[1]).join('، ')+'.':'الأدوات الأربع مقيسة.')+' سلسلة التدريب: '+AI(p.streak.n||0)+' يومًا.</div></div></div>';
   h+='<div class="card" style="margin-top:14px">'+tiles([{v:r.gcat?AI(Math.round(r.gcat.pct*100))+'٪':'—',k:'القدرات'},{v:r.pq?(r.pq.readable?'✓':'✕'):'—',k:'الشخصية'},{v:r.dbx?AI(Math.round(r.dbx.safety*100)):'—',k:'سلامة السلوكيات'},{v:r.jud?AI(Math.round(r.jud.pct*100))+'٪':'—',k:'الحكم'}])+'</div>';

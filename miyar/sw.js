@@ -1,7 +1,7 @@
 /* مِعيار — عامل الخدمة: الصفحة شبكة أولًا (التحديثات تصل فور إعادة الفتح)، الأصول ذاكرة أولًا. */
-const VERSION='v1';
+const VERSION='v2';
 const CACHE='miyar-'+VERSION;
-const ASSETS=['./','./index.html','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png','./icons/favicon-32.png','./icons/og-image.png'];
+const ASSETS=['./','./index.html','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png','./icons/favicon-32.png','./icons/og-image.png','./art/hero.webp','./art/gcat.webp','./art/pq.webp','./art/dbx.webp','./art/jud.webp','./art/sim.webp','./art/report.webp'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS).catch(()=>undefined)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 function isDocument(req){return req.mode==='navigate'||req.destination==='document'||(req.headers.get('accept')||'').includes('text/html')}
